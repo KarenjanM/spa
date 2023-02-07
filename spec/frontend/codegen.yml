@@ -1,0 +1,16 @@
+overwrite: true
+schema: 
+- "https://brunswick.stepzen.net/api/saleor-strapi/__graphql": 
+    headers: {
+      Authorization: "apikey brunswick::stepzen.net+1000::c12e98d9bee9bd2f3051a3b9984fef3ea4da3ebfe1f235f16671f724bc25b662",
+    }
+documents: ["components/**/*.tsx", "pages/**/*.tsx"]
+generates:
+  generated/graphql.tsx:
+    plugins:
+      - "typescript"
+      - "typescript-operations"
+      - "typescript-react-apollo"
+  ./graphql.schema.json:
+    plugins:
+      - "introspection"

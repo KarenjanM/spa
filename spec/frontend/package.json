@@ -1,0 +1,37 @@
+{
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "generate": "graphql-codegen --config codegen.yml"
+  },
+  "dependencies": {
+    "@apollo/client": "^3.7.4",
+    "@graphql-codegen/cli": "^2.16.4",
+    "@graphql-codegen/introspection": "^2.2.3",
+    "@graphql-codegen/typescript": "^2.8.7",
+    "@graphql-codegen/typescript-operations": "^2.5.12",
+    "@graphql-codegen/typescript-react-apollo": "^3.3.7",
+    "@headlessui/react": "^1.7.7",
+    "@heroicons/react": "^2.0.14",
+    "@reduxjs/toolkit": "^1.9.1",
+    "@types/react": "^18.0.27",
+    "@types/react-redux": "^7.1.25",
+    "apollo-client": "^2.6.10",
+    "graphql": "^15.8.0",
+    "html-react-parser": "^3.0.8",
+    "next": "latest",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-redux": "^8.0.5",
+    "react-slick": "^0.29.0",
+    "typescript": "^4.9.4"
+  },
+  "devDependencies": {
+    "@types/node": "18.11.18",
+    "autoprefixer": "^10.4.13",
+    "postcss": "^8.4.21",
+    "tailwindcss": "^3.2.4"
+  }
+}
