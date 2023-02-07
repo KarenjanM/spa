@@ -1,0 +1,15 @@
+deployment:
+  identity:
+    keys:
+      - algorithm: HS256
+        key: your-256-bit-secret
+
+configurationset:
+  - configuration:
+      name: strapi
+
+access:
+  policies:
+  - type: Query
+    policyDefault:
+      condition: "?$jwt"
