@@ -1,28 +1,8 @@
-import Head from 'next/head';
 import Link from 'next/link';
 import ProductCategory from '../components/ProductCategory';
 import Blog from '../components/Blog';
-import { useEffect } from 'react';
-import { useTokenVerifyMutation } from '../generated/graphql';
-import { useAppSelector, useAppDispatch } from '../redux/hoooks';
-import { verify } from '../redux/auth.slice';
 
 export default function Home() {
-  const auth = useAppSelector((state) => state.auth)
-  const dispatch = useAppDispatch();
-  const [tokenVerifyMutation] = useTokenVerifyMutation({
-    variables: {
-        token: auth.userToken
-    }
-})
-    useEffect(() => {
-
-    if(!auth.isVerified && auth.userToken)
-        process.env.BEARER_TOKEN = auth.userToken
-        console.log(process.env.BEARER_TOKEN);
-        
-        tokenVerifyMutation().then(({data})=> dispatch(verify(data.tokenVerify.isValid))) 
-    })
   return (
     <div className='pb-10' >
         <div className='flex flex-col gap-10 lg:text-center'>

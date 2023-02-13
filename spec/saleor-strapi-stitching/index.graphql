@@ -2,7 +2,7 @@ schema
   @sdl(
     files: [
       "graphql/index.graphql"
-      "graphql-02/index.graphql"
+      "graphql-01/index.graphql"
     ]
   ) {
   query: Query

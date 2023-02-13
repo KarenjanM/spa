@@ -35,8 +35,7 @@ services:
       - STOREFRONT_URL=http://localhost:3000/
       - DASHBOARD_URL=http://localhost:9000/
       - ALLOWED_HOSTS=localhost,api,.ngrok.io
-      - RSA_PRIVATE_KEY=saleor/rsa
-      - RSA_PRIVATE_PASSWORD=deep5
+      - RSA_PRIVATE_KEY=saleor/private.pem
   storefront:
     extends:
       file: ./react-storefront/docker-compose.yml

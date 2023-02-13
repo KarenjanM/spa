@@ -204,10 +204,10 @@ if not SECRET_KEY and DEBUG:
     warnings.warn("SECRET_KEY not configured, using a random temporary key.")
     SECRET_KEY = get_random_secret_key()
 
-with open(os.environ.get("RSA_PRIVATE_KEY", 'saleor/rsa')) as file:
+with open(os.environ.get("RSA_PRIVATE_KEY", 'saleor/private.pem')) as file:
     RSA_PRIVATE_KEY = file.read()
 
-RSA_PRIVATE_PASSWORD = os.environ.get("RSA_PRIVATE_PASSWORD", 'deep5')
+RSA_PRIVATE_PASSWORD = os.environ.get("RSA_PRIVATE_PASSWORD")
 
 JWT_MANAGER_PATH = os.environ.get(
     "JWT_MANAGER_PATH", "saleor.core.jwt_manager.JWTManager"

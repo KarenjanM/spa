@@ -26819,6 +26819,11 @@ export type GetUserQueryVariables = Exact<{ [key: string]: never; }>;
 
 export type GetUserQuery = { __typename?: 'Query', me?: { __typename?: 'User', email: string, firstName: string, lastName: string } | null };
 
+export type TokenDeactivateMutationVariables = Exact<{ [key: string]: never; }>;
+
+
+export type TokenDeactivateMutation = { __typename?: 'Mutation', tokensDeactivateAll?: { __typename?: 'DeactivateAllUserTokens', errors: Array<{ __typename?: 'AccountError', message?: string | null }> } | null };
+
 export type AccountRegisterMutationVariables = Exact<{
   input: AccountRegisterInput;
 }>;
@@ -27147,7 +27152,7 @@ export type FilterProductsLazyQueryHookResult = ReturnType<typeof useFilterProdu
 export type FilterProductsQueryResult = Apollo.QueryResult<FilterProductsQuery, FilterProductsQueryVariables>;
 export const TokenCreateDocument = gql`
     mutation tokenCreate($email: String!, $password: String!) {
-  tokenCreate(email: $email, password: $password) {
+  tokenCreate(audience: "my-little-secret", email: $email, password: $password) {
     token
     refreshToken
   }
@@ -27249,6 +27254,40 @@ export function useGetUserLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<Ge
 export type GetUserQueryHookResult = ReturnType<typeof useGetUserQuery>;
 export type GetUserLazyQueryHookResult = ReturnType<typeof useGetUserLazyQuery>;
 export type GetUserQueryResult = Apollo.QueryResult<GetUserQuery, GetUserQueryVariables>;
+export const TokenDeactivateDocument = gql`
+    mutation tokenDeactivate {
+  tokensDeactivateAll {
+    errors {
+      message
+    }
+  }
+}
+    `;
+export type TokenDeactivateMutationFn = Apollo.MutationFunction<TokenDeactivateMutation, TokenDeactivateMutationVariables>;
+
+/**
+ * __useTokenDeactivateMutation__
+ *
+ * To run a mutation, you first call `useTokenDeactivateMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useTokenDeactivateMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [tokenDeactivateMutation, { data, loading, error }] = useTokenDeactivateMutation({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useTokenDeactivateMutation(baseOptions?: Apollo.MutationHookOptions<TokenDeactivateMutation, TokenDeactivateMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<TokenDeactivateMutation, TokenDeactivateMutationVariables>(TokenDeactivateDocument, options);
+      }
+export type TokenDeactivateMutationHookResult = ReturnType<typeof useTokenDeactivateMutation>;
+export type TokenDeactivateMutationResult = Apollo.MutationResult<TokenDeactivateMutation>;
+export type TokenDeactivateMutationOptions = Apollo.BaseMutationOptions<TokenDeactivateMutation, TokenDeactivateMutationVariables>;
 export const AccountRegisterDocument = gql`
     mutation accountRegister($input: AccountRegisterInput!) {
   accountRegister(input: $input) {
