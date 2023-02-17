@@ -7,6 +7,7 @@ import {XMarkIcon} from '@heroicons/react/24/outline';
 import { Transition } from "@headlessui/react";
 import { Fragment } from 'react';
 import { setInvalid } from "../redux/auth.slice";
+import { useApolloClient } from "@apollo/client";
 
 const tokenCreate = /* GraphQL */`
 mutation tokenCreate($email: String!, $password: String!){
@@ -26,21 +27,26 @@ mutation tokenVerify($token: String!){
 `
 
 export default function Login(){
+  // getting the auth object from redux store
   const auth = useAppSelector((state) => state.auth);
+  const client = useApolloClient();
+
   const dispatch = useAppDispatch();
-  const isVerified = useVerify({auth});
+  // getting boolean value of loggedIn from useVerify hook to check if user is already logged in
+  const loggedIn = useVerify({auth});
   const router = useRouter();
   const [showAlert, setAlert] = useState(false);
   useEffect(()=>{
-    if(isVerified){
+    if(loggedIn){
       console.log("useEffect in LOGIN PAGE");
-      
+      client.resetStore()
       router.push('/');
     }
     if(auth.invalid)
       setAlert(true);
-  }, [isVerified, auth.invalid])
+  }, [loggedIn, auth.invalid])
 
+  // simple function to hide the alert
   function hideAlert(){
     setAlert(false);
     dispatch(setInvalid(false))

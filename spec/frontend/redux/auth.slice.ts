@@ -5,7 +5,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 interface AuthState {
   refreshToken: string,
   userToken: string,
-  isVerified: boolean,
+  loggedIn: boolean,
   invalid: boolean
 }
 interface TokenState {
@@ -15,7 +15,7 @@ interface TokenState {
 const initialState : AuthState = {
   refreshToken: "", 
   userToken: "",
-  isVerified: false,
+  loggedIn: false,
   invalid: false, 
 }
 
@@ -32,11 +32,18 @@ const authSlice = createSlice({
       else
         state.invalid = true
     },
+    setTokensNull: (state) => {
+        state.userToken = ""
+        state.refreshToken = ""
+    },
     setInvalid: (state, action: PayloadAction<boolean>) => {
       state.invalid = action.payload
     },
-    verify: (state, action: PayloadAction<boolean>) => {
-      state.isVerified = action.payload
+    login: (state) => {
+      state.loggedIn = true
+    },
+    logout: (state) => {
+      state.loggedIn = false
     }
   },
 })
@@ -45,6 +52,8 @@ export default authSlice.reducer
 
 export const {
   setTokens,
+  setTokensNull,
   setInvalid, 
-  verify
+  login,
+  logout
 } = authSlice.actions

@@ -19,6 +19,7 @@
     "@types/react": "^18.0.27",
     "@types/react-redux": "^7.1.25",
     "apollo-client": "^2.6.10",
+    "deepmerge": "^4.3.0",
     "graphql": "^15.8.0",
     "html-react-parser": "^3.0.8",
     "next": "latest",

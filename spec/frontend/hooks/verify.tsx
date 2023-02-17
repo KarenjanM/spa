@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
 import { useTokenVerifyMutation } from "../generated/graphql";
-import { verify } from '../redux/auth.slice';
+import { login } from '../redux/auth.slice';
 import { useAppDispatch } from "../redux/hoooks";
 
 interface optionsInterface {
     auth: {
         userToken?: string
-        isVerified: boolean
+        loggedIn: boolean
     }
 }
 
@@ -18,11 +18,13 @@ export function useVerify(options: optionsInterface){
             token: options.auth.userToken
         }
     })
-    if(!options.auth.isVerified && options.auth.userToken )
+    if(!options.auth.loggedIn && options.auth.userToken )
         tokenVerifyMutation()
             .then(({data})=> {
+                    console.log("success in useVerify");
+                    
                     setData(data.tokenVerify.isValid)
-                    dispatch(verify(data.tokenVerify.isValid))
+                    dispatch(login())
                 }) 
     return data
 }

@@ -6,6 +6,7 @@ import { useAppDispatch } from "../../redux/hoooks"
 import { setTokens } from "../../redux/auth.slice"
 
 
+
 export default function LoginForm(){
     const dispatch = useAppDispatch();
     const [emailState, setEmail] = useState("");
@@ -16,13 +17,22 @@ export default function LoginForm(){
             password: ""
         }
     });
+
+    // handling onSubmit in LoginForm
     function handleSubmit(e){
         e.preventDefault()
-        
-        tokenCreateMutation({variables: {email: emailState, password: pwdState}}).then(({data}) => dispatch(setTokens({
+        console.log("before token creation")
+        // creating a token with the according mutation callback and then saving it to the local storage
+        tokenCreateMutation({variables: {email: emailState, password: pwdState}}).then(({data}) => {
+            console.log("success");
+            
+            dispatch(setTokens({
             userToken: data.tokenCreate.token,
             refreshToken: data.tokenCreate.refreshToken
-        }))); 
+            }))
+        }); 
+
+        console.log("after token creation");
     }
         return(
             <form action="#" className="flex flex-col gap-6 self-center text-center py-20 px-40" onSubmit={handleSubmit}>

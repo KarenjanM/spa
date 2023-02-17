@@ -1,21 +1,8 @@
-deployment:
-  identity:
-    keys:
-    - algorithm: RS256
-      key: |-
-          -----BEGIN PUBLIC KEY-----
-          MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA5ifsGpquqiFF7sdBDMgz
-          s7Ww5csmmtzXBJOTjFJV96oWDk0PBYxFQpX1XNJKeMtMk8q1oRuyy40fj8kLXp1t
-          KuOL980Uj3ib8YsBbahHhmqfDWOLaj5XN8+/TMJelJOQWxF3lG4R0fqyp6FigFSQ
-          dI2Y1+3Vg5bJBsFCJQf7WlEQaKv8i/rFFJHeE+jfLOTjqXwaywL08Iktlte6L4ix
-          6KvMYkLl/sdhBeroEJGNBWXtjmRINlts+5ICLLMnXCMu0gqLb8tIxU6p88koESOb
-          lFQezBg6JyTc5Rv/VA9vVTwykWArutY/E7Glx5DYtY9W1F9sQ2b4e9n3RyhA5j5/
-          +wIDAQAB
-          -----END PUBLIC KEY-----
-
-
 access:
   policies:
     - type: Query
       policyDefault:
-        condition: 'true'
+        condition: "true"
+    - type: Mutation
+      policyDefault:
+        condition: "true"
