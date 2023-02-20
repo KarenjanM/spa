@@ -1,4 +1,4 @@
-import { Fragment } from 'react';
+import { Fragment, useContext } from 'react';
 import { Popover, Transition } from '@headlessui/react';
 import {
   Bars3Icon,
@@ -11,12 +11,14 @@ import {
   XMarkIcon,
   MagnifyingGlassIcon,
   UserIcon,
-  ShoppingCartIcon,
   ShoppingBagIcon
 } from '@heroicons/react/24/outline'
 import { ChevronDownIcon } from '@heroicons/react/20/solid'
 import Link from 'next/link';
 import { useAppSelector } from '../redux/hoooks';
+import { CheckoutContext } from '../contexts/checkoutContext';
+import { useApolloClient } from '@apollo/client';
+import { useGetCheckout } from '../hooks/checkout';
 
 // examples for menus
 const solutions = [
@@ -44,22 +46,19 @@ const callsToAction = [
   { name: 'Watch Demo', href: '#', icon: PlayIcon },
   { name: 'Contact Sales', href: '#', icon: PhoneIcon },
 ]
-const recentPosts = [
-  { id: 1, name: 'Boost your conversion rate', href: '#' },
-  { id: 2, name: 'How to use search engine optimization to drive traffic to your site', href: '#' },
-  { id: 3, name: 'Improve your customer experience', href: '#' },
-]
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
 }
 
 export default function Header() {
-    const cart = useAppSelector((state) => state.cart);
+    const checkoutId = useContext(CheckoutContext);
+    const client = useApolloClient();
+    const {data, loading, error} = useGetCheckout(client, checkoutId);
+
     function getTotalQuantity(){
-        let quantity = 0
-        cart.forEach((item)=> quantity += item.quantity)
-        return quantity
+        if(data)
+          return data.checkout.lines.length
     }
     
   return (

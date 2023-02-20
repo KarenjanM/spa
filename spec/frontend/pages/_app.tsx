@@ -6,6 +6,8 @@ import { setContext } from '@apollo/client/link/context';
 import { ApolloClient, createHttpLink, from, InMemoryCache } from '@apollo/client';
 import {store} from '../redux/store';
 import { useApollo } from '../apollo/client';
+import useCreateCheckout from '../hooks/checkout';
+import { CheckoutContext } from '../contexts/checkoutContext';
 
 const httpLink = createHttpLink({
     uri: 'https://brunswick.stepzen.net/api/saleor-strapi/__graphql'
@@ -28,14 +30,16 @@ const httpLink = createHttpLink({
   
 
 export default function App({ Component, pageProps }) {    
-    const apolloClient = useApollo(pageProps.initialState, store.getState().auth.userToken)
+    const apolloClient = useApollo(pageProps.initialState, store.getState().auth.userToken);
     console.log(store.getState().auth.userToken);
-    
+    const checkoutId = useCreateCheckout(apolloClient, []).id;
     return (
     <Provider store={store}>
         <ApolloProvider client={apolloClient}>
+          <CheckoutContext.Provider value={checkoutId}>
                 <Header />
                 <Component {...pageProps}/>
+          </CheckoutContext.Provider>
         </ApolloProvider>
     </Provider>
     );

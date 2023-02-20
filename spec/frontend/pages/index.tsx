@@ -2,6 +2,7 @@ import Link from 'next/link';
 import ProductCategory from '../components/ProductCategory';
 import Blog from '../components/Blog';
 
+
 export default function Home() {
   return (
     <div className='pb-10' >

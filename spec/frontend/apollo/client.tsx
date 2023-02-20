@@ -24,12 +24,28 @@ function createApolloClient(token) {
   return new ApolloClient({
     ssrMode: typeof window === 'undefined',
     link: createIsomorphLink(token),
-    cache: new InMemoryCache(),
+    cache: new InMemoryCache({
+    typePolicies: {
+      Checkout: {
+        fields: {
+          lines: {
+            merge(existing = [], incoming: any[]) {
+              console.log("merge");
+              existing.map((item)=>console.log("exist " + item));
+              incoming.map((item)=>console.log("comes " +item));
+              return [...existing, ...incoming];
+            },
+          },
+        },
+      },
+    },
   })
+})
 }
 
 export function initializeApollo(initialState = null, token=null) {
   const _apolloClient = createApolloClient(token)
+  
   // If your page has Next.js data fetching methods that use Apollo Client, the initial state
   // get hydrated here
   if (initialState) {
