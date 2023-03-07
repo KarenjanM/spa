@@ -24,22 +24,7 @@ function createApolloClient(token) {
   return new ApolloClient({
     ssrMode: typeof window === 'undefined',
     link: createIsomorphLink(token),
-    cache: new InMemoryCache({
-    typePolicies: {
-      Checkout: {
-        fields: {
-          lines: {
-            merge(existing = [], incoming: any[]) {
-              console.log("merge");
-              existing.map((item)=>console.log("exist " + item));
-              incoming.map((item)=>console.log("comes " +item));
-              return [...existing, ...incoming];
-            },
-          },
-        },
-      },
-    },
-  })
+    cache: new InMemoryCache()
 })
 }
 

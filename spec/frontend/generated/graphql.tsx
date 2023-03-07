@@ -26790,14 +26790,14 @@ export type CreateCheckoutMutationVariables = Exact<{
 }>;
 
 
-export type CreateCheckoutMutation = { __typename?: 'Mutation', checkoutCreate?: { __typename?: 'CheckoutCreate', checkout?: { __typename?: 'Checkout', id: string, lines: Array<{ __typename?: 'CheckoutLine', id: string }> } | null } | null };
+export type CreateCheckoutMutation = { __typename?: 'Mutation', checkoutCreate?: { __typename?: 'CheckoutCreate', checkout?: { __typename?: 'Checkout', id: string, lines: Array<{ __typename?: 'CheckoutLine', id: string, quantity: number, variant: { __typename?: 'ProductVariant', id: string, product: { __typename?: 'Product', name: string, thumbnail?: { __typename?: 'Image', url: string } | null }, media?: Array<{ __typename?: 'ProductMedia', url: string }> | null, pricing?: { __typename?: 'VariantPricingInfo', price?: { __typename?: 'TaxedMoney', gross: { __typename?: 'Money', amount: number } } | null } | null } }> } | null } | null };
 
 export type GetCheckoutQueryVariables = Exact<{
   id?: InputMaybe<Scalars['ID']>;
 }>;
 
 
-export type GetCheckoutQuery = { __typename?: 'Query', checkout?: { __typename?: 'Checkout', id: string, totalPrice: { __typename?: 'TaxedMoney', gross: { __typename?: 'Money', amount: number } }, lines: Array<{ __typename?: 'CheckoutLine', id: string, quantity: number, variant: { __typename?: 'ProductVariant', id: string, product: { __typename?: 'Product', name: string, thumbnail?: { __typename?: 'Image', url: string } | null }, media?: Array<{ __typename?: 'ProductMedia', url: string }> | null, pricing?: { __typename?: 'VariantPricingInfo', price?: { __typename?: 'TaxedMoney', gross: { __typename?: 'Money', amount: number } } | null } | null } }> } | null };
+export type GetCheckoutQuery = { __typename?: 'Query', checkout?: { __typename?: 'Checkout', id: string, totalPrice: { __typename?: 'TaxedMoney', gross: { __typename?: 'Money', amount: number } }, lines: Array<{ __typename?: 'CheckoutLine', id: string, quantity: number, variant: { __typename?: 'ProductVariant', id: string, product: { __typename?: 'Product', name: string, thumbnail?: { __typename?: 'Image', url: string } | null }, pricing?: { __typename?: 'VariantPricingInfo', price?: { __typename?: 'TaxedMoney', gross: { __typename?: 'Money', amount: number } } | null } | null } }> } | null };
 
 export type LineUpdateMutationVariables = Exact<{
   checkoutId?: InputMaybe<Scalars['ID']>;
@@ -26805,7 +26805,7 @@ export type LineUpdateMutationVariables = Exact<{
 }>;
 
 
-export type LineUpdateMutation = { __typename?: 'Mutation', checkoutLinesUpdate?: { __typename?: 'CheckoutLinesUpdate', checkout?: { __typename?: 'Checkout', id: string, lines: Array<{ __typename?: 'CheckoutLine', id: string }> } | null } | null };
+export type LineUpdateMutation = { __typename?: 'Mutation', checkoutLinesUpdate?: { __typename?: 'CheckoutLinesUpdate', checkout?: { __typename?: 'Checkout', id: string, totalPrice: { __typename?: 'TaxedMoney', gross: { __typename?: 'Money', amount: number } }, lines: Array<{ __typename?: 'CheckoutLine', id: string, quantity: number, variant: { __typename?: 'ProductVariant', id: string, product: { __typename?: 'Product', name: string, thumbnail?: { __typename?: 'Image', url: string } | null }, media?: Array<{ __typename?: 'ProductMedia', url: string }> | null, pricing?: { __typename?: 'VariantPricingInfo', price?: { __typename?: 'TaxedMoney', gross: { __typename?: 'Money', amount: number } } | null } | null } }> } | null } | null };
 
 export type DeleteLinesMutationVariables = Exact<{
   checkoutId?: InputMaybe<Scalars['ID']>;
@@ -26813,7 +26813,7 @@ export type DeleteLinesMutationVariables = Exact<{
 }>;
 
 
-export type DeleteLinesMutation = { __typename?: 'Mutation', checkoutLinesDelete?: { __typename?: 'CheckoutLinesDelete', checkout?: { __typename?: 'Checkout', id: string, lines: Array<{ __typename?: 'CheckoutLine', id: string }> } | null } | null };
+export type DeleteLinesMutation = { __typename?: 'Mutation', checkoutLinesDelete?: { __typename?: 'CheckoutLinesDelete', checkout?: { __typename?: 'Checkout', id: string, totalPrice: { __typename?: 'TaxedMoney', gross: { __typename?: 'Money', amount: number } }, lines: Array<{ __typename?: 'CheckoutLine', id: string, quantity: number, variant: { __typename?: 'ProductVariant', id: string, product: { __typename?: 'Product', name: string, thumbnail?: { __typename?: 'Image', url: string } | null }, media?: Array<{ __typename?: 'ProductMedia', url: string }> | null, pricing?: { __typename?: 'VariantPricingInfo', price?: { __typename?: 'TaxedMoney', gross: { __typename?: 'Money', amount: number } } | null } | null } }> } | null, errors: Array<{ __typename?: 'CheckoutError', message?: string | null, code: CheckoutErrorCode }> } | null };
 
 export type AddLineMutationVariables = Exact<{
   checkoutId?: InputMaybe<Scalars['ID']>;
@@ -26821,7 +26821,7 @@ export type AddLineMutationVariables = Exact<{
 }>;
 
 
-export type AddLineMutation = { __typename?: 'Mutation', checkoutLinesAdd?: { __typename?: 'CheckoutLinesAdd', checkout?: { __typename?: 'Checkout', id: string, lines: Array<{ __typename?: 'CheckoutLine', id: string }> } | null } | null };
+export type AddLineMutation = { __typename?: 'Mutation', checkoutLinesAdd?: { __typename?: 'CheckoutLinesAdd', checkout?: { __typename?: 'Checkout', id: string, totalPrice: { __typename?: 'TaxedMoney', gross: { __typename?: 'Money', amount: number } }, lines: Array<{ __typename?: 'CheckoutLine', id: string, quantity: number, variant: { __typename?: 'ProductVariant', id: string, product: { __typename?: 'Product', name: string, thumbnail?: { __typename?: 'Image', url: string } | null }, media?: Array<{ __typename?: 'ProductMedia', url: string }> | null, pricing?: { __typename?: 'VariantPricingInfo', price?: { __typename?: 'TaxedMoney', gross: { __typename?: 'Money', amount: number } } | null } | null } }> } | null } | null };
 
 export type GetPostByIdQueryVariables = Exact<{
   id?: InputMaybe<Scalars['ID']>;
@@ -26851,6 +26851,13 @@ export type TokenVerifyMutationVariables = Exact<{
 
 
 export type TokenVerifyMutation = { __typename?: 'Mutation', tokenVerify?: { __typename?: 'VerifyToken', isValid: boolean } | null };
+
+export type GetProductByIdQueryVariables = Exact<{
+  id?: InputMaybe<Scalars['ID']>;
+}>;
+
+
+export type GetProductByIdQuery = { __typename?: 'Query', product?: { __typename?: 'Product', id: string, name: string, description?: any | null, thumbnail?: { __typename?: 'Image', url: string } | null, pricing?: { __typename?: 'ProductPricingInfo', priceRange?: { __typename?: 'TaxedMoneyRange', stop?: { __typename?: 'TaxedMoney', gross: { __typename?: 'Money', amount: number, currency: string } } | null } | null } | null, defaultVariant?: { __typename?: 'ProductVariant', id: string } | null } | null };
 
 export type GetUserQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -27102,6 +27109,26 @@ export const CreateCheckoutDocument = gql`
       id
       lines {
         id
+        quantity
+        variant {
+          id
+          product {
+            name
+            thumbnail {
+              url
+            }
+          }
+          media {
+            url
+          }
+          pricing {
+            price {
+              gross {
+                amount
+              }
+            }
+          }
+        }
       }
     }
   }
@@ -27153,9 +27180,6 @@ export const GetCheckoutDocument = gql`
             url
           }
         }
-        media {
-          url
-        }
         pricing {
           price {
             gross {
@@ -27201,8 +27225,33 @@ export const LineUpdateDocument = gql`
   checkoutLinesUpdate(checkoutId: $checkoutId, lines: $lines) {
     checkout {
       id
+      totalPrice {
+        gross {
+          amount
+        }
+      }
       lines {
         id
+        quantity
+        variant {
+          id
+          product {
+            name
+            thumbnail {
+              url
+            }
+          }
+          media {
+            url
+          }
+          pricing {
+            price {
+              gross {
+                amount
+              }
+            }
+          }
+        }
       }
     }
   }
@@ -27240,9 +27289,38 @@ export const DeleteLinesDocument = gql`
   checkoutLinesDelete(id: $checkoutId, linesIds: $linesIds) {
     checkout {
       id
+      totalPrice {
+        gross {
+          amount
+        }
+      }
       lines {
         id
+        quantity
+        variant {
+          id
+          product {
+            name
+            thumbnail {
+              url
+            }
+          }
+          media {
+            url
+          }
+          pricing {
+            price {
+              gross {
+                amount
+              }
+            }
+          }
+        }
       }
+    }
+    errors {
+      message
+      code
     }
   }
 }
@@ -27279,8 +27357,33 @@ export const AddLineDocument = gql`
   checkoutLinesAdd(checkoutId: $checkoutId, lines: $lines) {
     checkout {
       id
+      totalPrice {
+        gross {
+          amount
+        }
+      }
       lines {
         id
+        quantity
+        variant {
+          id
+          product {
+            name
+            thumbnail {
+              url
+            }
+          }
+          media {
+            url
+          }
+          pricing {
+            price {
+              gross {
+                amount
+              }
+            }
+          }
+        }
       }
     }
   }
@@ -27477,6 +27580,59 @@ export function useTokenVerifyMutation(baseOptions?: Apollo.MutationHookOptions<
 export type TokenVerifyMutationHookResult = ReturnType<typeof useTokenVerifyMutation>;
 export type TokenVerifyMutationResult = Apollo.MutationResult<TokenVerifyMutation>;
 export type TokenVerifyMutationOptions = Apollo.BaseMutationOptions<TokenVerifyMutation, TokenVerifyMutationVariables>;
+export const GetProductByIdDocument = gql`
+    query getProductById($id: ID) {
+  product(id: $id, channel: "default-channel") {
+    id
+    name
+    thumbnail {
+      url
+    }
+    pricing {
+      priceRange {
+        stop {
+          gross {
+            amount
+            currency
+          }
+        }
+      }
+    }
+    description
+    defaultVariant {
+      id
+    }
+  }
+}
+    `;
+
+/**
+ * __useGetProductByIdQuery__
+ *
+ * To run a query within a React component, call `useGetProductByIdQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetProductByIdQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetProductByIdQuery({
+ *   variables: {
+ *      id: // value for 'id'
+ *   },
+ * });
+ */
+export function useGetProductByIdQuery(baseOptions?: Apollo.QueryHookOptions<GetProductByIdQuery, GetProductByIdQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<GetProductByIdQuery, GetProductByIdQueryVariables>(GetProductByIdDocument, options);
+      }
+export function useGetProductByIdLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetProductByIdQuery, GetProductByIdQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<GetProductByIdQuery, GetProductByIdQueryVariables>(GetProductByIdDocument, options);
+        }
+export type GetProductByIdQueryHookResult = ReturnType<typeof useGetProductByIdQuery>;
+export type GetProductByIdLazyQueryHookResult = ReturnType<typeof useGetProductByIdLazyQuery>;
+export type GetProductByIdQueryResult = Apollo.QueryResult<GetProductByIdQuery, GetProductByIdQueryVariables>;
 export const GetUserDocument = gql`
     query getUser {
   me {

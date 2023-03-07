@@ -15,9 +15,7 @@ import {
 } from '@heroicons/react/24/outline'
 import { ChevronDownIcon } from '@heroicons/react/20/solid'
 import Link from 'next/link';
-import { useAppSelector } from '../redux/hoooks';
 import { CheckoutContext } from '../contexts/checkoutContext';
-import { useApolloClient } from '@apollo/client';
 import { useGetCheckout } from '../hooks/checkout';
 
 // examples for menus
@@ -52,15 +50,18 @@ function classNames(...classes) {
 }
 
 export default function Header() {
-    const checkoutId = useContext(CheckoutContext);
-    const client = useApolloClient();
-    const {data, loading, error} = useGetCheckout(client, checkoutId);
-
+    const {checkoutId} = useContext(CheckoutContext);
+    const {data, loading, error} = useGetCheckout({checkoutId: checkoutId});
+      
     function getTotalQuantity(){
-        if(data)
-          return data.checkout.lines.length
+        let total = 0;
+
+        if(data){
+          data.checkout.lines.map((line)=> total += line.quantity)
+        }
+        return total
     }
-    
+  
   return (
     <Popover className="relative bg-stone-600">
       <div className="mx-auto max-w-7xl px-6">
@@ -116,32 +117,17 @@ export default function Header() {
                   >
                     <Popover.Panel className="absolute z-10 -ml-4 mt-3 w-screen max-w-md transform px-2 sm:px-0 lg:left-1/2 lg:ml-0 lg:-translate-x-1/2">
                       <div className="overflow-hidden rounded-lg shadow-lg ring-1 ring-black ring-opacity-5">
-                        <div className="relative grid gap-6 bg-white px-5 py-6 sm:gap-8 sm:p-8">
+                        <div className="relative grid gap-6 bg-stone-600 px-5 py-6 sm:gap-8 sm:p-8">
                           {solutions.map((item) => (
-                            <a
+                            <Link
                               key={item.name}
                               href={item.href}
-                              className="-m-3 flex items-start rounded-lg p-3 hover:bg-gray-50"
+                              className="-m-3 flex items-start text-gray-300 p-3 hover:bg-gray-50"
                             >
-                              <item.icon className="h-6 w-6 flex-shrink-0 text-indigo-600" aria-hidden="true" />
                               <div className="ml-4">
-                                <p className="text-base font-medium text-gray-900">{item.name}</p>
-                                <p className="mt-1 text-sm text-gray-500">{item.description}</p>
+                                <p className="text-base font-medium">{item.name}</p>
                               </div>
-                            </a>
-                          ))}
-                        </div>
-                        <div className="space-y-6 bg-gray-50 px-5 py-5 sm:flex sm:space-y-0 sm:space-x-10 sm:px-8">
-                          {callsToAction.map((item) => (
-                            <div key={item.name} className="flow-root">
-                              <a
-                                href={item.href}
-                                className="-m-3 flex items-center rounded-md p-3 text-base font-medium text-gray-900 hover:bg-gray-100"
-                              >
-                                <item.icon className="h-6 w-6 flex-shrink-0 text-gray-400" aria-hidden="true" />
-                                <span className="ml-3">{item.name}</span>
-                              </a>
-                            </div>
+                            </Link>
                           ))}
                         </div>
                       </div>

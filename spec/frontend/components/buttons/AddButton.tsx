@@ -1,7 +1,7 @@
-export default function AddButton({text, onClick}){
-    return(
-    <button className="bg-transparent border border-black hover:bg-black text-black hover:text-white font-semibold py-2 px-4 rounded" onClick={onClick}>
-        {text}
-    </button>
-  );
+export default function AddButton({className="", text, onClick, disabled}){
+    return (
+        <button disabled={disabled} className={`${className} bg-transparent border border-black hover:bg-black text-black hover:text-white font-normal py-2 px-10`} onClick={onClick}>
+            {text}
+        </button>
+    )
   }
