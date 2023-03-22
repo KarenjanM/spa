@@ -1,0 +1,22 @@
+mutation CreateAdress($input: AddressInput!){
+    accountAddressCreate(input: $input){
+      user{
+        id
+        addresses {
+            id
+            firstName
+            lastName
+            city
+            companyName
+            country {
+              country
+              code
+            }
+            streetAddress1
+            streetAddress2
+            phone
+            postalCode
+      }
+    }
+  }
+}

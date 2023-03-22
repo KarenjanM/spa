@@ -1,4 +1,4 @@
-import { Fragment, useContext } from 'react';
+import { Fragment, useContext, useState } from 'react';
 import { Popover, Transition } from '@headlessui/react';
 import {
   Bars3Icon,
@@ -17,6 +17,7 @@ import { ChevronDownIcon } from '@heroicons/react/20/solid'
 import Link from 'next/link';
 import { CheckoutContext } from '../contexts/checkoutContext';
 import { useGetCheckout } from '../hooks/checkout';
+import {SearchPopover} from './search/Search';
 
 // examples for menus
 const solutions = [
@@ -52,21 +53,29 @@ function classNames(...classes) {
 export default function Header() {
     const {checkoutId} = useContext(CheckoutContext);
     const {data, loading, error} = useGetCheckout({checkoutId: checkoutId});
+    const [showSearch, setShowSearch] = useState(false);
       
     function getTotalQuantity(){
         let total = 0;
 
-        if(data){
+        if(data?.checkout){
           data.checkout.lines.map((line)=> total += line.quantity)
         }
         return total
     }
   
   return (
-    <Popover className="relative bg-stone-600">
+    <Popover id='header' className="relative bg-stone-600">
       <div className="mx-auto max-w-7xl px-6">
-        <div className="flex items-center border-gray-100 py-6 md:justify-start md:space-x-10">
-          <div className="flex justify-start">
+        <div className="flex items-center border-gray-100 py-6 justify-center md:space-x-10">
+          {showSearch ? (
+            <div className='flex flex-row gap-3 place-items-center'>
+            <SearchPopover setShowSearch={setShowSearch} />
+            <XMarkIcon onClick={()=>setShowSearch(false)} className='w-6 h-6 cursor-pointer' color='white'/>
+            </div>
+          ) : (
+            <>
+            <div className="flex justify-start">
             <Link href="/">
               <span className="sr-only">KreaTeam</span>
               <img
@@ -122,7 +131,7 @@ export default function Header() {
                             <Link
                               key={item.name}
                               href={item.href}
-                              className="-m-3 flex items-start text-gray-300 p-3 hover:bg-gray-50"
+                              className="-m-3 flex items-start text-gray-300 p-3 hover:bg-stone-700"
                             >
                               <div className="ml-4">
                                 <p className="text-base font-medium">{item.name}</p>
@@ -142,11 +151,11 @@ export default function Header() {
             </Link>
           </Popover.Group>
           <div className="hidden items-center justify-end md:flex md:flex-1 lg:w-0">
-            <Link href="#" className="whitespace-nowrap text-base font-medium text-gray-300 hover:text-white">
+            <div onClick={()=>setShowSearch(true)} className="whitespace-nowrap text-base font-medium text-gray-300 hover:text-white">
             <MagnifyingGlassIcon
                       className='ml-4 h-5 w-5'
                     />
-            </Link>
+            </div>
             <Link
               href="/profile"
               className="whitespace-nowrap text-base font-medium text-gray-300 hover:text-white"
@@ -163,6 +172,9 @@ export default function Header() {
             </Link>
             
           </div>
+          </>
+          )}
+          
         </div>
       </div>
 

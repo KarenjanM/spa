@@ -1,21 +1,6 @@
 import Link from "next/link";
 import { useGetPostsQuery } from "../generated/graphql"
 
-const getPosts = /* GraphQL */ `
-query getPosts {
-    strapi_posts {
-      data {
-        id
-        attributes {
-          content
-          created
-          title
-        }
-      }
-    }
-  }
-`
-
 export default function Blog(){
     const {data, loading, error} = useGetPostsQuery();
     if (loading) return <div>Loading</div>;

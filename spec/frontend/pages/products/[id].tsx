@@ -7,35 +7,10 @@ import AddButton from "../../components/buttons/AddButton";
 import { PlusIcon, MinusIcon } from '@heroicons/react/24/outline';
 import { useCreateCheckoutMutation, useGetProductByIdQuery } from "../../generated/graphql";
 
-const getProduct = /* GraphQL */`
-query getProductById($id:ID){
-    product(id: $id, channel: "default-channel"){
-      id
-      name
-      thumbnail{
-        url
-      }
-      pricing{
-        priceRange{
-          stop{
-            gross{
-              amount
-                currency
-              }
-            }
-          }
-        }
-      description
-      defaultVariant{
-        id
-      }
-    }
-  }
-`
 
 export default function Product() {
   const [quantity, setQuantity] = useState(1);
-  const {checkoutId, setCheckoutId} = useContext(CheckoutContext);
+  const {checkoutId, setCheckoutId, checkout} = useContext(CheckoutContext);
   const router = useRouter();
   const [createCheckoutMutation] = useCreateCheckoutMutation({
     variables: {
@@ -46,7 +21,7 @@ export default function Product() {
     }
 });
   const { id } = router.query;
-  const {addToCheckout, isLoading} = useAddToCheckout({})
+  let {addToCheckout, isLoading} = useAddToCheckout({})
   const { data, loading, error } = useGetProductByIdQuery({
     variables: {
       id: id as string
@@ -54,7 +29,9 @@ export default function Product() {
   })
   async function addToCart() {
     console.log("ADDED");
-    if(checkoutId){
+    console.log(checkoutId);
+    
+    if(checkoutId && checkout){
     await addToCheckout({
       variables: {
         checkoutId: checkoutId,
@@ -68,11 +45,23 @@ export default function Product() {
     })
   }
   else{
-    await createCheckoutMutation()
-                .then((data)=>{
-                    console.log("New Checkout object was just created" + data.data);
+    await createCheckoutMutation({
+      variables: {
+        input: {
+          channel: "default-channel",
+          lines:[
+            {
+              variantId: data.product.defaultVariant.id,
+              quantity: quantity
+            }
+          ]
+        }
+      }
+    }).then((data)=>{
+                    console.log(data.data);
                     setCheckoutId(data.data.checkoutCreate.checkout.id)
-                })
+                    isLoading=true
+                  })
   }
   }
   if (error) return <div>Error!</div>

@@ -25,6 +25,7 @@ const authSlice = createSlice({
   reducers: {
     setTokens: (state, action: PayloadAction<TokenState>) => {
       if(action.payload.userToken){
+        console.log("setting tokens");
         state.userToken = action.payload.userToken
         state.refreshToken = action.payload.refreshToken
         state.invalid = false
@@ -44,6 +45,8 @@ const authSlice = createSlice({
     },
     logout: (state) => {
       state.loggedIn = false
+      state.userToken = ""
+      state.refreshToken = ""
     }
   },
 })

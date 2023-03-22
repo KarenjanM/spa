@@ -1,0 +1,12 @@
+query GetPostById($id: ID){
+    strapi_post(id: $id){
+      data{
+        id
+        attributes{
+          title
+          content
+          created
+        }
+      }
+    }
+  }

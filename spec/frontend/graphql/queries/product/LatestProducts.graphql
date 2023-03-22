@@ -1,0 +1,30 @@
+query latestProduct{
+    products(
+      first: 10,
+      channel: "default-channel")
+    {
+      edges{
+        node{
+          id,
+          name
+          thumbnail{
+            url
+          }
+          pricing{
+            priceRange{
+              stop{
+                gross{
+                  amount
+                  currency
+                }
+              }
+            }
+          }
+          description
+          defaultVariant{
+            id
+          }
+        }
+      }
+    }
+  }

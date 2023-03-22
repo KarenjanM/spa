@@ -1,22 +1,6 @@
 import { useRouter } from "next/router";
-import Blog, { BlogCard } from "../../components/Blog";
+import { BlogCard } from "../../components/Blog";
 import { useGetPostByIdQuery } from "../../generated/graphql";
-
-const getPostById = /* GraphQL */ `
-query getPostById($id: ID){
-    strapi_post(id: $id){
-      data{
-        id
-        attributes{
-          title
-          content
-          created
-        }
-      }
-    }
-  }
-
-`
 
 export default function BlogTopic(){
     const router = useRouter();

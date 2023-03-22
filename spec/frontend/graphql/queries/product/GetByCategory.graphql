@@ -1,0 +1,19 @@
+    query getByCategorie($filter: ProductFilterInput!){
+        products(
+            first: 4, 
+            channel: "default-channel",
+            filter: $filter
+          ) {
+            edges{
+              node{
+                thumbnail{
+                  url
+                }
+                category{
+                    id
+                    name
+                  }
+              }
+            }
+          }
+    }

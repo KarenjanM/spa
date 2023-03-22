@@ -1,9 +1,9 @@
 import { setTokensNull, logout } from "../redux/auth.slice";
-import { useAppDispatch, useAppSelector } from "../redux/hoooks";
+import { useAppDispatch, useAppSelector } from "../redux/hooks";
 import { useTokenDeactivateMutation } from "../generated/graphql";
 import { useRouter } from "next/router";
 import { useApolloClient } from "@apollo/client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function useLogOut(){
     const [endData, setData] = useState(false)
@@ -11,17 +11,24 @@ export default function useLogOut(){
     const dispatch = useAppDispatch();
     const router = useRouter();
     const client = useApolloClient();
-    const [tokenDeactivateMutation, {data, loading, error}] = useTokenDeactivateMutation();
-    tokenDeactivateMutation()
-    .then(() => {
+    const [tokenDeactivateMutation] = useTokenDeactivateMutation();
+    function logOut(){
         dispatch(logout());
-        dispatch(setTokensNull());
-        setData(true)
+        setData(true);
         console.log("LOGGED OUT");
-        client.resetStore();
-        router.push('/login');
-        })
-    .catch((e)=> console.log(e))
+        router.back();
+    }
+    useEffect(()=>{
+        if(auth.loggedIn)
+            tokenDeactivateMutation()
+            .then(logOut)
+            .catch((e) =>{
+                console.log(e);
+                logOut()
+            })
+    }, [auth.loggedIn])
+    
+
 
     return endData
 }

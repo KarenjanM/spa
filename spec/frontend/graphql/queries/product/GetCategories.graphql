@@ -1,0 +1,15 @@
+query getCategories{
+    categories(last: 4){
+        edges{
+            node{
+                id
+                name
+                backgroundImage{
+                  url
+                  alt
+                }
+
+            }
+        }
+    }
+}

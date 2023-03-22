@@ -1,0 +1,7 @@
+  mutation tokenDeactivate{
+    tokensDeactivateAll{
+      errors{
+        message
+      }
+    }
+  }

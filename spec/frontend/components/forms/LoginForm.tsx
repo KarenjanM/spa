@@ -2,7 +2,7 @@ import Link from "next/link"
 import SubmitButton from "../buttons/SubmitButton"
 import { useState } from "react"
 import { useTokenCreateMutation } from "../../generated/graphql"
-import { useAppDispatch } from "../../redux/hoooks"
+import { useAppDispatch } from "../../redux/hooks"
 import { setTokens } from "../../redux/auth.slice"
 
 
@@ -25,11 +25,12 @@ export default function LoginForm(){
         // creating a token with the according mutation callback and then saving it to the local storage
         tokenCreateMutation({variables: {email: emailState, password: pwdState}}).then(({data}) => {
             console.log("success");
+            console.log(data.tokenCreate.token);
             
             dispatch(setTokens({
             userToken: data.tokenCreate.token,
             refreshToken: data.tokenCreate.refreshToken
-            }))
+            }));
         }); 
 
         console.log("after token creation");
@@ -47,7 +48,7 @@ export default function LoginForm(){
                     </Link>
                 </div>
                 <div className="flex flex-col grow-0 justify-center gap-4">
-                <SubmitButton text={"Anmelden"}/>
+                <SubmitButton>Anmelden</SubmitButton>
                 <Link href="/register" className="underline text-sm hover:underline">
                         Konto erstellen
                 </Link>
@@ -58,7 +59,7 @@ export default function LoginForm(){
 
 export function AuthInput({placeholder, onChange, type}){
     return (
-    <input placeholder={placeholder} type={type} onChange={onChange} className="focus:outline-none px-5 py-3 border border-gray-400 text-black" required>
-    </input>
+        <input minLength={type=="password" ? 8 : 1} placeholder={placeholder} type={type} onChange={onChange} className="focus:outline-none px-5 py-3 border border-gray-400 text-black" required>
+        </input>
     )
 }

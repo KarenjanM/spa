@@ -1,7 +1,7 @@
-export default function SubmitButton({text}){
+export default function SubmitButton({children, onClick=()=>{}, className="", disabled=false}){
     return(
-        <button className="bg-stone-600 text-white py-3 px-7 hover:scale-105 font-light self-center tracking-wide" type="submit">
-            {text}    
+        <button onClick={onClick} className={`${className} bg-stone-600 text-white py-3 px-20 hover:scale-105 font-light tracking-wide`} type="submit" disabled={disabled}>
+            {children}    
         </button>
     )
 }

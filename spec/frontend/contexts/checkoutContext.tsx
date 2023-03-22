@@ -1,4 +1,4 @@
-import { useRouter } from "next/router";
+
 import React, { ReactNode } from "react";
 import { useLocalStorage } from "usehooks-ts";
 import { Checkout } from "../generated/graphql";
@@ -9,14 +9,14 @@ export interface CheckoutConsumerProps {
     checkoutId: string;
     setCheckoutId: (id: string) => void;
     resetCheckoutId: () => void;
-    checkout: object | undefined | null;
+    checkout: Checkout | undefined | null;
   }
   
   export const CheckoutContext = React.createContext<CheckoutConsumerProps>({
     checkoutId: "",
     setCheckoutId: () => {},
     resetCheckoutId: () => {},
-    checkout: {},
+    checkout: {} as Checkout,
   }) 
   
   export function CheckoutProvider({ children }: { children: ReactNode }) {

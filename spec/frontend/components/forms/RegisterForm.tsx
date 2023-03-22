@@ -1,13 +1,17 @@
 import { useRouter } from "next/router";
-import { useState } from "react";
-import { useAppSelector } from "../../redux/hoooks";
+import { useEffect, useState } from "react";
 import SubmitButton from "../buttons/SubmitButton"
 import { AuthInput } from "./LoginForm"
 import { useAccountRegisterMutation } from "../../generated/graphql";
 
-export default function RegisterForm(){
-    const auth = useAppSelector((state)=>state.auth);
+
+export default function RegisterForm({setShow, setAlertText}){
     const router = useRouter();
+    const [success, setSuccess] = useState(false);
+    useEffect(()=>{
+        if(success)
+            router.push("login");
+    }, [success])
     const [accountRegister] = useAccountRegisterMutation({
         variables: {
             input: {
@@ -23,9 +27,9 @@ export default function RegisterForm(){
         email: "",
         password: "",
     });
-    function handleSubmit(e){
+    async function handleSubmit(e){
         e.preventDefault()
-        accountRegister({
+        await accountRegister({
             variables: {
                 input: {
                     ...formState,
@@ -33,8 +37,14 @@ export default function RegisterForm(){
                     redirectUrl: "http://localhost:3002"
                 }
             }
-        }).then(({data}) => console.log(data.accountRegister.user))
-        router.push("/login")
+        }).then((data) => {
+            console.log(data)
+            if(data.data.accountRegister.errors){
+                setSuccess(false)
+                setShow(true)
+                setAlertText(data.data.accountRegister.errors[0].message)
+            }
+        })
     }
     return(
         <form action="#" className="flex flex-col gap-6 self-center text-center py-20 px-40 " onSubmit={handleSubmit}>
@@ -48,7 +58,7 @@ export default function RegisterForm(){
                 <AuthInput placeholder="Passwort" onChange={(e)=>setForm({...formState, password: e.target.value})} type={"password"}/>
             </div>
             <div className="flex flex-col grow-0 justify-center gap-4">
-            <SubmitButton text={"Erstellen"}/>
+            <SubmitButton>Erstellen</SubmitButton>
             </div>
         </form>
     )

@@ -1,0 +1,23 @@
+query getProductById($id:ID){
+    product(id: $id, channel: "default-channel"){
+      id
+      name
+      thumbnail{
+        url
+      }
+      pricing{
+        priceRange{
+          stop{
+            gross{
+              amount
+                currency
+              }
+            }
+          }
+        }
+      description
+      defaultVariant{
+        id
+      }
+    }
+  }

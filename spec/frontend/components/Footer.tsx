@@ -1,7 +1,7 @@
 import EmailForm from "./forms/EmailForm"
 export default function Footer(){
     return (
-        <footer className="bg-stone-600 mt-auto shadow md:items-center md:justify-between">
+        <footer id="footer" className="bg-stone-600 mt-auto shadow md:items-center md:justify-between">
             <div className="flex flex-col gap-6 divide-y py-4 divide-gray-400">
             <div className="grid grid-rows-2">
                 <div className="grid grid-rows-2 text-center text-lg justify-center">

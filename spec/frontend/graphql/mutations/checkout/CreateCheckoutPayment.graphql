@@ -1,0 +1,22 @@
+mutation CreateCheckoutPayment($id: ID!, $input: PaymentInput!){
+    checkoutPaymentCreate(id: $id, input: $input){
+        payment {
+            id
+            chargeStatus
+            total{
+                amount
+            }
+            capturedAmount{
+                amount
+            }
+            order{
+                id
+                status
+            }
+        }
+        errors{
+            field
+            message
+        }
+    }
+}

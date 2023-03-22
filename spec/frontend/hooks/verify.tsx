@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useTokenVerifyMutation } from "../generated/graphql";
 import { login } from '../redux/auth.slice';
-import { useAppDispatch } from "../redux/hoooks";
+import { useAppDispatch } from "../redux/hooks";
 
 interface optionsInterface {
     auth: {

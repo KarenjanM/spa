@@ -1,0 +1,28 @@
+query filterProducts($filter: ProductFilterInput){
+  products(
+    first: 8,
+    channel: "default-channel",
+    filter: $filter
+  ){
+    edges{
+      node{
+        id,
+        name
+        thumbnail{
+          url
+        }
+        pricing{
+            priceRange{
+              stop{
+                gross{
+                  amount
+                  currency
+                }
+              }
+            }
+          }
+        description
+      }
+    }
+  }
+}
