@@ -397,7 +397,7 @@ input strapi_UsersPermissionsUserInput {
 type Mutation {
   strapi_createPost(data: strapi_PostInput!): strapi_PostEntityResponse
     @graphql(
-      endpoint: "https://1735-90-187-201-249.eu.ngrok.io/graphql"
+      endpoint: "https://27de-90-187-201-249.eu.ngrok.io/graphql"
       prefix: { includeRootOperations: true, value: "strapi_" }
     )
   strapi_updatePost(
@@ -405,19 +405,19 @@ type Mutation {
     data: strapi_PostInput!
   ): strapi_PostEntityResponse
     @graphql(
-      endpoint: "https://1735-90-187-201-249.eu.ngrok.io/graphql"
+      endpoint: "https://27de-90-187-201-249.eu.ngrok.io/graphql"
       prefix: { includeRootOperations: true, value: "strapi_" }
     )
   strapi_deletePost(id: ID!): strapi_PostEntityResponse
     @graphql(
-      endpoint: "https://1735-90-187-201-249.eu.ngrok.io/graphql"
+      endpoint: "https://27de-90-187-201-249.eu.ngrok.io/graphql"
       prefix: { includeRootOperations: true, value: "strapi_" }
     )
   strapi_createUploadFile(
     data: strapi_UploadFileInput!
   ): strapi_UploadFileEntityResponse
     @graphql(
-      endpoint: "https://1735-90-187-201-249.eu.ngrok.io/graphql"
+      endpoint: "https://27de-90-187-201-249.eu.ngrok.io/graphql"
       prefix: { includeRootOperations: true, value: "strapi_" }
     )
   strapi_updateUploadFile(
@@ -425,19 +425,19 @@ type Mutation {
     data: strapi_UploadFileInput!
   ): strapi_UploadFileEntityResponse
     @graphql(
-      endpoint: "https://1735-90-187-201-249.eu.ngrok.io/graphql"
+      endpoint: "https://27de-90-187-201-249.eu.ngrok.io/graphql"
       prefix: { includeRootOperations: true, value: "strapi_" }
     )
   strapi_deleteUploadFile(id: ID!): strapi_UploadFileEntityResponse
     @graphql(
-      endpoint: "https://1735-90-187-201-249.eu.ngrok.io/graphql"
+      endpoint: "https://27de-90-187-201-249.eu.ngrok.io/graphql"
       prefix: { includeRootOperations: true, value: "strapi_" }
     )
   strapi_createUploadFolder(
     data: strapi_UploadFolderInput!
   ): strapi_UploadFolderEntityResponse
     @graphql(
-      endpoint: "https://1735-90-187-201-249.eu.ngrok.io/graphql"
+      endpoint: "https://27de-90-187-201-249.eu.ngrok.io/graphql"
       prefix: { includeRootOperations: true, value: "strapi_" }
     )
   strapi_updateUploadFolder(
@@ -445,12 +445,12 @@ type Mutation {
     data: strapi_UploadFolderInput!
   ): strapi_UploadFolderEntityResponse
     @graphql(
-      endpoint: "https://1735-90-187-201-249.eu.ngrok.io/graphql"
+      endpoint: "https://27de-90-187-201-249.eu.ngrok.io/graphql"
       prefix: { includeRootOperations: true, value: "strapi_" }
     )
   strapi_deleteUploadFolder(id: ID!): strapi_UploadFolderEntityResponse
     @graphql(
-      endpoint: "https://1735-90-187-201-249.eu.ngrok.io/graphql"
+      endpoint: "https://27de-90-187-201-249.eu.ngrok.io/graphql"
       prefix: { includeRootOperations: true, value: "strapi_" }
     )
   strapi_upload(
@@ -461,7 +461,7 @@ type Mutation {
     file: strapi_Upload!
   ): strapi_UploadFileEntityResponse!
     @graphql(
-      endpoint: "https://1735-90-187-201-249.eu.ngrok.io/graphql"
+      endpoint: "https://27de-90-187-201-249.eu.ngrok.io/graphql"
       prefix: { includeRootOperations: true, value: "strapi_" }
     )
   strapi_multipleUpload(
@@ -471,7 +471,7 @@ type Mutation {
     files: [strapi_Upload]!
   ): [strapi_UploadFileEntityResponse]!
     @graphql(
-      endpoint: "https://1735-90-187-201-249.eu.ngrok.io/graphql"
+      endpoint: "https://27de-90-187-201-249.eu.ngrok.io/graphql"
       prefix: { includeRootOperations: true, value: "strapi_" }
     )
   strapi_updateFileInfo(
@@ -479,12 +479,12 @@ type Mutation {
     info: strapi_FileInfoInput
   ): strapi_UploadFileEntityResponse!
     @graphql(
-      endpoint: "https://1735-90-187-201-249.eu.ngrok.io/graphql"
+      endpoint: "https://27de-90-187-201-249.eu.ngrok.io/graphql"
       prefix: { includeRootOperations: true, value: "strapi_" }
     )
   strapi_removeFile(id: ID!): strapi_UploadFileEntityResponse
     @graphql(
-      endpoint: "https://1735-90-187-201-249.eu.ngrok.io/graphql"
+      endpoint: "https://27de-90-187-201-249.eu.ngrok.io/graphql"
       prefix: { includeRootOperations: true, value: "strapi_" }
     )
   "Create a new role"
@@ -492,7 +492,7 @@ type Mutation {
     data: strapi_UsersPermissionsRoleInput!
   ): strapi_UsersPermissionsCreateRolePayload
     @graphql(
-      endpoint: "https://1735-90-187-201-249.eu.ngrok.io/graphql"
+      endpoint: "https://27de-90-187-201-249.eu.ngrok.io/graphql"
       prefix: { includeRootOperations: true, value: "strapi_" }
     )
   "Update an existing role"
@@ -501,7 +501,7 @@ type Mutation {
     data: strapi_UsersPermissionsRoleInput!
   ): strapi_UsersPermissionsUpdateRolePayload
     @graphql(
-      endpoint: "https://1735-90-187-201-249.eu.ngrok.io/graphql"
+      endpoint: "https://27de-90-187-201-249.eu.ngrok.io/graphql"
       prefix: { includeRootOperations: true, value: "strapi_" }
     )
   "Delete an existing role"
@@ -509,7 +509,7 @@ type Mutation {
     id: ID!
   ): strapi_UsersPermissionsDeleteRolePayload
     @graphql(
-      endpoint: "https://1735-90-187-201-249.eu.ngrok.io/graphql"
+      endpoint: "https://27de-90-187-201-249.eu.ngrok.io/graphql"
       prefix: { includeRootOperations: true, value: "strapi_" }
     )
   "Create a new user"
@@ -517,7 +517,7 @@ type Mutation {
     data: strapi_UsersPermissionsUserInput!
   ): strapi_UsersPermissionsUserEntityResponse!
     @graphql(
-      endpoint: "https://1735-90-187-201-249.eu.ngrok.io/graphql"
+      endpoint: "https://27de-90-187-201-249.eu.ngrok.io/graphql"
       prefix: { includeRootOperations: true, value: "strapi_" }
     )
   "Update an existing user"
@@ -526,7 +526,7 @@ type Mutation {
     data: strapi_UsersPermissionsUserInput!
   ): strapi_UsersPermissionsUserEntityResponse!
     @graphql(
-      endpoint: "https://1735-90-187-201-249.eu.ngrok.io/graphql"
+      endpoint: "https://27de-90-187-201-249.eu.ngrok.io/graphql"
       prefix: { includeRootOperations: true, value: "strapi_" }
     )
   "Delete an existing user"
@@ -534,14 +534,14 @@ type Mutation {
     id: ID!
   ): strapi_UsersPermissionsUserEntityResponse!
     @graphql(
-      endpoint: "https://1735-90-187-201-249.eu.ngrok.io/graphql"
+      endpoint: "https://27de-90-187-201-249.eu.ngrok.io/graphql"
       prefix: { includeRootOperations: true, value: "strapi_" }
     )
   strapi_login(
     input: strapi_UsersPermissionsLoginInput!
   ): strapi_UsersPermissionsLoginPayload!
     @graphql(
-      endpoint: "https://1735-90-187-201-249.eu.ngrok.io/graphql"
+      endpoint: "https://27de-90-187-201-249.eu.ngrok.io/graphql"
       prefix: { includeRootOperations: true, value: "strapi_" }
     )
   "Register a user"
@@ -549,13 +549,13 @@ type Mutation {
     input: strapi_UsersPermissionsRegisterInput!
   ): strapi_UsersPermissionsLoginPayload!
     @graphql(
-      endpoint: "https://1735-90-187-201-249.eu.ngrok.io/graphql"
+      endpoint: "https://27de-90-187-201-249.eu.ngrok.io/graphql"
       prefix: { includeRootOperations: true, value: "strapi_" }
     )
   "Request a reset password token"
   strapi_forgotPassword(email: String!): strapi_UsersPermissionsPasswordPayload
     @graphql(
-      endpoint: "https://1735-90-187-201-249.eu.ngrok.io/graphql"
+      endpoint: "https://27de-90-187-201-249.eu.ngrok.io/graphql"
       prefix: { includeRootOperations: true, value: "strapi_" }
     )
   "Reset user password. Confirm with a code (resetToken from forgotPassword)"
@@ -565,7 +565,7 @@ type Mutation {
     code: String!
   ): strapi_UsersPermissionsLoginPayload
     @graphql(
-      endpoint: "https://1735-90-187-201-249.eu.ngrok.io/graphql"
+      endpoint: "https://27de-90-187-201-249.eu.ngrok.io/graphql"
       prefix: { includeRootOperations: true, value: "strapi_" }
     )
   "Change user password. Confirm with the current password."
@@ -575,7 +575,7 @@ type Mutation {
     passwordConfirmation: String!
   ): strapi_UsersPermissionsLoginPayload
     @graphql(
-      endpoint: "https://1735-90-187-201-249.eu.ngrok.io/graphql"
+      endpoint: "https://27de-90-187-201-249.eu.ngrok.io/graphql"
       prefix: { includeRootOperations: true, value: "strapi_" }
     )
   "Confirm an email users email address"
@@ -583,7 +583,7 @@ type Mutation {
     confirmation: String!
   ): strapi_UsersPermissionsLoginPayload
     @graphql(
-      endpoint: "https://1735-90-187-201-249.eu.ngrok.io/graphql"
+      endpoint: "https://27de-90-187-201-249.eu.ngrok.io/graphql"
       prefix: { includeRootOperations: true, value: "strapi_" }
     )
 }
@@ -591,7 +591,7 @@ type Mutation {
 type Query {
   strapi_post(id: ID): strapi_PostEntityResponse
     @graphql(
-      endpoint: "https://1735-90-187-201-249.eu.ngrok.io/graphql"
+      endpoint: "https://27de-90-187-201-249.eu.ngrok.io/graphql"
       prefix: { includeRootOperations: true, value: "strapi_" }
     )
   strapi_posts(
@@ -601,12 +601,12 @@ type Query {
     publicationState: strapi_PublicationState = LIVE
   ): strapi_PostEntityResponseCollection
     @graphql(
-      endpoint: "https://1735-90-187-201-249.eu.ngrok.io/graphql"
+      endpoint: "https://27de-90-187-201-249.eu.ngrok.io/graphql"
       prefix: { includeRootOperations: true, value: "strapi_" }
     )
   strapi_uploadFile(id: ID): strapi_UploadFileEntityResponse
     @graphql(
-      endpoint: "https://1735-90-187-201-249.eu.ngrok.io/graphql"
+      endpoint: "https://27de-90-187-201-249.eu.ngrok.io/graphql"
       prefix: { includeRootOperations: true, value: "strapi_" }
     )
   strapi_uploadFiles(
@@ -615,12 +615,12 @@ type Query {
     sort: [String] = []
   ): strapi_UploadFileEntityResponseCollection
     @graphql(
-      endpoint: "https://1735-90-187-201-249.eu.ngrok.io/graphql"
+      endpoint: "https://27de-90-187-201-249.eu.ngrok.io/graphql"
       prefix: { includeRootOperations: true, value: "strapi_" }
     )
   strapi_uploadFolder(id: ID): strapi_UploadFolderEntityResponse
     @graphql(
-      endpoint: "https://1735-90-187-201-249.eu.ngrok.io/graphql"
+      endpoint: "https://27de-90-187-201-249.eu.ngrok.io/graphql"
       prefix: { includeRootOperations: true, value: "strapi_" }
     )
   strapi_uploadFolders(
@@ -629,12 +629,12 @@ type Query {
     sort: [String] = []
   ): strapi_UploadFolderEntityResponseCollection
     @graphql(
-      endpoint: "https://1735-90-187-201-249.eu.ngrok.io/graphql"
+      endpoint: "https://27de-90-187-201-249.eu.ngrok.io/graphql"
       prefix: { includeRootOperations: true, value: "strapi_" }
     )
   strapi_i18NLocale(id: ID): strapi_I18NLocaleEntityResponse
     @graphql(
-      endpoint: "https://1735-90-187-201-249.eu.ngrok.io/graphql"
+      endpoint: "https://27de-90-187-201-249.eu.ngrok.io/graphql"
       prefix: { includeRootOperations: true, value: "strapi_" }
     )
   strapi_i18NLocales(
@@ -643,14 +643,14 @@ type Query {
     sort: [String] = []
   ): strapi_I18NLocaleEntityResponseCollection
     @graphql(
-      endpoint: "https://1735-90-187-201-249.eu.ngrok.io/graphql"
+      endpoint: "https://27de-90-187-201-249.eu.ngrok.io/graphql"
       prefix: { includeRootOperations: true, value: "strapi_" }
     )
   strapi_usersPermissionsRole(
     id: ID
   ): strapi_UsersPermissionsRoleEntityResponse
     @graphql(
-      endpoint: "https://1735-90-187-201-249.eu.ngrok.io/graphql"
+      endpoint: "https://27de-90-187-201-249.eu.ngrok.io/graphql"
       prefix: { includeRootOperations: true, value: "strapi_" }
     )
   strapi_usersPermissionsRoles(
@@ -659,14 +659,14 @@ type Query {
     sort: [String] = []
   ): strapi_UsersPermissionsRoleEntityResponseCollection
     @graphql(
-      endpoint: "https://1735-90-187-201-249.eu.ngrok.io/graphql"
+      endpoint: "https://27de-90-187-201-249.eu.ngrok.io/graphql"
       prefix: { includeRootOperations: true, value: "strapi_" }
     )
   strapi_usersPermissionsUser(
     id: ID
   ): strapi_UsersPermissionsUserEntityResponse
     @graphql(
-      endpoint: "https://1735-90-187-201-249.eu.ngrok.io/graphql"
+      endpoint: "https://27de-90-187-201-249.eu.ngrok.io/graphql"
       prefix: { includeRootOperations: true, value: "strapi_" }
     )
   strapi_usersPermissionsUsers(
@@ -675,12 +675,12 @@ type Query {
     sort: [String] = []
   ): strapi_UsersPermissionsUserEntityResponseCollection
     @graphql(
-      endpoint: "https://1735-90-187-201-249.eu.ngrok.io/graphql"
+      endpoint: "https://27de-90-187-201-249.eu.ngrok.io/graphql"
       prefix: { includeRootOperations: true, value: "strapi_" }
     )
   strapi_me: strapi_UsersPermissionsMe
     @graphql(
-      endpoint: "https://1735-90-187-201-249.eu.ngrok.io/graphql"
+      endpoint: "https://27de-90-187-201-249.eu.ngrok.io/graphql"
       prefix: { includeRootOperations: true, value: "strapi_" }
     )
 }

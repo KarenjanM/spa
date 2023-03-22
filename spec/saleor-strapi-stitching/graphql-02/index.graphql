@@ -11826,14 +11826,14 @@ type Mutation {
     "Fields required to create a webhook."
     input: WebhookCreateInput!
   ): WebhookCreate
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Delete a webhook. Before the deletion, the webhook is deactivated to pause any deliveries that are already scheduled. The deletion might fail if delivery is in progress. In such a case, the webhook is not deleted but remains deactivated.
 
   Requires one of the following permissions: MANAGE_APPS, AUTHENTICATED_APP.
   """
   webhookDelete("ID of a webhook to delete." id: ID!): WebhookDelete
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Updates a webhook subscription.
 
@@ -11845,7 +11845,7 @@ type Mutation {
     "Fields required to update a webhook."
     input: WebhookUpdateInput!
   ): WebhookUpdate
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Retries event delivery.
 
@@ -11855,7 +11855,7 @@ type Mutation {
     "ID of the event delivery to retry."
     id: ID!
   ): EventDeliveryRetry
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Creates new warehouse.
 
@@ -11865,7 +11865,7 @@ type Mutation {
     "Fields required to create warehouse."
     input: WarehouseCreateInput!
   ): WarehouseCreate
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Updates given warehouse.
 
@@ -11877,14 +11877,14 @@ type Mutation {
     "Fields required to update warehouse."
     input: WarehouseUpdateInput!
   ): WarehouseUpdate
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Deletes selected warehouse.
 
   Requires one of the following permissions: MANAGE_PRODUCTS.
   """
   deleteWarehouse("ID of a warehouse to delete." id: ID!): WarehouseDelete
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Add shipping zone to given warehouse.
 
@@ -11896,7 +11896,7 @@ type Mutation {
     "List of shipping zone IDs."
     shippingZoneIds: [ID!]!
   ): WarehouseShippingZoneAssign
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Remove shipping zone from given warehouse.
 
@@ -11908,7 +11908,7 @@ type Mutation {
     "List of shipping zone IDs."
     shippingZoneIds: [ID!]!
   ): WarehouseShippingZoneUnassign
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Create a tax class.
 
@@ -11922,7 +11922,7 @@ type Mutation {
     "Fields required to create a tax class."
     input: TaxClassCreateInput!
   ): TaxClassCreate
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Delete a tax class. After deleting the tax class any products, product types or shipping methods using it are updated to use the default tax class.
 
@@ -11933,7 +11933,7 @@ type Mutation {
   Requires one of the following permissions: MANAGE_TAXES.
   """
   taxClassDelete("ID of a tax class to delete." id: ID!): TaxClassDelete
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Update a tax class.
 
@@ -11949,7 +11949,7 @@ type Mutation {
     "Fields required to update a tax class."
     input: TaxClassUpdateInput!
   ): TaxClassUpdate
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Update tax configuration for a channel.
 
@@ -11965,7 +11965,7 @@ type Mutation {
     "Fields required to update the tax configuration."
     input: TaxConfigurationUpdateInput!
   ): TaxConfigurationUpdate
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Update tax class rates for a specific country.
 
@@ -11981,7 +11981,7 @@ type Mutation {
     "List of tax rates per tax class to update. When `{taxClass: id, rate: null`} is passed, it deletes the rate object for given taxClass ID. When `{rate: Int}` is passed without a tax class, it updates the default tax class for this country."
     updateTaxClassRates: [TaxClassRateInput!]!
   ): TaxCountryConfigurationUpdate
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Remove all tax class rates for a specific country.
 
@@ -11995,7 +11995,7 @@ type Mutation {
     "Country in which to update the tax class rates."
     countryCode: CountryCode!
   ): TaxCountryConfigurationDelete
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Exempt checkout or order from charging the taxes. When tax exemption is enabled, taxes won't be charged for the checkout or order. Taxes may still be calculated in cases when product prices are entered with the tax included and the net price needs to be known.
 
@@ -12011,7 +12011,7 @@ type Mutation {
     "Determines if a taxes should be exempt."
     taxExemption: Boolean!
   ): TaxExemptionManage
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Creates a new staff notification recipient.
 
@@ -12021,7 +12021,7 @@ type Mutation {
     "Fields required to create a staff notification recipient."
     input: StaffNotificationRecipientInput!
   ): StaffNotificationRecipientCreate
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Updates a staff notification recipient.
 
@@ -12033,7 +12033,7 @@ type Mutation {
     "Fields required to update a staff notification recipient."
     input: StaffNotificationRecipientInput!
   ): StaffNotificationRecipientUpdate
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Delete staff notification recipient.
 
@@ -12043,7 +12043,7 @@ type Mutation {
     "ID of a staff notification recipient to delete."
     id: ID!
   ): StaffNotificationRecipientDelete
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Updates site domain of the shop.
 
@@ -12053,7 +12053,7 @@ type Mutation {
     "Fields required to update site."
     input: SiteDomainInput
   ): ShopDomainUpdate
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Updates shop settings.
 
@@ -12063,7 +12063,7 @@ type Mutation {
     "Fields required to update shop settings."
     input: ShopSettingsInput!
   ): ShopSettingsUpdate
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Fetch tax rates.
 
@@ -12073,7 +12073,7 @@ type Mutation {
     @deprecated(
       reason: "DEPRECATED: this mutation will be removed in Saleor 4.0."
     )
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Creates/updates translations for shop settings.
 
@@ -12085,7 +12085,7 @@ type Mutation {
     "Translation language code."
     languageCode: LanguageCodeEnum!
   ): ShopSettingsTranslate
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Update the shop's address. If the `null` value is passed, the currently selected address will be deleted.
 
@@ -12095,7 +12095,7 @@ type Mutation {
     "Fields required to update shop address."
     input: AddressInput
   ): ShopAddressUpdate
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Update shop order settings.
 
@@ -12105,7 +12105,7 @@ type Mutation {
     "Fields required to update shop order settings."
     input: OrderSettingsUpdateInput!
   ): OrderSettingsUpdate
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Update gift card settings.
 
@@ -12115,7 +12115,7 @@ type Mutation {
     "Fields required to update gift card settings."
     input: GiftCardSettingsUpdateInput!
   ): GiftCardSettingsUpdate
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Manage shipping method's availability in channels.
 
@@ -12127,7 +12127,7 @@ type Mutation {
     "Fields required to update shipping method channel listings."
     input: ShippingMethodChannelListingInput!
   ): ShippingMethodChannelListingUpdate
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Creates a new shipping price.
 
@@ -12137,7 +12137,7 @@ type Mutation {
     "Fields required to create a shipping price."
     input: ShippingPriceInput!
   ): ShippingPriceCreate
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Deletes a shipping price.
 
@@ -12147,7 +12147,7 @@ type Mutation {
     "ID of a shipping price to delete."
     id: ID!
   ): ShippingPriceDelete
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Deletes shipping prices.
 
@@ -12157,7 +12157,7 @@ type Mutation {
     "List of shipping price IDs to delete."
     ids: [ID!]!
   ): ShippingPriceBulkDelete
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Updates a new shipping price.
 
@@ -12169,7 +12169,7 @@ type Mutation {
     "Fields required to update a shipping price."
     input: ShippingPriceInput!
   ): ShippingPriceUpdate
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Creates/updates translations for a shipping method.
 
@@ -12182,7 +12182,7 @@ type Mutation {
     "Translation language code."
     languageCode: LanguageCodeEnum!
   ): ShippingPriceTranslate
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Exclude products from shipping price.
 
@@ -12194,7 +12194,7 @@ type Mutation {
     "Exclude products input."
     input: ShippingPriceExcludeProductsInput!
   ): ShippingPriceExcludeProducts
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Remove product from excluded list for shipping price.
 
@@ -12206,7 +12206,7 @@ type Mutation {
     "List of products which will be removed from excluded list."
     products: [ID!]!
   ): ShippingPriceRemoveProductFromExclude
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Creates a new shipping zone.
 
@@ -12216,7 +12216,7 @@ type Mutation {
     "Fields required to create a shipping zone."
     input: ShippingZoneCreateInput!
   ): ShippingZoneCreate
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Deletes a shipping zone.
 
@@ -12226,7 +12226,7 @@ type Mutation {
     "ID of a shipping zone to delete."
     id: ID!
   ): ShippingZoneDelete
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Deletes shipping zones.
 
@@ -12236,7 +12236,7 @@ type Mutation {
     "List of shipping zone IDs to delete."
     ids: [ID!]!
   ): ShippingZoneBulkDelete
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Updates a new shipping zone.
 
@@ -12248,7 +12248,7 @@ type Mutation {
     "Fields required to update a shipping zone."
     input: ShippingZoneUpdateInput!
   ): ShippingZoneUpdate
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Assign attributes to a given product type.
 
@@ -12260,7 +12260,7 @@ type Mutation {
     "ID of the product type to assign the attributes into."
     productTypeId: ID!
   ): ProductAttributeAssign
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Update attributes assigned to product variant for given product type.
 
@@ -12274,7 +12274,7 @@ type Mutation {
     "ID of the product type to assign the attributes into."
     productTypeId: ID!
   ): ProductAttributeAssignmentUpdate
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Un-assign attributes from a given product type.
 
@@ -12286,7 +12286,7 @@ type Mutation {
     "ID of the product type from which the attributes should be unassigned."
     productTypeId: ID!
   ): ProductAttributeUnassign
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Creates a new category.
 
@@ -12298,14 +12298,14 @@ type Mutation {
     "ID of the parent category. If empty, category will be top level category."
     parent: ID
   ): CategoryCreate
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Deletes a category.
 
   Requires one of the following permissions: MANAGE_PRODUCTS.
   """
   categoryDelete("ID of a category to delete." id: ID!): CategoryDelete
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Deletes categories.
 
@@ -12315,7 +12315,7 @@ type Mutation {
     "List of category IDs to delete."
     ids: [ID!]!
   ): CategoryBulkDelete
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Updates a category.
 
@@ -12327,7 +12327,7 @@ type Mutation {
     "Fields required to update a category."
     input: CategoryInput!
   ): CategoryUpdate
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Creates/updates translations for a category.
 
@@ -12340,7 +12340,7 @@ type Mutation {
     "Translation language code."
     languageCode: LanguageCodeEnum!
   ): CategoryTranslate
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Adds products to a collection.
 
@@ -12352,7 +12352,7 @@ type Mutation {
     "List of product IDs."
     products: [ID!]!
   ): CollectionAddProducts
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Creates a new collection.
 
@@ -12362,14 +12362,14 @@ type Mutation {
     "Fields required to create a collection."
     input: CollectionCreateInput!
   ): CollectionCreate
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Deletes a collection.
 
   Requires one of the following permissions: MANAGE_PRODUCTS.
   """
   collectionDelete("ID of a collection to delete." id: ID!): CollectionDelete
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Reorder the products of a collection.
 
@@ -12381,7 +12381,7 @@ type Mutation {
     "The collection products position operations."
     moves: [MoveProductInput!]!
   ): CollectionReorderProducts
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Deletes collections.
 
@@ -12391,7 +12391,7 @@ type Mutation {
     "List of collection IDs to delete."
     ids: [ID!]!
   ): CollectionBulkDelete
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Remove products from a collection.
 
@@ -12403,7 +12403,7 @@ type Mutation {
     "List of product IDs."
     products: [ID!]!
   ): CollectionRemoveProducts
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Updates a collection.
 
@@ -12415,7 +12415,7 @@ type Mutation {
     "Fields required to update a collection."
     input: CollectionInput!
   ): CollectionUpdate
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Creates/updates translations for a collection.
 
@@ -12428,7 +12428,7 @@ type Mutation {
     "Translation language code."
     languageCode: LanguageCodeEnum!
   ): CollectionTranslate
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Manage collection's availability in channels.
 
@@ -12440,7 +12440,7 @@ type Mutation {
     "Fields required to create or update collection channel listings."
     input: CollectionChannelListingUpdateInput!
   ): CollectionChannelListingUpdate
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Creates a new product.
 
@@ -12450,7 +12450,7 @@ type Mutation {
     "Fields required to create a product."
     input: ProductCreateInput!
   ): ProductCreate
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Deletes a product.
 
@@ -12466,7 +12466,7 @@ type Mutation {
     "ID of a product to delete."
     id: ID
   ): ProductDelete
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Deletes products.
 
@@ -12476,7 +12476,7 @@ type Mutation {
     "List of product IDs to delete."
     ids: [ID!]!
   ): ProductBulkDelete
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Updates an existing product.
 
@@ -12494,7 +12494,7 @@ type Mutation {
     "Fields required to update a product."
     input: ProductInput!
   ): ProductUpdate
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Creates/updates translations for a product.
 
@@ -12507,7 +12507,7 @@ type Mutation {
     "Translation language code."
     languageCode: LanguageCodeEnum!
   ): ProductTranslate
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Manage product's availability in channels.
 
@@ -12519,7 +12519,7 @@ type Mutation {
     "Fields required to create or update product channel listings."
     input: ProductChannelListingUpdateInput!
   ): ProductChannelListingUpdate
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Create a media object (image or video URL) associated with product. For image, this mutation must be sent as a `multipart` request. More detailed specs of the upload format can be found here: https://github.com/jaydenseric/graphql-multipart-request-spec
 
@@ -12529,7 +12529,7 @@ type Mutation {
     "Fields required to create a product media."
     input: ProductMediaCreateInput!
   ): ProductMediaCreate
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Reorder the variants of a product. Mutation updates updated_at on product and triggers PRODUCT_UPDATED webhook.
 
@@ -12541,7 +12541,7 @@ type Mutation {
     "Id of product that variants order will be altered."
     productId: ID!
   ): ProductVariantReorder
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Deletes a product media.
 
@@ -12551,7 +12551,7 @@ type Mutation {
     "ID of a product media to delete."
     id: ID!
   ): ProductMediaDelete
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Deletes product media.
 
@@ -12561,7 +12561,7 @@ type Mutation {
     "List of product media IDs to delete."
     ids: [ID!]!
   ): ProductMediaBulkDelete
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Changes ordering of the product media.
 
@@ -12573,7 +12573,7 @@ type Mutation {
     "ID of product that media order will be altered."
     productId: ID!
   ): ProductMediaReorder
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Updates a product media.
 
@@ -12585,7 +12585,7 @@ type Mutation {
     "Fields required to update a product media."
     input: ProductMediaUpdateInput!
   ): ProductMediaUpdate
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Creates a new product type.
 
@@ -12595,7 +12595,7 @@ type Mutation {
     "Fields required to create a product type."
     input: ProductTypeInput!
   ): ProductTypeCreate
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Deletes a product type.
 
@@ -12605,7 +12605,7 @@ type Mutation {
     "ID of a product type to delete."
     id: ID!
   ): ProductTypeDelete
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Deletes product types.
 
@@ -12615,7 +12615,7 @@ type Mutation {
     "List of product type IDs to delete."
     ids: [ID!]!
   ): ProductTypeBulkDelete
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Updates an existing product type.
 
@@ -12627,7 +12627,7 @@ type Mutation {
     "Fields required to update a product type."
     input: ProductTypeInput!
   ): ProductTypeUpdate
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Reorder the attributes of a product type.
 
@@ -12641,7 +12641,7 @@ type Mutation {
     "The attribute type to reorder."
     type: ProductAttributeType!
   ): ProductTypeReorderAttributes
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Reorder product attribute values.
 
@@ -12655,7 +12655,7 @@ type Mutation {
     "ID of a product."
     productId: ID!
   ): ProductReorderAttributeValues
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Create new digital content. This mutation must be sent as a `multipart` request. More detailed specs of the upload format can be found here: https://github.com/jaydenseric/graphql-multipart-request-spec
 
@@ -12667,7 +12667,7 @@ type Mutation {
     "ID of a product variant to upload digital content."
     variantId: ID!
   ): DigitalContentCreate
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Remove digital content assigned to given variant.
 
@@ -12677,7 +12677,7 @@ type Mutation {
     "ID of a product variant with digital content to remove."
     variantId: ID!
   ): DigitalContentDelete
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Update digital content.
 
@@ -12689,7 +12689,7 @@ type Mutation {
     "ID of a product variant with digital content to update."
     variantId: ID!
   ): DigitalContentUpdate
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Generate new URL to digital content.
 
@@ -12699,7 +12699,7 @@ type Mutation {
     "Fields required to create a new url."
     input: DigitalContentUrlCreateInput!
   ): DigitalContentUrlCreate
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Creates a new variant for a product.
 
@@ -12709,7 +12709,7 @@ type Mutation {
     "Fields required to create a product variant."
     input: ProductVariantCreateInput!
   ): ProductVariantCreate
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Deletes a product variant.
 
@@ -12731,7 +12731,7 @@ type Mutation {
     """
     sku: String
   ): ProductVariantDelete
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Creates product variants for a given product.
 
@@ -12743,7 +12743,7 @@ type Mutation {
     "Input list of product variants to create."
     variants: [ProductVariantBulkCreateInput!]!
   ): ProductVariantBulkCreate
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Deletes product variants.
 
@@ -12759,7 +12759,7 @@ type Mutation {
     """
     skus: [String!]
   ): ProductVariantBulkDelete
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Creates stocks for product variant.
 
@@ -12771,7 +12771,7 @@ type Mutation {
     "ID of a product variant for which stocks will be created."
     variantId: ID!
   ): ProductVariantStocksCreate
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Delete stocks from product variant.
 
@@ -12785,7 +12785,7 @@ type Mutation {
     "Input list of warehouse IDs."
     warehouseIds: [ID!]
   ): ProductVariantStocksDelete
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Update stocks for product variant.
 
@@ -12799,7 +12799,7 @@ type Mutation {
     "ID of a product variant for which stocks will be updated."
     variantId: ID
   ): ProductVariantStocksUpdate
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Updates an existing variant for product.
 
@@ -12823,7 +12823,7 @@ type Mutation {
     """
     sku: String
   ): ProductVariantUpdate
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Set default variant for a product. Mutation triggers PRODUCT_UPDATED webhook.
 
@@ -12835,7 +12835,7 @@ type Mutation {
     "Id of a variant that will be set as default."
     variantId: ID!
   ): ProductVariantSetDefault
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Creates/updates translations for a product variant.
 
@@ -12848,7 +12848,7 @@ type Mutation {
     "Translation language code."
     languageCode: LanguageCodeEnum!
   ): ProductVariantTranslate
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Manage product variant prices in channels.
 
@@ -12866,7 +12866,7 @@ type Mutation {
     """
     sku: String
   ): ProductVariantChannelListingUpdate
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Reorder product variant attribute values.
 
@@ -12880,7 +12880,7 @@ type Mutation {
     "ID of a product variant."
     variantId: ID!
   ): ProductVariantReorderAttributeValues
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Deactivates product variant preorder. It changes all preorder allocation into regular allocation.
 
@@ -12894,7 +12894,7 @@ type Mutation {
     "ID of a variant which preorder should be deactivated."
     id: ID!
   ): ProductVariantPreorderDeactivate
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Assign an media to a product variant.
 
@@ -12906,7 +12906,7 @@ type Mutation {
     "ID of a product variant."
     variantId: ID!
   ): VariantMediaAssign
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Unassign an media from a product variant.
 
@@ -12918,7 +12918,7 @@ type Mutation {
     "ID of a product variant."
     variantId: ID!
   ): VariantMediaUnassign
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Captures the authorized payment amount.
 
@@ -12930,7 +12930,7 @@ type Mutation {
     "Payment ID."
     paymentId: ID!
   ): PaymentCapture
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Refunds the captured payment amount.
 
@@ -12942,14 +12942,14 @@ type Mutation {
     "Payment ID."
     paymentId: ID!
   ): PaymentRefund
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Voids the authorized payment.
 
   Requires one of the following permissions: MANAGE_ORDERS.
   """
   paymentVoid("Payment ID." paymentId: ID!): PaymentVoid
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   "Initializes payment process when it is required by gateway."
   paymentInitialize(
     "Slug of a channel for which the data should be returned."
@@ -12959,13 +12959,13 @@ type Mutation {
     "Client-side generated data required to initialize the payment."
     paymentData: JSONString
   ): PaymentInitialize
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   "Check payment balance."
   paymentCheckBalance(
     "Fields required to check payment balance."
     input: PaymentCheckBalanceInput!
   ): PaymentCheckBalance
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Create transaction for checkout or order. Requires the following permissions: AUTHENTICATED_APP and HANDLE_PAYMENTS.
 
@@ -12981,7 +12981,7 @@ type Mutation {
     "Data that defines a transaction event."
     transactionEvent: TransactionEventInput
   ): TransactionCreate
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Create transaction for checkout or order. Requires the following permissions: AUTHENTICATED_APP and HANDLE_PAYMENTS.
 
@@ -12997,7 +12997,7 @@ type Mutation {
     "Data that defines a transaction transaction."
     transactionEvent: TransactionEventInput
   ): TransactionUpdate
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Request an action for payment transaction.
 
@@ -13015,7 +13015,7 @@ type Mutation {
     "The ID of the transaction."
     id: ID!
   ): TransactionRequestAction
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Creates a new page.
 
@@ -13025,21 +13025,21 @@ type Mutation {
     "Fields required to create a page."
     input: PageCreateInput!
   ): PageCreate
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Deletes a page.
 
   Requires one of the following permissions: MANAGE_PAGES.
   """
   pageDelete("ID of a page to delete." id: ID!): PageDelete
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Deletes pages.
 
   Requires one of the following permissions: MANAGE_PAGES.
   """
   pageBulkDelete("List of page IDs to delete." ids: [ID!]!): PageBulkDelete
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Publish pages.
 
@@ -13051,7 +13051,7 @@ type Mutation {
     "Determine if pages will be published or not."
     isPublished: Boolean!
   ): PageBulkPublish
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Updates an existing page.
 
@@ -13063,7 +13063,7 @@ type Mutation {
     "Fields required to update a page."
     input: PageInput!
   ): PageUpdate
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Creates/updates translations for a page.
 
@@ -13076,7 +13076,7 @@ type Mutation {
     "Translation language code."
     languageCode: LanguageCodeEnum!
   ): PageTranslate
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Create a new page type.
 
@@ -13086,7 +13086,7 @@ type Mutation {
     "Fields required to create page type."
     input: PageTypeCreateInput!
   ): PageTypeCreate
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Update page type.
 
@@ -13098,14 +13098,14 @@ type Mutation {
     "Fields required to update page type."
     input: PageTypeUpdateInput!
   ): PageTypeUpdate
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Delete a page type.
 
   Requires one of the following permissions: MANAGE_PAGE_TYPES_AND_ATTRIBUTES.
   """
   pageTypeDelete("ID of the page type to delete." id: ID!): PageTypeDelete
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Delete page types.
 
@@ -13115,7 +13115,7 @@ type Mutation {
     "List of page type IDs to delete"
     ids: [ID!]!
   ): PageTypeBulkDelete
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Assign attributes to a given page type.
 
@@ -13127,7 +13127,7 @@ type Mutation {
     "ID of the page type to assign the attributes into."
     pageTypeId: ID!
   ): PageAttributeAssign
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Unassign attributes from a given page type.
 
@@ -13139,7 +13139,7 @@ type Mutation {
     "ID of the page type from which the attributes should be unassign."
     pageTypeId: ID!
   ): PageAttributeUnassign
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Reorder the attributes of a page type.
 
@@ -13151,7 +13151,7 @@ type Mutation {
     "ID of a page type."
     pageTypeId: ID!
   ): PageTypeReorderAttributes
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Reorder page attribute values.
 
@@ -13165,7 +13165,7 @@ type Mutation {
     "ID of a page."
     pageId: ID!
   ): PageReorderAttributeValues
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Completes creating an order.
 
@@ -13175,7 +13175,7 @@ type Mutation {
     "ID of the order that will be completed."
     id: ID!
   ): DraftOrderComplete
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Creates a new draft order.
 
@@ -13185,7 +13185,7 @@ type Mutation {
     "Fields required to create an order."
     input: DraftOrderCreateInput!
   ): DraftOrderCreate
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Deletes a draft order.
 
@@ -13201,7 +13201,7 @@ type Mutation {
     "ID of a product to delete."
     id: ID
   ): DraftOrderDelete
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Deletes draft orders.
 
@@ -13211,7 +13211,7 @@ type Mutation {
     "List of draft order IDs to delete."
     ids: [ID!]!
   ): DraftOrderBulkDelete
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Deletes order lines.
 
@@ -13222,7 +13222,7 @@ type Mutation {
     ids: [ID!]!
   ): DraftOrderLinesBulkDelete
     @deprecated(reason: "This field will be removed in Saleor 4.0.")
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Updates a draft order.
 
@@ -13240,7 +13240,7 @@ type Mutation {
     "Fields required to update an order."
     input: DraftOrderInput!
   ): DraftOrderUpdate
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Adds note to the order.
 
@@ -13252,14 +13252,14 @@ type Mutation {
     "Fields required to create a note for the order."
     input: OrderAddNoteInput!
   ): OrderAddNote
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Cancel an order.
 
   Requires one of the following permissions: MANAGE_ORDERS.
   """
   orderCancel("ID of the order to cancel." id: ID!): OrderCancel
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Capture an order.
 
@@ -13271,14 +13271,14 @@ type Mutation {
     "ID of the order to capture."
     id: ID!
   ): OrderCapture
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Confirms an unconfirmed order by changing status to unfulfilled.
 
   Requires one of the following permissions: MANAGE_ORDERS.
   """
   orderConfirm("ID of an order to confirm." id: ID!): OrderConfirm
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Creates new fulfillments for an order.
 
@@ -13290,7 +13290,7 @@ type Mutation {
     "ID of the order to be fulfilled."
     order: ID
   ): OrderFulfill
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Cancels existing fulfillment and optionally restocks items.
 
@@ -13302,7 +13302,7 @@ type Mutation {
     "Fields required to cancel a fulfillment."
     input: FulfillmentCancelInput
   ): FulfillmentCancel
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Approve existing fulfillment.
 
@@ -13318,7 +13318,7 @@ type Mutation {
     "True if confirmation email should be send."
     notifyCustomer: Boolean!
   ): FulfillmentApprove
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Updates a fulfillment for an order.
 
@@ -13330,7 +13330,7 @@ type Mutation {
     "Fields required to update a fulfillment."
     input: FulfillmentUpdateTrackingInput!
   ): FulfillmentUpdateTracking
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Refund products.
 
@@ -13342,7 +13342,7 @@ type Mutation {
     "ID of the order to be refunded."
     order: ID!
   ): FulfillmentRefundProducts
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Return products.
 
@@ -13354,7 +13354,7 @@ type Mutation {
     "ID of the order to be returned."
     order: ID!
   ): FulfillmentReturnProducts
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Create order lines for an order.
 
@@ -13366,14 +13366,14 @@ type Mutation {
     "Fields required to add order lines."
     input: [OrderLineCreateInput!]!
   ): OrderLinesCreate
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Deletes an order line from an order.
 
   Requires one of the following permissions: MANAGE_ORDERS.
   """
   orderLineDelete("ID of the order line to delete." id: ID!): OrderLineDelete
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Updates an order line of an order.
 
@@ -13385,7 +13385,7 @@ type Mutation {
     "Fields required to update an order line."
     input: OrderLineInput!
   ): OrderLineUpdate
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Adds discount to the order.
 
@@ -13397,7 +13397,7 @@ type Mutation {
     "ID of an order to discount."
     orderId: ID!
   ): OrderDiscountAdd
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Update discount for the order.
 
@@ -13409,7 +13409,7 @@ type Mutation {
     "Fields required to update a discount for the order."
     input: OrderDiscountCommonInput!
   ): OrderDiscountUpdate
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Remove discount from the order.
 
@@ -13419,7 +13419,7 @@ type Mutation {
     "ID of a discount to remove."
     discountId: ID!
   ): OrderDiscountDelete
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Update discount for the order line.
 
@@ -13431,7 +13431,7 @@ type Mutation {
     "ID of a order line to update price"
     orderLineId: ID!
   ): OrderLineDiscountUpdate
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Remove discount applied to the order line.
 
@@ -13441,7 +13441,7 @@ type Mutation {
     "ID of a order line to remove its discount"
     orderLineId: ID!
   ): OrderLineDiscountRemove
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Mark order as manually paid.
 
@@ -13453,7 +13453,7 @@ type Mutation {
     "The external transaction reference."
     transactionReference: String
   ): OrderMarkAsPaid
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Refund an order.
 
@@ -13465,7 +13465,7 @@ type Mutation {
     "ID of the order to refund."
     id: ID!
   ): OrderRefund
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Updates an order.
 
@@ -13483,7 +13483,7 @@ type Mutation {
     "Fields required to update an order."
     input: OrderUpdateInput!
   ): OrderUpdate
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Updates a shipping method of the order. Requires shipping method ID to update, when null is passed then currently assigned shipping method is removed.
 
@@ -13495,21 +13495,21 @@ type Mutation {
     "Fields required to change shipping method of the order."
     input: OrderUpdateShippingInput!
   ): OrderUpdateShipping
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Void an order.
 
   Requires one of the following permissions: MANAGE_ORDERS.
   """
   orderVoid("ID of the order to void." id: ID!): OrderVoid
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Cancels orders.
 
   Requires one of the following permissions: MANAGE_ORDERS.
   """
   orderBulkCancel("List of orders IDs to cancel." ids: [ID!]!): OrderBulkCancel
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   "Delete metadata of an object. To use it, you need to have access to the modified object."
   deleteMetadata(
     "ID or token (for Order and Checkout) of an object to update."
@@ -13517,7 +13517,7 @@ type Mutation {
     "Metadata keys to delete."
     keys: [String!]!
   ): DeleteMetadata
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   "Delete object's private metadata. To use it, you need to be an authenticated staff user or an app and have access to the modified object."
   deletePrivateMetadata(
     "ID or token (for Order and Checkout) of an object to update."
@@ -13525,7 +13525,7 @@ type Mutation {
     "Metadata keys to delete."
     keys: [String!]!
   ): DeletePrivateMetadata
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   "Updates metadata of an object. To use it, you need to have access to the modified object."
   updateMetadata(
     "ID or token (for Order and Checkout) of an object to update."
@@ -13533,7 +13533,7 @@ type Mutation {
     "Fields required to update the object's metadata."
     input: [MetadataInput!]!
   ): UpdateMetadata
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   "Updates private metadata of an object. To use it, you need to be an authenticated staff user or an app and have access to the modified object."
   updatePrivateMetadata(
     "ID or token (for Order and Checkout) of an object to update."
@@ -13541,7 +13541,7 @@ type Mutation {
     "Fields required to update the object's metadata."
     input: [MetadataInput!]!
   ): UpdatePrivateMetadata
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Assigns storefront's navigation menus.
 
@@ -13553,7 +13553,7 @@ type Mutation {
     "Type of the navigation bar to assign the menu to."
     navigationType: NavigationType!
   ): AssignNavigation
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Creates a new Menu.
 
@@ -13563,21 +13563,21 @@ type Mutation {
     "Fields required to create a menu."
     input: MenuCreateInput!
   ): MenuCreate
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Deletes a menu.
 
   Requires one of the following permissions: MANAGE_MENUS.
   """
   menuDelete("ID of a menu to delete." id: ID!): MenuDelete
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Deletes menus.
 
   Requires one of the following permissions: MANAGE_MENUS.
   """
   menuBulkDelete("List of menu IDs to delete." ids: [ID!]!): MenuBulkDelete
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Updates a menu.
 
@@ -13589,7 +13589,7 @@ type Mutation {
     "Fields required to update a menu."
     input: MenuInput!
   ): MenuUpdate
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Creates a new menu item.
 
@@ -13599,14 +13599,14 @@ type Mutation {
     "Fields required to update a menu item. Only one of `url`, `category`, `page`, `collection` is allowed per item."
     input: MenuItemCreateInput!
   ): MenuItemCreate
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Deletes a menu item.
 
   Requires one of the following permissions: MANAGE_MENUS.
   """
   menuItemDelete("ID of a menu item to delete." id: ID!): MenuItemDelete
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Deletes menu items.
 
@@ -13616,7 +13616,7 @@ type Mutation {
     "List of menu item IDs to delete."
     ids: [ID!]!
   ): MenuItemBulkDelete
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Updates a menu item.
 
@@ -13628,7 +13628,7 @@ type Mutation {
     "Fields required to update a menu item. Only one of `url`, `category`, `page`, `collection` is allowed per item."
     input: MenuItemInput!
   ): MenuItemUpdate
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Creates/updates translations for a menu item.
 
@@ -13641,7 +13641,7 @@ type Mutation {
     "Translation language code."
     languageCode: LanguageCodeEnum!
   ): MenuItemTranslate
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Moves items of menus.
 
@@ -13653,7 +13653,7 @@ type Mutation {
     "The menu position data."
     moves: [MenuItemMoveInput!]!
   ): MenuItemMove
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Request an invoice for the order using plugin.
 
@@ -13665,7 +13665,7 @@ type Mutation {
     "ID of the order related to invoice."
     orderId: ID!
   ): InvoiceRequest
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Requests deletion of an invoice.
 
@@ -13675,7 +13675,7 @@ type Mutation {
     "ID of an invoice to request the deletion."
     id: ID!
   ): InvoiceRequestDelete
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Creates a ready to send invoice.
 
@@ -13687,14 +13687,14 @@ type Mutation {
     "ID of the order related to invoice."
     orderId: ID!
   ): InvoiceCreate
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Deletes an invoice.
 
   Requires one of the following permissions: MANAGE_ORDERS.
   """
   invoiceDelete("ID of an invoice to delete." id: ID!): InvoiceDelete
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Updates an invoice.
 
@@ -13706,7 +13706,7 @@ type Mutation {
     "Fields to use when updating an invoice."
     input: UpdateInvoiceInput!
   ): InvoiceUpdate
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Send an invoice notification to the customer.
 
@@ -13716,14 +13716,14 @@ type Mutation {
     "ID of an invoice to be sent."
     id: ID!
   ): InvoiceSendNotification
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Activate a gift card.
 
   Requires one of the following permissions: MANAGE_GIFT_CARD.
   """
   giftCardActivate("ID of a gift card to activate." id: ID!): GiftCardActivate
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Creates a new gift card.
 
@@ -13733,7 +13733,7 @@ type Mutation {
     "Fields required to create a gift card."
     input: GiftCardCreateInput!
   ): GiftCardCreate
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Delete gift card.
 
@@ -13744,7 +13744,7 @@ type Mutation {
   Requires one of the following permissions: MANAGE_GIFT_CARD.
   """
   giftCardDelete("ID of the gift card to delete." id: ID!): GiftCardDelete
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Deactivate a gift card.
 
@@ -13754,7 +13754,7 @@ type Mutation {
     "ID of a gift card to deactivate."
     id: ID!
   ): GiftCardDeactivate
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Update a gift card.
 
@@ -13766,7 +13766,7 @@ type Mutation {
     "Fields required to update a gift card."
     input: GiftCardUpdateInput!
   ): GiftCardUpdate
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Resend a gift card.
 
@@ -13780,7 +13780,7 @@ type Mutation {
     "Fields required to resend a gift card."
     input: GiftCardResendInput!
   ): GiftCardResend
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Adds note to the gift card.
 
@@ -13796,7 +13796,7 @@ type Mutation {
     "Fields required to create a note for the gift card."
     input: GiftCardAddNoteInput!
   ): GiftCardAddNote
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Create gift cards.
 
@@ -13810,7 +13810,7 @@ type Mutation {
     "Fields required to create gift cards."
     input: GiftCardBulkCreateInput!
   ): GiftCardBulkCreate
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Delete gift cards.
 
@@ -13824,7 +13824,7 @@ type Mutation {
     "List of gift card IDs to delete."
     ids: [ID!]!
   ): GiftCardBulkDelete
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Activate gift cards.
 
@@ -13838,7 +13838,7 @@ type Mutation {
     "List of gift card IDs to activate."
     ids: [ID!]!
   ): GiftCardBulkActivate
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Deactivate gift cards.
 
@@ -13852,7 +13852,7 @@ type Mutation {
     "List of gift card IDs to deactivate."
     ids: [ID!]!
   ): GiftCardBulkDeactivate
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Update plugin configuration.
 
@@ -13866,7 +13866,7 @@ type Mutation {
     "Fields required to update a plugin configuration."
     input: PluginUpdateInput!
   ): PluginUpdate
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Trigger sending a notification with the notify plugin method. Serializes nodes provided as ids parameter and includes this data in the notification payload.
 
@@ -13880,28 +13880,28 @@ type Mutation {
     "The ID of notification plugin."
     pluginId: String
   ): ExternalNotificationTrigger
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Creates a new sale.
 
   Requires one of the following permissions: MANAGE_DISCOUNTS.
   """
   saleCreate("Fields required to create a sale." input: SaleInput!): SaleCreate
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Deletes a sale.
 
   Requires one of the following permissions: MANAGE_DISCOUNTS.
   """
   saleDelete("ID of a sale to delete." id: ID!): SaleDelete
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Deletes sales.
 
   Requires one of the following permissions: MANAGE_DISCOUNTS.
   """
   saleBulkDelete("List of sale IDs to delete." ids: [ID!]!): SaleBulkDelete
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Updates a sale.
 
@@ -13913,7 +13913,7 @@ type Mutation {
     "Fields required to update a sale."
     input: SaleInput!
   ): SaleUpdate
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Adds products, categories, collections to a voucher.
 
@@ -13925,7 +13925,7 @@ type Mutation {
     "Fields required to modify catalogue IDs of sale."
     input: CatalogueInput!
   ): SaleAddCatalogues
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Removes products, categories, collections from a sale.
 
@@ -13937,7 +13937,7 @@ type Mutation {
     "Fields required to modify catalogue IDs of sale."
     input: CatalogueInput!
   ): SaleRemoveCatalogues
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Creates/updates translations for a sale.
 
@@ -13950,7 +13950,7 @@ type Mutation {
     "Translation language code."
     languageCode: LanguageCodeEnum!
   ): SaleTranslate
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Manage sale's availability in channels.
 
@@ -13962,7 +13962,7 @@ type Mutation {
     "Fields required to update sale channel listings."
     input: SaleChannelListingInput!
   ): SaleChannelListingUpdate
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Creates a new voucher.
 
@@ -13972,14 +13972,14 @@ type Mutation {
     "Fields required to create a voucher."
     input: VoucherInput!
   ): VoucherCreate
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Deletes a voucher.
 
   Requires one of the following permissions: MANAGE_DISCOUNTS.
   """
   voucherDelete("ID of a voucher to delete." id: ID!): VoucherDelete
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Deletes vouchers.
 
@@ -13989,7 +13989,7 @@ type Mutation {
     "List of voucher IDs to delete."
     ids: [ID!]!
   ): VoucherBulkDelete
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Updates a voucher.
 
@@ -14001,7 +14001,7 @@ type Mutation {
     "Fields required to update a voucher."
     input: VoucherInput!
   ): VoucherUpdate
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Adds products, categories, collections to a voucher.
 
@@ -14013,7 +14013,7 @@ type Mutation {
     "Fields required to modify catalogue IDs of voucher."
     input: CatalogueInput!
   ): VoucherAddCatalogues
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Removes products, categories, collections from a voucher.
 
@@ -14025,7 +14025,7 @@ type Mutation {
     "Fields required to modify catalogue IDs of voucher."
     input: CatalogueInput!
   ): VoucherRemoveCatalogues
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Creates/updates translations for a voucher.
 
@@ -14038,7 +14038,7 @@ type Mutation {
     "Translation language code."
     languageCode: LanguageCodeEnum!
   ): VoucherTranslate
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Manage voucher's availability in channels.
 
@@ -14050,7 +14050,7 @@ type Mutation {
     "Fields required to update voucher channel listings."
     input: VoucherChannelListingInput!
   ): VoucherChannelListingUpdate
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Export products to csv file.
 
@@ -14060,7 +14060,7 @@ type Mutation {
     "Fields required to export product data."
     input: ExportProductsInput!
   ): ExportProducts
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Export gift cards to csv file.
 
@@ -14074,7 +14074,7 @@ type Mutation {
     "Fields required to export gift cards data."
     input: ExportGiftCardsInput!
   ): ExportGiftCards
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Upload a file. This mutation must be sent as a `multipart` request. More detailed specs of the upload format can be found here: https://github.com/jaydenseric/graphql-multipart-request-spec
 
@@ -14084,7 +14084,7 @@ type Mutation {
     "Represents a file in a multipart request."
     file: Upload!
   ): FileUpload
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   "Adds a gift card or a voucher to a checkout."
   checkoutAddPromoCode(
     """
@@ -14108,7 +14108,7 @@ type Mutation {
     """
     token: UUID
   ): CheckoutAddPromoCode
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   "Update billing address in the existing checkout."
   checkoutBillingAddressUpdate(
     "The billing address of the checkout."
@@ -14140,7 +14140,7 @@ type Mutation {
     """
     validationRules: CheckoutAddressValidationRules
   ): CheckoutBillingAddressUpdate
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   "Completes the checkout. As a result a new order is created and a payment charge is made. This action requires a successful payment before it can be performed. In case additional confirmation step as 3D secure is required confirmationNeeded flag will be set to True and no order created until payment is confirmed with second call of this mutation."
   checkoutComplete(
     """
@@ -14178,13 +14178,13 @@ type Mutation {
     """
     token: UUID
   ): CheckoutComplete
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   "Create a new checkout."
   checkoutCreate(
     "Fields required to create checkout."
     input: CheckoutCreateInput!
   ): CheckoutCreate
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Sets the customer as the owner of the checkout.
 
@@ -14212,7 +14212,7 @@ type Mutation {
     """
     token: UUID
   ): CheckoutCustomerAttach
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Removes the user assigned as the owner of the checkout.
 
@@ -14238,7 +14238,7 @@ type Mutation {
     """
     token: UUID
   ): CheckoutCustomerDetach
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   "Updates email address in the existing checkout object."
   checkoutEmailUpdate(
     """
@@ -14262,7 +14262,7 @@ type Mutation {
     """
     token: UUID
   ): CheckoutEmailUpdate
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   "Deletes a CheckoutLine."
   checkoutLineDelete(
     """
@@ -14289,7 +14289,7 @@ type Mutation {
     @deprecated(
       reason: "This field will be removed in Saleor 4.0. Use `checkoutLinesDelete` instead."
     )
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   "Deletes checkout lines."
   checkoutLinesDelete(
     """
@@ -14307,7 +14307,7 @@ type Mutation {
     """
     token: UUID
   ): CheckoutLinesDelete
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   "Adds a checkout line to the existing checkout.If line was already in checkout, its quantity will be increased."
   checkoutLinesAdd(
     """
@@ -14331,7 +14331,7 @@ type Mutation {
     """
     token: UUID
   ): CheckoutLinesAdd
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   "Updates checkout line in the existing checkout."
   checkoutLinesUpdate(
     """
@@ -14355,7 +14355,7 @@ type Mutation {
     """
     token: UUID
   ): CheckoutLinesUpdate
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   "Remove a gift card or a voucher from a checkout."
   checkoutRemovePromoCode(
     """
@@ -14381,7 +14381,7 @@ type Mutation {
     """
     token: UUID
   ): CheckoutRemovePromoCode
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   "Create a new payment for given checkout."
   checkoutPaymentCreate(
     """
@@ -14405,7 +14405,7 @@ type Mutation {
     """
     token: UUID
   ): CheckoutPaymentCreate
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   "Update shipping address in the existing checkout."
   checkoutShippingAddressUpdate(
     """
@@ -14437,7 +14437,7 @@ type Mutation {
     """
     validationRules: CheckoutAddressValidationRules
   ): CheckoutShippingAddressUpdate
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   "Updates the shipping method of the checkout."
   checkoutShippingMethodUpdate(
     """
@@ -14464,7 +14464,7 @@ type Mutation {
     @deprecated(
       reason: "This field will be removed in Saleor 4.0. Use `checkoutDeliveryMethodUpdate` instead."
     )
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Updates the delivery method (shipping method or pick up point) of the checkout.
 
@@ -14488,7 +14488,7 @@ type Mutation {
     """
     token: UUID
   ): CheckoutDeliveryMethodUpdate
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   "Update language code in the existing checkout."
   checkoutLanguageCodeUpdate(
     """
@@ -14512,7 +14512,7 @@ type Mutation {
     """
     token: UUID
   ): CheckoutLanguageCodeUpdate
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Create new order from existing checkout. Requires the following permissions: AUTHENTICATED_APP and HANDLE_CHECKOUTS.
 
@@ -14538,7 +14538,7 @@ type Mutation {
     "Determines if checkout should be removed after creating an order. Default true."
     removeCheckout: Boolean = true
   ): OrderCreateFromCheckout
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Creates new channel.
 
@@ -14548,7 +14548,7 @@ type Mutation {
     "Fields required to create channel."
     input: ChannelCreateInput!
   ): ChannelCreate
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Update a channel.
 
@@ -14560,7 +14560,7 @@ type Mutation {
     "Fields required to update a channel."
     input: ChannelUpdateInput!
   ): ChannelUpdate
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Delete a channel. Orders associated with the deleted channel will be moved to the target channel. Checkouts, product availability, and pricing will be removed.
 
@@ -14572,14 +14572,14 @@ type Mutation {
     "Fields required to delete a channel."
     input: ChannelDeleteInput
   ): ChannelDelete
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Activate a channel.
 
   Requires one of the following permissions: MANAGE_CHANNELS.
   """
   channelActivate("ID of the channel to activate." id: ID!): ChannelActivate
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Deactivate a channel.
 
@@ -14589,7 +14589,7 @@ type Mutation {
     "ID of the channel to deactivate."
     id: ID!
   ): ChannelDeactivate
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Reorder the warehouses of a channel.
 
@@ -14605,13 +14605,13 @@ type Mutation {
     "The list of reordering operations for the given channel warehouses."
     moves: [ReorderInput!]!
   ): ChannelReorderWarehouses
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   "Creates an attribute."
   attributeCreate(
     "Fields required to create an attribute."
     input: AttributeCreateInput!
   ): AttributeCreate
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Deletes an attribute.
 
@@ -14627,7 +14627,7 @@ type Mutation {
     "ID of an attribute to delete."
     id: ID
   ): AttributeDelete
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Updates attribute.
 
@@ -14645,7 +14645,7 @@ type Mutation {
     "Fields required to update an attribute."
     input: AttributeUpdateInput!
   ): AttributeUpdate
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Creates/updates translations for an attribute.
 
@@ -14658,7 +14658,7 @@ type Mutation {
     "Translation language code."
     languageCode: LanguageCodeEnum!
   ): AttributeTranslate
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Deletes attributes.
 
@@ -14668,7 +14668,7 @@ type Mutation {
     "List of attribute IDs to delete."
     ids: [ID!]!
   ): AttributeBulkDelete
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Deletes values of attributes.
 
@@ -14678,7 +14678,7 @@ type Mutation {
     "List of attribute value IDs to delete."
     ids: [ID!]!
   ): AttributeValueBulkDelete
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Creates a value for an attribute.
 
@@ -14690,7 +14690,7 @@ type Mutation {
     "Fields required to create an AttributeValue."
     input: AttributeValueCreateInput!
   ): AttributeValueCreate
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Deletes a value of an attribute.
 
@@ -14706,7 +14706,7 @@ type Mutation {
     "ID of a value to delete."
     id: ID
   ): AttributeValueDelete
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Updates value of an attribute.
 
@@ -14724,7 +14724,7 @@ type Mutation {
     "Fields required to update an AttributeValue."
     input: AttributeValueUpdateInput!
   ): AttributeValueUpdate
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Creates/updates translations for an attribute value.
 
@@ -14737,7 +14737,7 @@ type Mutation {
     "Translation language code."
     languageCode: LanguageCodeEnum!
   ): AttributeValueTranslate
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Reorder the values of an attribute.
 
@@ -14749,10 +14749,10 @@ type Mutation {
     "The list of reordering operations for given attribute values."
     moves: [ReorderInput!]!
   ): AttributeReorderValues
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   "Creates a new app. Requires the following permissions: AUTHENTICATED_STAFF_USER and MANAGE_APPS."
   appCreate("Fields required to create a new app." input: AppInput!): AppCreate
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Updates an existing app.
 
@@ -14764,14 +14764,14 @@ type Mutation {
     "Fields required to update an existing app."
     input: AppInput!
   ): AppUpdate
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Deletes an app.
 
   Requires one of the following permissions: MANAGE_APPS.
   """
   appDelete("ID of an app to delete." id: ID!): AppDelete
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Creates a new token.
 
@@ -14781,23 +14781,23 @@ type Mutation {
     "Fields required to create a new auth token."
     input: AppTokenInput!
   ): AppTokenCreate
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Deletes an authentication token assigned to app.
 
   Requires one of the following permissions: MANAGE_APPS.
   """
   appTokenDelete("ID of an auth token to delete." id: ID!): AppTokenDelete
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   "Verify provided app token."
   appTokenVerify("App token to verify." token: String!): AppTokenVerify
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   "Install new app by using app manifest. Requires the following permissions: AUTHENTICATED_STAFF_USER and MANAGE_APPS."
   appInstall(
     "Fields required to install a new app."
     input: AppInstallInput!
   ): AppInstall
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Retry failed installation of new app.
 
@@ -14809,7 +14809,7 @@ type Mutation {
     "ID of failed installation."
     id: ID!
   ): AppRetryInstall
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Delete failed installation.
 
@@ -14819,28 +14819,28 @@ type Mutation {
     "ID of failed installation to delete."
     id: ID!
   ): AppDeleteFailedInstallation
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Fetch and validate manifest.
 
   Requires one of the following permissions: MANAGE_APPS.
   """
   appFetchManifest(manifestUrl: String!): AppFetchManifest
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Activate the app.
 
   Requires one of the following permissions: MANAGE_APPS.
   """
   appActivate("ID of app to activate." id: ID!): AppActivate
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Deactivate the app.
 
   Requires one of the following permissions: MANAGE_APPS.
   """
   appDeactivate("ID of app to deactivate." id: ID!): AppDeactivate
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   "Create JWT token."
   tokenCreate(
     """
@@ -14856,7 +14856,7 @@ type Mutation {
     "Password of a user."
     password: String!
   ): CreateToken
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   "Refresh JWT token. Mutation tries to take refreshToken from the input.If it fails it will try to take refreshToken from the http-only cookie -refreshToken. csrfToken is required when refreshToken is provided as a cookie."
   tokenRefresh(
     "CSRF token required to refresh token. This argument is required when refreshToken is provided as a cookie."
@@ -14864,10 +14864,10 @@ type Mutation {
     "Refresh token."
     refreshToken: String
   ): RefreshToken
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   "Verify JWT token."
   tokenVerify("JWT token to validate." token: String!): VerifyToken
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Deactivate all JWT tokens of the currently authenticated user.
 
@@ -14875,7 +14875,7 @@ type Mutation {
   """
   tokensDeactivateAll: DeactivateAllUserTokens
     @graphql(
-      endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/",
+      endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/",
       forwardheaders: ["Authorization"]
       )
   "Prepare external authentication url for user by custom plugin."
@@ -14885,7 +14885,7 @@ type Mutation {
     "The ID of the authentication plugin."
     pluginId: String!
   ): ExternalAuthenticationUrl
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   "Obtain external access tokens for user by custom plugin."
   externalObtainAccessTokens(
     "The data required by plugin to create authentication data."
@@ -14893,7 +14893,7 @@ type Mutation {
     "The ID of the authentication plugin."
     pluginId: String!
   ): ExternalObtainAccessTokens
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   "Refresh user's access by custom plugin."
   externalRefresh(
     "The data required by plugin to proceed the refresh process."
@@ -14901,7 +14901,7 @@ type Mutation {
     "The ID of the authentication plugin."
     pluginId: String!
   ): ExternalRefresh
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   "Logout user by custom plugin."
   externalLogout(
     "The data required by plugin to proceed the logout process."
@@ -14909,7 +14909,7 @@ type Mutation {
     "The ID of the authentication plugin."
     pluginId: String!
   ): ExternalLogout
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   "Verify external authentication data by plugin."
   externalVerify(
     "The data required by plugin to proceed the verification."
@@ -14917,7 +14917,7 @@ type Mutation {
     "The ID of the authentication plugin."
     pluginId: String!
   ): ExternalVerify
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   "Sends an email with the account password modification link."
   requestPasswordReset(
     "Slug of a channel which will be used for notify user. Optional when only one channel exists."
@@ -14927,7 +14927,7 @@ type Mutation {
     "URL of a view where users should be redirected to reset the password. URL in RFC 1808 format."
     redirectUrl: String!
   ): RequestPasswordReset
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   "Confirm user account with token sent by email during registration."
   confirmAccount(
     "E-mail of the user performing account confirmation."
@@ -14935,7 +14935,7 @@ type Mutation {
     "A one-time token required to confirm the account."
     token: String!
   ): ConfirmAccount
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   "Sets the user's password from the token sent by email using the RequestPasswordReset mutation."
   setPassword(
     "Email of a user."
@@ -14945,7 +14945,7 @@ type Mutation {
     "A one-time token required to set the password."
     token: String!
   ): SetPassword
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Change the password of the logged in user.
 
@@ -14957,7 +14957,7 @@ type Mutation {
     "Current user password."
     oldPassword: String!
   ): PasswordChange
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Request email change of the logged in user.
 
@@ -14973,7 +14973,7 @@ type Mutation {
     "URL of a view where users should be redirected to update the email address. URL in RFC 1808 format."
     redirectUrl: String!
   ): RequestEmailChange
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Confirm the email change of the logged-in user.
 
@@ -14985,7 +14985,7 @@ type Mutation {
     "A one-time token required to change the email."
     token: String!
   ): ConfirmEmailChange
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Create a new address for the customer.
 
@@ -14997,7 +14997,10 @@ type Mutation {
     "A type of address. If provided, the new address will be automatically assigned as the customer's default address of that type."
     type: AddressTypeEnum
   ): AccountAddressCreate
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(
+      endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/",
+      forwardheaders: ["Authorization"]
+     )
   "Updates an address of the logged-in user. Requires one of the following permissions: MANAGE_USERS, IS_OWNER."
   accountAddressUpdate(
     "ID of the address to update."
@@ -15005,13 +15008,18 @@ type Mutation {
     "Fields required to update the address."
     input: AddressInput!
   ): AccountAddressUpdate
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(
+      forwardheaders: ["Authorization"],
+      endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   "Delete an address of the logged-in user. Requires one of the following permissions: MANAGE_USERS, IS_OWNER."
   accountAddressDelete(
     "ID of the address to delete."
     id: ID!
   ): AccountAddressDelete
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(
+      endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/",
+      forwardheaders: ["Authorization"]
+      )
   """
   Sets a default address for the authenticated user.
 
@@ -15023,13 +15031,16 @@ type Mutation {
     "The type of address."
     type: AddressTypeEnum!
   ): AccountSetDefaultAddress
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(
+      endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/",
+      forwardheaders: ["Authorization"]
+    )
   "Register a new user."
   accountRegister(
     "Fields required to create a user."
     input: AccountRegisterInput!
   ): AccountRegister
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Updates the account of the logged-in user.
 
@@ -15039,7 +15050,7 @@ type Mutation {
     "Fields required to update the account of the logged-in user."
     input: AccountInput!
   ): AccountUpdate
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Sends an email with the account removal link for the logged-in user.
 
@@ -15051,7 +15062,7 @@ type Mutation {
     "URL of a view where users should be redirected to delete their account. URL in RFC 1808 format."
     redirectUrl: String!
   ): AccountRequestDeletion
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Remove user account.
 
@@ -15061,7 +15072,7 @@ type Mutation {
     "A one-time token required to remove account. Sent by email using AccountRequestDeletion mutation."
     token: String!
   ): AccountDelete
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Creates user address.
 
@@ -15073,7 +15084,7 @@ type Mutation {
     "ID of a user to create address for."
     userId: ID!
   ): AddressCreate
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Updates an address.
 
@@ -15085,14 +15096,14 @@ type Mutation {
     "Fields required to update the address."
     input: AddressInput!
   ): AddressUpdate
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Deletes an address.
 
   Requires one of the following permissions: MANAGE_USERS.
   """
   addressDelete("ID of the address to delete." id: ID!): AddressDelete
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Sets a default address for the given user.
 
@@ -15106,7 +15117,7 @@ type Mutation {
     "ID of the user to change the address for."
     userId: ID!
   ): AddressSetDefault
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Creates a new customer.
 
@@ -15116,7 +15127,7 @@ type Mutation {
     "Fields required to create a customer."
     input: UserCreateInput!
   ): CustomerCreate
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Updates an existing customer.
 
@@ -15134,7 +15145,7 @@ type Mutation {
     "Fields required to update a customer."
     input: CustomerInput!
   ): CustomerUpdate
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Deletes a customer.
 
@@ -15150,7 +15161,7 @@ type Mutation {
     "ID of a customer to delete."
     id: ID
   ): CustomerDelete
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Deletes customers.
 
@@ -15160,7 +15171,7 @@ type Mutation {
     "List of user IDs to delete."
     ids: [ID!]!
   ): CustomerBulkDelete
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Creates a new staff user. Apps are not allowed to perform this mutation.
 
@@ -15170,7 +15181,7 @@ type Mutation {
     "Fields required to create a staff user."
     input: StaffCreateInput!
   ): StaffCreate
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Updates an existing staff user. Apps are not allowed to perform this mutation.
 
@@ -15182,21 +15193,21 @@ type Mutation {
     "Fields required to update a staff user."
     input: StaffUpdateInput!
   ): StaffUpdate
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Deletes a staff user. Apps are not allowed to perform this mutation.
 
   Requires one of the following permissions: MANAGE_STAFF.
   """
   staffDelete("ID of a staff user to delete." id: ID!): StaffDelete
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Deletes staff users. Apps are not allowed to perform this mutation.
 
   Requires one of the following permissions: MANAGE_STAFF.
   """
   staffBulkDelete("List of user IDs to delete." ids: [ID!]!): StaffBulkDelete
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Create a user avatar. Only for staff members. This mutation must be sent as a `multipart` request. More detailed specs of the upload format can be found here: https://github.com/jaydenseric/graphql-multipart-request-spec
 
@@ -15206,14 +15217,14 @@ type Mutation {
     "Represents an image file in a multipart request."
     image: Upload!
   ): UserAvatarUpdate
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Deletes a user avatar. Only for staff members.
 
   Requires one of the following permissions: AUTHENTICATED_STAFF_USER.
   """
   userAvatarDelete: UserAvatarDelete
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Activate or deactivate users.
 
@@ -15225,7 +15236,7 @@ type Mutation {
     "Determine if users will be set active or not."
     isActive: Boolean!
   ): UserBulkSetActive
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Create new permission group. Apps are not allowed to perform this mutation.
 
@@ -15235,7 +15246,7 @@ type Mutation {
     "Input fields to create permission group."
     input: PermissionGroupCreateInput!
   ): PermissionGroupCreate
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Update permission group. Apps are not allowed to perform this mutation.
 
@@ -15247,7 +15258,7 @@ type Mutation {
     "Input fields to create permission group."
     input: PermissionGroupUpdateInput!
   ): PermissionGroupUpdate
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Delete permission group. Apps are not allowed to perform this mutation.
 
@@ -15257,7 +15268,7 @@ type Mutation {
     "ID of the group to delete."
     id: ID!
   ): PermissionGroupDelete
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
 }
 
 "Represents an order in the shop."
@@ -18960,7 +18971,7 @@ type ProductVariantUpdated implements Event {
 type Query {
   "Look up a webhook by ID. Requires one of the following permissions: MANAGE_APPS, OWNER."
   webhook("ID of the webhook." id: ID!): Webhook
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   List of all available webhook events.
 
@@ -18970,13 +18981,13 @@ type Query {
     @deprecated(
       reason: "This field will be removed in Saleor 4.0. Use `WebhookEventTypeAsyncEnum` and `WebhookEventTypeSyncEnum` to get available event types."
     )
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   "Retrieve a sample payload for a given webhook event based on real data. It can be useful for some integrations where sample payload is required."
   webhookSamplePayload(
     "Name of the requested event type."
     eventType: WebhookSampleEventTypeEnum!
   ): JSONString
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Look up a warehouse by ID.
 
@@ -18992,7 +19003,7 @@ type Query {
     """
     externalReference: String
   ): Warehouse
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   List of warehouses.
 
@@ -19010,7 +19021,7 @@ type Query {
     "Return the last n elements from the list."
     last: Int
   ): WarehouseCountableConnection
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Returns a list of all translatable items of a given kind.
 
@@ -19028,7 +19039,7 @@ type Query {
     "Return the last n elements from the list."
     last: Int
   ): TranslatableItemConnection
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Lookup a translatable item by ID.
 
@@ -19040,7 +19051,7 @@ type Query {
     "Kind of the object to retrieve."
     kind: TranslatableKinds!
   ): TranslatableItem
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Look up a tax configuration.
 
@@ -19051,7 +19062,7 @@ type Query {
   Requires one of the following permissions: AUTHENTICATED_STAFF_USER, AUTHENTICATED_APP.
   """
   taxConfiguration("ID of a tax configuration." id: ID!): TaxConfiguration
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   List of tax configurations.
 
@@ -19073,7 +19084,7 @@ type Query {
     "Return the last n elements from the list."
     last: Int
   ): TaxConfigurationCountableConnection
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Look up a tax class.
 
@@ -19084,7 +19095,7 @@ type Query {
   Requires one of the following permissions: AUTHENTICATED_STAFF_USER, AUTHENTICATED_APP.
   """
   taxClass("ID of a tax class." id: ID!): TaxClass
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   List of tax classes.
 
@@ -19108,7 +19119,7 @@ type Query {
     "Return the last n elements from the list."
     last: Int
   ): TaxClassCountableConnection
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Tax class rates grouped by country.
 
@@ -19118,19 +19129,19 @@ type Query {
     "Country for which to return tax class rates."
     countryCode: CountryCode!
   ): TaxCountryConfiguration
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Requires one of the following permissions: AUTHENTICATED_STAFF_USER, AUTHENTICATED_APP.
   """
   taxCountryConfigurations: [TaxCountryConfiguration!]
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Look up a stock by ID
 
   Requires one of the following permissions: MANAGE_PRODUCTS.
   """
   stock("ID of an warehouse" id: ID!): Stock
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   List of stocks.
 
@@ -19147,24 +19158,24 @@ type Query {
     "Return the last n elements from the list."
     last: Int
   ): StockCountableConnection
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   "Return information about the shop."
   shop: Shop!
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Order related settings from site settings.
 
   Requires one of the following permissions: MANAGE_ORDERS.
   """
   orderSettings: OrderSettings
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Gift card related settings from site settings.
 
   Requires one of the following permissions: MANAGE_GIFT_CARD.
   """
   giftCardSettings: GiftCardSettings!
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Look up a shipping zone by ID.
 
@@ -19176,7 +19187,7 @@ type Query {
     "Slug of a channel for which the data should be returned."
     channel: String
   ): ShippingZone
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   List of the shop's shipping zones.
 
@@ -19196,14 +19207,14 @@ type Query {
     "Return the last n elements from the list."
     last: Int
   ): ShippingZoneCountableConnection
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Look up digital content by ID.
 
   Requires one of the following permissions: MANAGE_PRODUCTS.
   """
   digitalContent("ID of the digital content." id: ID!): DigitalContent
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   List of digital content.
 
@@ -19219,7 +19230,7 @@ type Query {
     "Return the last n elements from the list."
     last: Int
   ): DigitalContentCountableConnection
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   "List of the shop's categories."
   categories(
     "Filtering options for categories."
@@ -19237,7 +19248,7 @@ type Query {
     "Return the last n elements from the list."
     last: Int
   ): CategoryCountableConnection
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   "Look up a category by ID or slug."
   category(
     "ID of the category."
@@ -19245,7 +19256,7 @@ type Query {
     "Slug of the category"
     slug: String
   ): Category
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   "Look up a collection by ID. Requires one of the following permissions to include the unpublished items: MANAGE_ORDERS, MANAGE_DISCOUNTS, MANAGE_PRODUCTS."
   collection(
     "ID of the collection."
@@ -19255,7 +19266,7 @@ type Query {
     "Slug of a channel for which the data should be returned."
     channel: String
   ): Collection
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   "List of the shop's collections. Requires one of the following permissions to include the unpublished items: MANAGE_ORDERS, MANAGE_DISCOUNTS, MANAGE_PRODUCTS."
   collections(
     "Filtering options for collections."
@@ -19273,7 +19284,7 @@ type Query {
     "Return the last n elements from the list."
     last: Int
   ): CollectionCountableConnection
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   "Look up a product by ID. Requires one of the following permissions to include the unpublished items: MANAGE_ORDERS, MANAGE_DISCOUNTS, MANAGE_PRODUCTS."
   product(
     "ID of the product."
@@ -19289,7 +19300,7 @@ type Query {
     "Slug of a channel for which the data should be returned."
     channel: String
   ): Product
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   "List of the shop's products. Requires one of the following permissions to include the unpublished items: MANAGE_ORDERS, MANAGE_DISCOUNTS, MANAGE_PRODUCTS."
   products(
     "Filtering options for products."
@@ -19307,10 +19318,10 @@ type Query {
     "Return the last n elements from the list."
     last: Int
   ): ProductCountableConnection
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   "Look up a product type by ID."
   productType("ID of the product type." id: ID!): ProductType
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   "List of the shop's product types."
   productTypes(
     "Filtering options for product types."
@@ -19326,7 +19337,7 @@ type Query {
     "Return the last n elements from the list."
     last: Int
   ): ProductTypeCountableConnection
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   "Look up a product variant by ID or SKU. Requires one of the following permissions to include the unpublished items: MANAGE_ORDERS, MANAGE_DISCOUNTS, MANAGE_PRODUCTS."
   productVariant(
     "ID of the product variant."
@@ -19342,7 +19353,7 @@ type Query {
     "Slug of a channel for which the data should be returned."
     channel: String
   ): ProductVariant
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   "List of product variants. Requires one of the following permissions to include the unpublished items: MANAGE_ORDERS, MANAGE_DISCOUNTS, MANAGE_PRODUCTS."
   productVariants(
     "Filter product variants by given IDs."
@@ -19362,7 +19373,7 @@ type Query {
     "Return the last n elements from the list."
     last: Int
   ): ProductVariantCountableConnection
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   List of top selling products.
 
@@ -19382,14 +19393,14 @@ type Query {
     "Return the last n elements from the list."
     last: Int
   ): ProductVariantCountableConnection
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Look up a payment by ID.
 
   Requires one of the following permissions: MANAGE_ORDERS.
   """
   payment("ID of the payment." id: ID!): Payment
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   List of payments.
 
@@ -19407,7 +19418,7 @@ type Query {
     "Return the last n elements from the list."
     last: Int
   ): PaymentCountableConnection
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Look up a transaction by ID.
 
@@ -19418,10 +19429,10 @@ type Query {
   Requires one of the following permissions: HANDLE_PAYMENTS.
   """
   transaction("ID of a transaction." id: ID!): TransactionItem
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   "Look up a page by ID or slug."
   page("ID of the page." id: ID, "The slug of the page." slug: String): Page
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   "List of the shop's pages."
   pages(
     "Sort pages."
@@ -19437,10 +19448,10 @@ type Query {
     "Return the last n elements from the list."
     last: Int
   ): PageCountableConnection
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   "Look up a page type by ID."
   pageType("ID of the page type." id: ID!): PageType
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   "List of the page types."
   pageTypes(
     "Sort page types."
@@ -19456,7 +19467,7 @@ type Query {
     "Return the last n elements from the list."
     last: Int
   ): PageTypeCountableConnection
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   List of activity events to display on homepage (at the moment it only contains order-events).
 
@@ -19472,7 +19483,7 @@ type Query {
     "Return the last n elements from the list."
     last: Int
   ): OrderEventCountableConnection
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   "Look up an order by ID or external reference."
   order(
     "ID of an order."
@@ -19483,8 +19494,7 @@ type Query {
     Added in Saleor 3.10.
     """
     externalReference: String
-  ): Order
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+  ): Order @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   List of orders.
 
@@ -19506,7 +19516,7 @@ type Query {
     "Return the last n elements from the list."
     last: Int
   ): OrderCountableConnection
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   List of draft orders.
 
@@ -19526,7 +19536,7 @@ type Query {
     "Return the last n elements from the list."
     last: Int
   ): OrderCountableConnection
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Return the total sales amount from a specific period.
 
@@ -19538,11 +19548,11 @@ type Query {
     "Slug of a channel for which the data should be returned."
     channel: String
   ): TaxedMoney
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   "Look up an order by token."
   orderByToken("The order's token." token: UUID!): Order
     @deprecated(reason: "This field will be removed in Saleor 4.0.")
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   "Look up a navigation menu by ID or name."
   menu(
     "Slug of a channel for which the data should be returned."
@@ -19553,7 +19563,7 @@ type Query {
     name: String
     "The menu's slug."
     slug: String
-  ): Menu @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+  ): Menu @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   "List of the storefront's menus."
   menus(
     "Slug of a channel for which the data should be returned."
@@ -19575,7 +19585,7 @@ type Query {
     "Return the last n elements from the list."
     last: Int
   ): MenuCountableConnection
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   "Look up a menu item by ID."
   menuItem(
     "ID of the menu item."
@@ -19583,7 +19593,7 @@ type Query {
     "Slug of a channel for which the data should be returned."
     channel: String
   ): MenuItem
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   "List of the storefronts's menu items."
   menuItems(
     "Slug of a channel for which the data should be returned."
@@ -19601,14 +19611,14 @@ type Query {
     "Return the last n elements from the list."
     last: Int
   ): MenuItemCountableConnection
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Look up a gift card by ID.
 
   Requires one of the following permissions: MANAGE_GIFT_CARD.
   """
   giftCard("ID of the gift card." id: ID!): GiftCard
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   List of gift cards.
 
@@ -19640,7 +19650,7 @@ type Query {
     "Return the last n elements from the list."
     last: Int
   ): GiftCardCountableConnection
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   List of gift card currencies.
 
@@ -19651,7 +19661,7 @@ type Query {
   Requires one of the following permissions: MANAGE_GIFT_CARD.
   """
   giftCardCurrencies: [String!]!
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   List of gift card tags.
 
@@ -19673,14 +19683,14 @@ type Query {
     "Return the last n elements from the list."
     last: Int
   ): GiftCardTagCountableConnection
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Look up a plugin by ID.
 
   Requires one of the following permissions: MANAGE_PLUGINS.
   """
   plugin("ID of the plugin." id: ID!): Plugin
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   List of plugins.
 
@@ -19700,7 +19710,7 @@ type Query {
     "Return the last n elements from the list."
     last: Int
   ): PluginCountableConnection
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Look up a sale by ID.
 
@@ -19711,7 +19721,7 @@ type Query {
     id: ID!
     "Slug of a channel for which the data should be returned."
     channel: String
-  ): Sale @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+  ): Sale @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   List of the shop's sales.
 
@@ -19739,7 +19749,7 @@ type Query {
     "Return the last n elements from the list."
     last: Int
   ): SaleCountableConnection
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Look up a voucher by ID.
 
@@ -19751,7 +19761,7 @@ type Query {
     "Slug of a channel for which the data should be returned."
     channel: String
   ): Voucher
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   List of the shop's vouchers.
 
@@ -19779,14 +19789,14 @@ type Query {
     "Return the last n elements from the list."
     last: Int
   ): VoucherCountableConnection
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Look up a export file by ID.
 
   Requires one of the following permissions: MANAGE_PRODUCTS.
   """
   exportFile("ID of the export file job." id: ID!): ExportFile
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   List of export files.
 
@@ -19806,10 +19816,10 @@ type Query {
     "Return the last n elements from the list."
     last: Int
   ): ExportFileCountableConnection
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   "List of all tax rates available from tax gateway."
   taxTypes: [TaxType!]
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   "Look up a checkout by token and slug of channel."
   checkout(
     """
@@ -19825,7 +19835,7 @@ type Query {
     """
     token: UUID
   ): Checkout
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   List of checkouts.
 
@@ -19855,7 +19865,7 @@ type Query {
     "Return the last n elements from the list."
     last: Int
   ): CheckoutCountableConnection
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   List of checkout lines.
 
@@ -19871,7 +19881,7 @@ type Query {
     "Return the last n elements from the list."
     last: Int
   ): CheckoutLineCountableConnection
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   "Look up a channel by ID or slug."
   channel(
     "ID of the channel."
@@ -19885,14 +19895,14 @@ type Query {
     """
     slug: String
   ): Channel
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   List of all channels.
 
   Requires one of the following permissions: AUTHENTICATED_APP, AUTHENTICATED_STAFF_USER.
   """
   channels: [Channel!]
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   "List of the shop's attributes."
   attributes(
     "Filtering options for attributes."
@@ -19910,7 +19920,7 @@ type Query {
     "Return the last n elements from the list."
     last: Int
   ): AttributeCountableConnection
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   "Look up an attribute by ID, slug or external reference."
   attribute(
     "ID of the attribute."
@@ -19924,14 +19934,14 @@ type Query {
     """
     externalReference: String
   ): Attribute
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   List of all apps installations
 
   Requires one of the following permissions: MANAGE_APPS.
   """
   appsInstallations: [AppInstallation!]!
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   List of the apps.
 
@@ -19951,14 +19961,14 @@ type Query {
     "Return the last n elements from the list."
     last: Int
   ): AppCountableConnection
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Look up an app by ID. If ID is not provided, return the currently authenticated app.
 
   Requires one of the following permissions: AUTHENTICATED_STAFF_USER AUTHENTICATED_APP. The authenticated app has access to its resources. Fetching different apps requires MANAGE_APPS permission.
   """
   app("ID of the app." id: ID): App
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   List of all extensions.
 
@@ -19980,7 +19990,7 @@ type Query {
     "Return the last n elements from the list."
     last: Int
   ): AppExtensionCountableConnection
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Look up an app extension by ID.
 
@@ -19991,7 +20001,7 @@ type Query {
   Requires one of the following permissions: AUTHENTICATED_STAFF_USER, AUTHENTICATED_APP.
   """
   appExtension("ID of the app extension." id: ID!): AppExtension
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   "Returns address validation rules."
   addressValidationRules(
     "Two-letter ISO 3166-1 country code."
@@ -20003,10 +20013,10 @@ type Query {
     "Sublocality like a district."
     cityArea: String
   ): AddressValidationData
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   "Look up an address by ID."
   address("ID of an address." id: ID!): Address
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   List of the shop's customers.
 
@@ -20026,7 +20036,7 @@ type Query {
     "Return the last n elements from the list."
     last: Int
   ): UserCountableConnection
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   List of permission groups.
 
@@ -20046,20 +20056,19 @@ type Query {
     "Return the last n elements from the list."
     last: Int
   ): GroupCountableConnection
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Look up permission group by ID.
 
   Requires one of the following permissions: MANAGE_STAFF.
   """
   permissionGroup("ID of the group." id: ID!): Group
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   "Return the currently authenticated user."
-  me: User
-    @graphql(
-      endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/",
-      forwardheaders: ["Authorization"]
-      )
+  me: User @graphql(
+    endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/",
+    forwardheaders: ["Authorization"]
+    )
   """
   List of the shop's staff users.
 
@@ -20079,7 +20088,7 @@ type Query {
     "Return the last n elements from the list."
     last: Int
   ): UserCountableConnection
-    @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+    @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
   """
   Look up a user by ID or email address.
 
@@ -20096,7 +20105,7 @@ type Query {
     Added in Saleor 3.10.
     """
     externalReference: String
-  ): User @graphql(endpoint: "https://e65e-90-187-201-249.eu.ngrok.io/graphql/")
+  ): User @graphql(endpoint: "https://ce6f-90-187-201-249.eu.ngrok.io/graphql/")
 }
 
 "Represents a reduced VAT rate for a particular type of goods."
