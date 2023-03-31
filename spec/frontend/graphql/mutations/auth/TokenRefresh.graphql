@@ -3,6 +3,8 @@ mutation refreshToken($refreshToken: String!){
     token
     errors{
       message
+      field
+      code
     }
   }
 }

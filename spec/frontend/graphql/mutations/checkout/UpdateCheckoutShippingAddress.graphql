@@ -11,14 +11,7 @@ mutation UpdateCheckoutShippingAddress($input: AddressInput!, $id: ID ){
     checkout {
       id
       shippingAddress {
-        id
-        postalCode
-        firstName
-        lastName
-        streetAddress1
-        country {
-          code
-        }
+        ...AddressFragment
       }
     }
   }

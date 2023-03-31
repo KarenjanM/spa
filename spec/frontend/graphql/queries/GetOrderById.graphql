@@ -1,0 +1,30 @@
+query GetOrderById($id: ID!){
+    order(id: $id){
+        id
+        shippingAddress{
+            ...AddressFragment
+        }
+        total{
+            currency
+            gross{
+                ...PriceFragment
+            }
+        }
+        isPaid
+        lines {
+          productVariantId
+          quantity
+          productName
+          thumbnail{
+            url
+          }
+          totalPrice {
+            currency
+            gross {
+              ...PriceFragment
+            }
+          }
+        }
+        created
+    }
+}

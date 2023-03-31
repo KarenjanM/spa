@@ -5,7 +5,7 @@ query GetPostById($id: ID){
         attributes{
           title
           content
-          created
+          createdAt
         }
       }
     }

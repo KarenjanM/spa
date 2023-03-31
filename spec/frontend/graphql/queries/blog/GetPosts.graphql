@@ -1,18 +1,11 @@
 query GetPosts {
-  strapi_posts(pagination: {page: 5, pageSize: 6}) {
+  strapi_posts{
     data {
       id
       attributes {
         content
         title
         createdAt
-      }
-    }
-    meta {
-      pagination {
-        page
-        pageCount
-        total
       }
     }
   }

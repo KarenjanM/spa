@@ -11,14 +11,7 @@ mutation UpdateCheckoutBillingAddress($input: AddressInput!, $id: ID ){
     checkout {
       id
       billingAddress {
-        id
-        postalCode
-        firstName
-        lastName
-        streetAddress1
-        country {
-          code
-        }
+        ...AddressFragment
       }
     }
   }

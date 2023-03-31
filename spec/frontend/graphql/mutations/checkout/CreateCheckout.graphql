@@ -1,30 +1,7 @@
 mutation createCheckout($input: CheckoutCreateInput!){
     checkoutCreate(input: $input){
       checkout{
-        id
-        lines{
-          id
-          quantity
-          variant{
-            id
-            product{
-              name
-              thumbnail{
-                url
-              }
-            }
-            media{
-              url
-            }
-            pricing{
-              price{
-                gross{
-                  amount
-                }
-              }
-            }
-          }
-      }
+        ...CheckoutFragment
     }
     errors{
       message

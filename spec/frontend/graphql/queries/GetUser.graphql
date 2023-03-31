@@ -4,35 +4,33 @@ query GetUser{
       email
       firstName
       lastName
+      checkout{
+        ...CheckoutFragment
+      }
       addresses {
-          id
-          firstName
-          lastName
-          city
-          companyName
-          country {
-            country
-            code
-          }
-          streetAddress1
-          streetAddress2
-          phone
-          postalCode
+          ...AddressFragment
       }
     defaultShippingAddress{
-          id
-          firstName
-          lastName
-          city
-          companyName
-          country {
-            country
-            code
-          }
-          streetAddress1
-          streetAddress2
-          phone
-          postalCode
+          ...AddressFragment
     }
+    orders(first: 10) {
+    edges {
+      node {
+        isPaid
+        lines {
+          productVariantId
+          quantity
+          productName
+          totalPrice {
+            currency
+            gross {
+              amount
+            }
+          }
+        }
+        created
+      }
+    }
+  }
     }
   }
