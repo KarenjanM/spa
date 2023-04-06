@@ -47,7 +47,7 @@ export function RangeInput({ placeholder, refine, value }: { placeholder: string
         <div className="flex flex-row gap-1 place-items-center">
             €
             <div className="border">
-                <input type="number" onChange={handleChange} className="pl-3 pr-1 placeholder:text-stone-700 placeholder:text-xl focus:outline-none" placeholder={placeholder} value={currValue} />
+                <input type="number" onChange={handleChange} className="pl-3 pr-1 py-2 placeholder:text-stone-700 placeholder:text-xl focus:outline-none" placeholder={placeholder} value={currValue} />
             </div>
         </div>
     )

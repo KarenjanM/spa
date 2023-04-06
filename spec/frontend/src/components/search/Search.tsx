@@ -8,7 +8,8 @@ import { Popover, Transition } from '@headlessui/react';
 import { SearchBox } from './SearchBox';
 import { Pagination } from './Pagination';
 import { Hits } from './Hits';
-import { Ranking } from './Ranking';
+import { Ranking, Sorting } from './Ranking';
+import Stats from './Stats';
 
 
 
@@ -26,10 +27,16 @@ export function SearchBlock({ query }: { query?: string }) {
         <div className='text-3xl text-center'>
           {query ? "Suchergebnisse" : "Suchen"}
         </div>
-        <div className='mx-40'>
+        <div className='flex justify-center md:mx-40 md:block'>
           <SearchBox value={query} iconColor="black" className='text-black' />
         </div>
-        <Ranking />
+        <div className='flex flex-col place-items-center sm:place-content-center gap-5 sm:flex-row'>
+          <Ranking />
+          <div className='flex flex-col sm:flex-row sm:place-items-center gap-2 sm:gap-5'>
+            <Sorting />
+            <Stats />
+          </div>
+        </div>
         <Hits isFullPage={true} className='text-black' />
         <Pagination />
       </div>

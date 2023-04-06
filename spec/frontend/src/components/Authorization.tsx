@@ -7,6 +7,8 @@ export default function Authorization({children}){
     const auth = useAppSelector((state)=>state.auth);
 
     useEffect(() => {
+        console.log("status", auth.loggedIn);
+        
         if (!auth.loggedIn) {
             router.push("/login")
         }

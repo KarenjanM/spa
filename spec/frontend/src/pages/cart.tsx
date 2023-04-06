@@ -36,7 +36,7 @@ export default function Cart() {
           {!cart?.lines || cart?.lines?.length === 0 ? (
             <div className='text-center text-2xl font-extrabold'>Your cart is empty</div>
           ) : (
-            <>
+            <div className='px-5'>
               <div className='text-3xl font-semibold'>Dein Warenkorb</div>
               <div className="divide-y">
                 <ColHeaders />
@@ -45,15 +45,15 @@ export default function Cart() {
                     <CartItem lineUpdateMutation={lineUpdateMutation} removeProduct={removeProduct} setLoading={setOperationLoading} checkoutId={checkoutId} variant={variant as ProductVariant} quantity={quantity} lineId={id} />
                   ))}
                 </div>
-                <div className='flex text-end flex-col gap-3'>
+                <div className='flex text-center md:text-end flex-col gap-3'>
                   <div className='pt-3 text-lg font-normal'>Zwischensumme {getCurrencySymbol(cart?.totalPrice?.gross?.currency as any)} {getPrettyPrice(cart?.totalPrice?.gross?.amount - cart?.shippingPrice?.gross?.amount)}</div>
                   <div className='text-sm text-gray-600'>
                     Inklusive Steuern, Versand wird beim Checkout berechnet
                   </div>
-                  <SubmitButton onClick={onSubmit} className='self-end'>Auschecken</SubmitButton>
+                  <SubmitButton onClick={onSubmit} className='self-center md:self-end'>Auschecken</SubmitButton>
                 </div>
               </div>
-            </>
+            </div>
           )}
         </div>
       </>

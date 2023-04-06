@@ -10,6 +10,7 @@ import { useGetCheckout } from "../../hooks/checkout"
 import CheckoutSecure from "../../components/CheckoutSecure"
 import Spinner from "../../components/Spinner"
 import ErrorBlock from "../../components/blocks/ErrorBlock"
+import { CheckoutLayout } from "./information"
 
 export default function CheckoutShipping() {
     const { checkoutId } = useContext(CheckoutContext)
@@ -26,21 +27,27 @@ export default function CheckoutShipping() {
     }, [])
     if (error) return <ErrorBlock />
     if (loading) return <Spinner />;
-    if (data)
+    if (data){
+    console.log("Shipping Methods " )
+    console.log(data?.checkout);
         return (
             <CheckoutSecure>
-            <div className="grid min-h-screen grid-cols-4 divide-x divide-slate-500 pl-40">
-                <div className="py-20 grid col-span-2 bg-white">
-                    <div className="flex flex-col gap-3 mr-20">
-                        <CheckoutHeader shippingAddress={data?.checkout?.shippingAddress} shippingMethod={data?.checkout?.shippingMethod} />
-                        <CheckoutInfoCheck email={data?.checkout?.email} checkoutAddress={data?.checkout?.shippingAddress as Address} />
-                        <CheckoutShippingOptions checkoutId={checkoutId} shippingMethods={data?.checkout?.shippingMethods as Array<ShippingMethod>} />
+                <CheckoutLayout>
+                <div className="flex flex-col gap-3 py-20 bg-white px-5 sm:px-10 md:pl-20 lg:pl-40">
+                        <div className="flex flex-col gap-3 mr-20">
+                            <CheckoutHeader checkout={data?.checkout as Checkout} />
+                            <CheckoutInfoCheck email={data?.checkout?.email} checkoutAddress={data?.checkout?.shippingAddress as Address} />
+                            <CheckoutShippingOptions
+                            selectedShippingMethod={data?.checkout?.shippingMethod as ShippingMethod}
+                            checkoutId={checkoutId}
+                            shippingMethods={data?.checkout?.shippingMethods as Array<ShippingMethod>} />
+                        </div>
                     </div>
-                </div>
-                <CheckoutSidebar checkout={data.checkout as Checkout} />
-            </div>
+                    <CheckoutSidebar checkout={data.checkout as Checkout} />
+                </CheckoutLayout>
             </CheckoutSecure>
         )
+    }
 }
 
 export function CheckoutInfoCheck({ email, checkoutAddress, shippingMethod }: { email: string, checkoutAddress: Address, shippingMethod?: ShippingMethod }) {
@@ -69,9 +76,9 @@ export function CheckoutInfoBlock({ blockName, info, href="" }) {
     )
 }
 
-export function CheckoutShippingOptions({ shippingMethods, checkoutId }: { shippingMethods?: Array<ShippingMethod>, checkoutId: string }) {
+export function CheckoutShippingOptions({selectedShippingMethod, shippingMethods, checkoutId }: { selectedShippingMethod: ShippingMethod, shippingMethods?: Array<ShippingMethod>, checkoutId: string }) {
     const [updateShippingMethod] = useUpdateCheckoutShippingMethodMutation();
-    const [buttonId, setButtonId] = useState("");
+    const [buttonId, setButtonId] = useState<string>(selectedShippingMethod?.id);
     const router = useRouter();
     function onClick(shippingMethodId) {
 
@@ -94,7 +101,7 @@ export function CheckoutShippingOptions({ shippingMethods, checkoutId }: { shipp
     return (
         <form className="flex flex-col gap-2" onSubmit={(e)=>onSubmit(e)}>
             <div className="text-xl self-start px-1">Versand</div>
-            {shippingMethods ? shippingMethods.map((value) => (
+            {shippingMethods.length > 0 ? shippingMethods.map((value) => (
                 <button type="button" className={`border rounded-lg hover:border-black ${buttonId == value.id && "border-black"}`} onClick={() => onClick(value.id)}>
                     <div className="flex flex-row justify-between text-sm px-3 py-3 pointer-events-none">
                         <div>

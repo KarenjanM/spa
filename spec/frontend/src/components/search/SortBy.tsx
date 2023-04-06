@@ -3,7 +3,6 @@ import Select from 'react-select';
 
 export function SortBy(){
     const {
-      initialIndex,
       options,
       refine,
     } = useSortBy({
@@ -20,7 +19,6 @@ export function SortBy(){
       ]
     });
     return (
-      <div>
         <Select 
         options={options}
         defaultValue={options[0]}
@@ -30,6 +28,9 @@ export function SortBy(){
             ...baseStyles, 
             borderWidth: 0,
             cursor: "pointer",
+            fontSize: "0.9rem",
+            lineHeight: "1rem",
+            color: "black",
           }),
           indicatorSeparator: (baseStyles, state)=>({
             display: "none"
@@ -47,8 +48,6 @@ export function SortBy(){
             primary: "black"
           }
         })}
-        
         />
-      </div>
     )
   }

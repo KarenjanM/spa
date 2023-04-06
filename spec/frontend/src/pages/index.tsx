@@ -12,7 +12,7 @@ export default function Home() {
     <div className='pb-10' >
       <div className='flex flex-col gap-10 lg:text-center'>
         <BgBlock />
-        <div className='mx-40'>
+        <div className='mx-5 sm:mx-10 md:mx-20 lg:mx-40'>
           <AboutBlock />
           <Categories />
           <Blogs />
@@ -28,7 +28,7 @@ function Blogs() {
   if (loading) content = <Spinner />;
   if (error) content = <ErrorBlock />;
   if (data) content = (
-    <div className="flex flex-row">
+    <div>
       <BlogCards latestPosts={data.strapi_posts.data} />
     </div>
   );
@@ -47,7 +47,7 @@ function Categories() {
   let content;
   if (loading) content = <Spinner />;
   if (error) content = <ErrorBlock />;
-  if (data) content = (<div className="flex">
+  if (data) content = (<div>
     <ProductCategory categories={data.categories.edges as Array<CategoryCountableEdge>} />
   </div>);
   return (

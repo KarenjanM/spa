@@ -31,16 +31,22 @@ export default function CheckoutInfo(){
     if (data)
     return (
         <CheckoutSecure>
-        <div className="grid min-h-screen grid-cols-4 divide-x divide-slate-500 pl-40">
-        <div className="py-20 grid col-span-2 bg-white">
-            <div className="flex flex-col gap-3">
-                <CheckoutHeader shippingAddress={data?.checkout?.shippingAddress} shippingMethod={data?.checkout?.shippingMethod} />
+        <CheckoutLayout>
+            <div className="flex flex-col gap-3 py-20 bg-white px-5 sm:px-10 md:pl-20 lg:pl-40">
+                <CheckoutHeader checkout={data?.checkout as Checkout} />
                 <CheckoutExpress />
                 <CheckoutForm checkout={data.checkout as Checkout} checkoutId={checkoutId} user={user as User}/>
             </div>
-        </div>
-        <CheckoutSidebar checkout={data.checkout as Checkout}/>
-        </div>
+            <CheckoutSidebar className="hidden lg:block" checkout={data.checkout as Checkout}/>
+        </CheckoutLayout>
         </CheckoutSecure>
+    )
+}
+
+export function CheckoutLayout({children}){
+    return(
+        <div className="flex flex-col lg:justify-center lg:flex-row min-h-screen divide-x divide-slate-500 md:gap-10">
+            {children}
+        </div>
     )
 }

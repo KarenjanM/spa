@@ -38,10 +38,10 @@ export default function Product() {
     await addToCheckout({
       variables: {
         checkoutId: checkoutId,
-        lines: {
+        lines: [{
           variantId: data.product.defaultVariant.id,
           quantity: quantity
-        }
+        }]
       }
     }).then((data)=>{
       console.log(data);
@@ -74,7 +74,7 @@ export default function Product() {
   if (data) {
     const product = data.product
     return (
-      <div className="grid grid-cols-2 mx-20 my-10">
+      <div className="md:grid md:grid-cols-2 mx-20 my-10">
         <div>
           <div className="grid max-w-sm grow rounded overflow px-6">
             <img src={product.thumbnail.url} alt="image" className="w-full group-hover:scale-105 transition" />

@@ -78,7 +78,7 @@ export default function CheckoutForm({user, checkoutId, checkout} : {user: User,
     }
 
     return (
-        <form className="flex flex-col gap-5 mr-20" onSubmit={handleSubmit(onSubmit)} >
+        <form className="flex flex-col gap-5" onSubmit={handleSubmit(onSubmit)} >
             <ContactForm email={email} setEmail={setEmail} user={user as User}/>
             <div className="text-xl self-start pb-2">Lieferadresse</div>
             <div key={currAddrId} className="flex flex-col gap-4 ">
