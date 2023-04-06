@@ -3,7 +3,7 @@ import { ArrowRightIcon } from "@heroicons/react/24/outline";
 export default function EmailForm(){
     return (
         <form action="#">
-              <div className="flex flex-col gap-4 mx-auto mb-3 space-y-4 max-w-screen-sm sm:flex sm:space-y-0">
+              <div className="flex flex-col items-center sm:items-start mx-auto mb-3 space-y-4 max-w-screen-sm">
                 <div className="text-gray-100 font-medium">Subscribe to our emails</div>
                 <div className="flex flex-row border border-gray-300">
                     <div>

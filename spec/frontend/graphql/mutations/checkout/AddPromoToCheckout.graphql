@@ -1,0 +1,11 @@
+mutation AddPromoToCheckout($id: ID!, $promoCode: String!){
+    checkoutAddPromoCode(id: $id, promoCode: $promoCode){
+        checkout{
+            ...CheckoutFragment
+        }
+        errors{
+            message
+            code
+        }
+    }
+}

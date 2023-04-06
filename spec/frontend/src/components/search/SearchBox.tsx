@@ -16,8 +16,8 @@ export function SearchBox({ className, value, setValue, iconColor }: { className
     };
     return (
       <div>
-        <div className='flex flex-row gap-5 place-items-center border border-gray-200 px-3 py-3'>
-          <input value={query} type="text" onChange={handleChange} placeholder={"Suchen"} className={`${className} bg-transparent w-full text-sm bg-transparent sm:rounded-none sm:rounded-l-lg focus:outline-none pr-20`} />
+        <div className='flex flex-row justify-between place-items-center border border-gray-200 py-3 px-3'>
+          <input value={query} type="text" onChange={handleChange} placeholder={"Suchen"} className={`${className} bg-transparent w-full text-sm bg-transparent sm:rounded-none focus:outline-none`} />
           <FontAwesomeIcon icon={faSearch} color={iconColor} />
         </div>
       </div>

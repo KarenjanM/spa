@@ -4,14 +4,14 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
 import { FilterPopover } from "./FilterPopover";
 import { RangeMenu } from "./RangeMenu";
-import { Configure, useStats } from "react-instantsearch-hooks-web";
+import { Configure } from "react-instantsearch-hooks-web";
 
 export function Ranking() {
+
     return (
-        <div className='flex flex-row justify-between'>
+        <div className='flex flex-col md:flex-row gap-4'>
             <Configure />
             <Filtering />
-            <Sorting />
         </div>
     )
 }
@@ -30,16 +30,12 @@ export function Filtering() {
 }
 
 export function Sorting() {
-    const stats = useStats();
     return (
-        <div className='flex flex-row gap-2 place-items-center cursor-pointer'>
+        <div className='flex flex-col sm:flex-row sm:gap-2 sm:place-items-center place-items-start cursor-pointer'>
             <div className='text-sm'>
                 Sortieren nach:
             </div>
             <SortBy />
-            <div>
-            {stats.nbHits} Ergebnisse
-            </div>
         </div>
     )
 }

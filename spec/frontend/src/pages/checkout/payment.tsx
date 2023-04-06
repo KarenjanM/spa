@@ -11,6 +11,7 @@ import { useRouter } from "next/router"
 import CheckoutSecure from "../../components/CheckoutSecure"
 import { ClipLoader } from "react-spinners"
 import Spinner from "../../components/Spinner"
+import { CheckoutLayout } from "./information"
 
 
 export default function CheckoutPayment() {
@@ -32,17 +33,17 @@ export default function CheckoutPayment() {
     if (data)
         return (
             <CheckoutSecure>
-                <div className="grid min-h-screen grid-cols-4 divide-x divide-slate-500 pl-40">
-                    <div className="py-20 grid col-span-2 bg-white">
+                <CheckoutLayout>
+                    <div className="flex flex-col gap-3 py-20 bg-white px-5 sm:px-10 md:pl-20 lg:pl-40">
                         <div className="flex flex-col gap-3 mr-20">
-                            <CheckoutHeader shippingAddress={data?.checkout?.shippingAddress} shippingMethod={data?.checkout?.shippingMethod} />
+                            <CheckoutHeader checkout={data?.checkout as Checkout} />
                             <CheckoutInfoCheck email={data?.checkout?.email} checkoutAddress={data?.checkout?.shippingAddress as Address}
                                 shippingMethod={data?.checkout?.shippingMethod as ShippingMethod} />
                             <CheckoutPaymentBlock checkout={data?.checkout as Checkout} />
                         </div>
                     </div>
                     <CheckoutSidebar checkout={data.checkout as Checkout} />
-                </div>
+                </CheckoutLayout>
             </CheckoutSecure>
         )
 }

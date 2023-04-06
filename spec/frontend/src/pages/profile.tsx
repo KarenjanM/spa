@@ -10,10 +10,8 @@ import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheck, faChevronDown, faChevronUp } from "@fortawesome/free-solid-svg-icons";
 import getFormattedDate from "../lib/getFormattedDate";
-import { QueryResult } from "@apollo/client";
 import { ApolloError } from "apollo-client";
 import { AdressBlock } from "../components/adress/AdressBlock";
-import { Divider } from "semantic-ui-react";
 
 
 export default function Profile() {
@@ -35,7 +33,7 @@ export default function Profile() {
             Abmelden
           </button>
         </div>
-        <div className="flex flex-row justify-between">
+        <div className="flex flex-col gap-10 sm:flex-row sm:justify-between">
           <div className="flex flex-col gap-3 cursor-pointer" >
             <ProfileHeader size="3xl" onClick={() => setShowOrders(!showOrders)}>
               Bestellhistorie
@@ -58,7 +56,7 @@ export default function Profile() {
                   </div>
                 </div>) : (<div className="text-stone-500">Noch keine Adresse gestellt</div>)}
             </div>
-            <Link href={'/adresses'} className="underline underline-offset-2 hover:decoration-2">Adressen anzeigen</Link>
+            <Link href={'/adresses'} className="underline underline-offset-2 hover:decoration-2">Adressen anzeigen{data?.me?.addresses?.length > 0 ? `(${data.me?.addresses?.length})` : "(0)" }</Link>
           </div>
         </div>
       </ProfileLayout>
@@ -87,7 +85,7 @@ export function Orders({ data, loading, error }: { data: GetUserQuery, loading: 
     console.log(data?.me?.orders?.edges[0]);
 
     let component = data?.me?.orders?.edges?.length > 0 ? (
-      <div className="flex flex-col gap-4 px-3">
+      <div className="flex flex-col gap-4">
         <div className="flex flex-col">
           {!show && <div>Letzte Bestellung: </div>}
           <Order node={data?.me?.orders?.edges[0].node} />

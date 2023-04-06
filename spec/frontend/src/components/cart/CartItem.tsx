@@ -32,7 +32,7 @@ export function CartItem(props: CartItemProps & {setLoading: (value: boolean)=>v
     props.removeProduct({ variables: { linesIds: props.lineId } })
   }
   return (
-    <div className='grid grid-cols-5 px-12'>
+    <div className='flex flex-row justify-between md:grid md:grid-cols-5 px-12'>
       <div className='flex flex-row col-span-3'>
         <div>
           <img alt={props.variant.product.name} src={props.variant.product.thumbnail.url} className="h-32 w-32" />
@@ -40,9 +40,19 @@ export function CartItem(props: CartItemProps & {setLoading: (value: boolean)=>v
         <div className="flex flex-col">
           <p className='text-base'>{props.variant.product.name}</p>
           <p className='text-sm'>{getCurrencySymbol(props.variant.pricing.price.gross.currency as any)} {getPrettyPrice(props.variant.pricing.price.gross.amount)}</p>
+        <QuantityBlock className="md:hidden"
+        decreaseQuantity={decreaseQuantity} stateQuantity={stateQuantity} increaseQuantity={increaseQuantity} remove={remove}/>
         </div>
       </div>
-      <div className="justify-between text-center col-span-1">
+      <QuantityBlock className="hidden md:block" decreaseQuantity={decreaseQuantity} stateQuantity={stateQuantity} increaseQuantity={increaseQuantity} remove={remove}/>
+      <div className='md:col-span-1'>$ {getPrettyPrice(props.quantity * props.variant.pricing.price.gross.amount)}</div>
+    </div>
+  )
+}
+
+function QuantityBlock({className="", decreaseQuantity, stateQuantity, increaseQuantity, remove}){
+  return(
+    <div className={`${className} text-center col-span-0 md:col-span-1`}>
         <div className='flex flex-row gap-4 py-2'>
           <div className="flex flex-row gap-4 px-2 border border-black">
             <button onClick={decreaseQuantity}>
@@ -58,7 +68,5 @@ export function CartItem(props: CartItemProps & {setLoading: (value: boolean)=>v
           </button>
         </div>
       </div>
-      <p>$ {getPrettyPrice(props.quantity * props.variant.pricing.price.gross.amount)}</p>
-    </div>
   )
 }

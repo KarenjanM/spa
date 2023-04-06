@@ -24,12 +24,12 @@ export default function useLogOut(){
             tokenDeactivateMutation()
             .then(()=>{
                 console.log("Logging out");
-                logOut()
+                logOut();
             })
             .catch((e) =>{
                 console.log("Error by logging out");
                 console.log(e);
-                logOut()
+                logOut();
             })
     }, [auth.loggedIn])
     

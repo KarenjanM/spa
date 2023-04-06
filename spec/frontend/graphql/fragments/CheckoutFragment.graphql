@@ -1,6 +1,9 @@
 fragment CheckoutFragment on Checkout{
     id
     email
+    discount{
+      amount
+    }
     shippingMethods {
       id
       name

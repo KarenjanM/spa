@@ -38,7 +38,7 @@ export default function LoginForm(){
         console.log("after token creation");
     }
         return(
-            <form action="#" className="flex flex-col gap-6 self-center text-center py-20 px-40" onSubmit={handleSubmit(onSubmit)}>
+            <form action="#" className="flex flex-col gap-6 self-center text-center py-20 px-20 md:px-40 lg:px-80" onSubmit={handleSubmit(onSubmit)}>
                 <div className="text-3xl tracking-wide">
                     Login
                 </div>
