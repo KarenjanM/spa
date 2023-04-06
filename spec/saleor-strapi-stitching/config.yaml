@@ -1,8 +1,0 @@
-access:
-  policies:
-    - type: Query
-      policyDefault:
-        condition: "true"
-    - type: Mutation
-      policyDefault:
-        condition: "true"

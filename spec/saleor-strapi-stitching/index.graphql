@@ -1,9 +1,0 @@
-schema
-  @sdl(
-    files: [
-      "graphql-02/index.graphql"
-      "graphql-03/index.graphql"
-    ]
-  ) {
-  query: Query
-}
