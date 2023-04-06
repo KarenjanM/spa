@@ -38,10 +38,10 @@ export default function Product() {
     await addToCheckout({
       variables: {
         checkoutId: checkoutId,
-        lines: {
+        lines: [{
           variantId: data.product.defaultVariant.id,
           quantity: quantity
-        }
+        }]
       }
     }).then((data)=>{
       console.log(data);
