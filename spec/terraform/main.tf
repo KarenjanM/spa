@@ -7,7 +7,7 @@ terraform{
 
 provider "google" {
   credentials = "${file("credentials.json")}"
-  project     = "infrastructure-test-env"
+  project     = var.gcp_project_id
   region      = var.gcp_region
   zone        = var.gcp_region
 }
@@ -50,7 +50,7 @@ resource "google_compute_instance" "gpu-vm" {
 
   service_account {
   # Google recommends custom service accounts that have cloud-platform scope and permissions granted via IAM Roles.
-  email  = "gcp-terraform-dl@infrastructure-test-env.iam.gserviceaccount.com"
+  email  = var.gcp_service_account_engine
   scopes = ["cloud-platform"]
   }
 }
