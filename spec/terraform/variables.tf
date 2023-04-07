@@ -11,9 +11,16 @@ variable "gcp_region_1" {
   default = "europe-west1"
 }
 
-# define GCP region
+# define GCP project id
 variable "gcp_project_id" {
   type = string
   description = "GCP Project id"
-  default = ""
+  default = "saleor-382911"
+}
+
+# define GCP project id
+variable "gcp_service_account_engine" {
+  type = string
+  description = "GCP compute engine service account"
+  default = "compute-engine@saleor-382911.iam.gserviceaccount.com"
 }
