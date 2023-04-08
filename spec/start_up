@@ -1,1 +1,0 @@
-docker-compose -f ./saleor-platform/docker-compose.yml -f ./docker-compose.prod.yml build
