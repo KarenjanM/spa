@@ -26,8 +26,10 @@ export default function Login(){
   useEffect(()=>{
     if(loggedIn){
       client.resetStore();
-      console.log(window.history);
-      router.back();
+      if(window.history.state.url.includes("email_confirm") || window.history.state.url.includes("login"))
+        router.push("/profile")
+      else
+        router.back();
       if(user)
         setCheckoutId(user?.user?.checkout?.id);
     }
