@@ -9,6 +9,7 @@ accountRegister(
       }
       user{
         email
+        isActive
       }
     }
   }

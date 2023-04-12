@@ -6,7 +6,7 @@ export default function ProductList({ products }) {
   console.log(latestProducts);
   
   return (
-    <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4 py-6">
+    <div className="grid md:grid-cols-2 lg:grid-cols-4 place-items-center gap-4 py-6">
       {latestProducts.map((product) =>
         <div className="bg-white flex place-items-stretch">
           <Product product={product} />

@@ -2,66 +2,66 @@ import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import SubmitButton from "../buttons/SubmitButton"
 import { AuthInput } from "./LoginForm"
-import { AccountRegisterMutationResult, useAccountRegisterMutation } from "../../../generated/graphql";
+import { useAccountRegisterMutation } from "../../../generated/graphql";
 import { useForm } from "react-hook-form"
 
 
-export default function RegisterForm({setShow, setAlertText}){
+export default function RegisterForm({ setShow, setAlertText }) {
     const router = useRouter();
     const [success, setSuccess] = useState(false);
-    useEffect(()=>{
-        if(success)
-            router.push("login");
+    useEffect(() => {
+        if (success)
+            router.push("/register/success");
     }, [success])
     const [accountRegister] = useAccountRegisterMutation({
         variables: {
             input: {
                 email: "",
                 password: "",
-                channel: "default-channel"
+                channel: "default-channel",
+                redirectUrl: "http://localhost:3002/email_confirm"
             }
         }
     })
-    const {register, handleSubmit}= useForm({defaultValues: {
-        firstName: "",
-        lastName: "",
-        email: "",
-        password: "",
-    }});
-    async function onSubmit(formData){
-        console.log("change");
-        
+    const { register, handleSubmit } = useForm({
+        defaultValues: {
+            firstName: "",
+            lastName: "",
+            email: "",
+            password: "",
+        }
+    });
+    async function onSubmit(formData) {
         const data = await accountRegister({
             variables: {
                 input: {
                     ...formData,
                     channel: "default-channel",
-                    redirectUrl: "http://localhost:3002"
+                    redirectUrl: "http://localhost:3002/email_confirm"
                 }
             }
         });
         console.log(data);
         setSuccess(true);
-        console.log(data.data.accountRegister);
-        if(data.data.accountRegister.errors.length > 0){
+        if (data.data.accountRegister.errors.length > 0) {
             setSuccess(false)
             setShow(true)
             setAlertText(data.data?.accountRegister?.errors[0]?.message)
         }
     }
-    return(
+    return (
         <form action="#" className="flex flex-col gap-6 self-center text-center py-20 px-40 " onSubmit={handleSubmit(onSubmit)}>
             <div className="text-3xl tracking-wide">
-            Konto erstellen
+                Konto erstellen
             </div>
             <div className="flex flex-col gap-4">
-                <AuthInput minLength={2} placeholder="First Name" {...register("firstName")} type={"text"}/>
-                <AuthInput minLength={2} placeholder="Last Name" {...register("lastName")} type={"text"}/>
-                <AuthInput minLength={3} placeholder="E-Mail" {...register("email")} type={"email"}/>
-                <AuthInput minLength={8} placeholder="Passwort" {...register("password")} type={"password"}/>
+                <AuthInput minLength={2} placeholder="First Name" {...register("firstName")} type={"text"} />
+                <AuthInput minLength={2} placeholder="Last Name" {...register("lastName")} type={"text"} />
+                <AuthInput minLength={3} placeholder="E-Mail" {...register("email")} type={"email"} />
+                <AuthInput minLength={8} placeholder="Passwort" {...register("password")} type={"password"} />
             </div>
             <div className="flex flex-col grow-0 justify-center gap-4">
-            <SubmitButton>Erstellen</SubmitButton>
+                <SubmitButton>Erstellen</SubmitButton>
             </div>
         </form>
     )
