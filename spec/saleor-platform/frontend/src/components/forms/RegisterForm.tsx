@@ -2,7 +2,7 @@ import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import SubmitButton from "../buttons/SubmitButton"
 import { AuthInput } from "./LoginForm"
-import { useAccountRegisterMutation } from "../../../generated/graphql";
+import { AccountRegisterMutationResult, useAccountRegisterMutation } from "../../../generated/graphql";
 import { useForm } from "react-hook-form"
 
 
@@ -28,23 +28,26 @@ export default function RegisterForm({setShow, setAlertText}){
         email: "",
         password: "",
     }});
-    async function onSubmit(data){
-        await accountRegister({
+    async function onSubmit(formData){
+        console.log("change");
+        
+        const data = await accountRegister({
             variables: {
                 input: {
-                    ...data,
+                    ...formData,
                     channel: "default-channel",
                     redirectUrl: "http://localhost:3002"
                 }
             }
-        }).then((data) => {
-            console.log(data)
-            if(data.data.accountRegister.errors){
-                setSuccess(false)
-                setShow(true)
-                setAlertText(data.data.accountRegister.errors[0].message)
-            }
-        })
+        });
+        console.log(data);
+        setSuccess(true);
+        console.log(data.data.accountRegister);
+        if(data.data.accountRegister.errors.length > 0){
+            setSuccess(false)
+            setShow(true)
+            setAlertText(data.data?.accountRegister?.errors[0]?.message)
+        }
     }
     return(
         <form action="#" className="flex flex-col gap-6 self-center text-center py-20 px-40 " onSubmit={handleSubmit(onSubmit)}>
