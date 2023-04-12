@@ -46,7 +46,7 @@ export default function Profile() {
                 Kontodetails
               </ProfileHeader>
               <div className="text-lg">
-                {data?.me.firstName} {data?.me?.lastName}
+                {data?.me?.firstName} {data?.me?.lastName}
               </div>
               {data?.me?.addresses?.length > 0 ? (
                 <div className="flex flex-col">

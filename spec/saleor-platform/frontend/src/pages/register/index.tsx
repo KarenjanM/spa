@@ -1,8 +1,8 @@
 import { useRouter } from "next/router"
 import { useEffect, useState } from "react"
-import AuthAlert from "../components/Alert";
-import RegisterForm from "../components/forms/RegisterForm"
-import { useAppSelector } from "../redux/hooks";
+import AuthAlert from "../../components/Alert";
+import RegisterForm from "../../components/forms/RegisterForm"
+import { useAppSelector } from "../../redux/hooks";
 
 export default function Register(){
     const router = useRouter();

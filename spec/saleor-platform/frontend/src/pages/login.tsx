@@ -22,9 +22,11 @@ export default function Login(){
   const loggedIn = useVerify({auth});
   const router = useRouter();
   const [showAlert, setAlert] = useState(false);
+
   useEffect(()=>{
     if(loggedIn){
-      client.resetStore()
+      client.resetStore();
+      console.log(window.history);
       router.back();
       if(user)
         setCheckoutId(user?.user?.checkout?.id);
