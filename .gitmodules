@@ -1,0 +1,3 @@
+[submodule "spec/apps"]
+	path = spec/apps
+	url = https://github.com/saleor/apps.git
