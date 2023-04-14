@@ -4,7 +4,7 @@ import { Fragment } from 'react';
 import { Obj } from 'reselect/es/types';
 
 
-export default function AuthAlert({show, text, hide}: {show?: boolean, text: string, hide: ()=>void}){
+export default function AuthAlert({show, text, hide}: {show?: boolean, text?: string, hide: ()=>void}){
     return(
         <Transition
         as={Fragment}
