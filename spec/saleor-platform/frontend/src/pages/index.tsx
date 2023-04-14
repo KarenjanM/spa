@@ -15,7 +15,7 @@ export default function Home() {
         <div className='mx-5 sm:mx-10 md:mx-20 lg:mx-40'>
           <AboutBlock />
           <Categories />
-          <Blogs />
+          {/* <Blogs /> */}
         </div>
         <SloganBlock />
       </div>

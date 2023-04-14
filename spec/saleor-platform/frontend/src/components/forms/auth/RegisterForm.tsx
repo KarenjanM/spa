@@ -1,9 +1,10 @@
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
-import SubmitButton from "../buttons/SubmitButton"
+import SubmitButton from "../../buttons/SubmitButton"
 import { AuthInput } from "./LoginForm"
-import { useAccountRegisterMutation } from "../../../generated/graphql";
+import { useAccountRegisterMutation } from "../../../../generated/graphql";
 import { useForm } from "react-hook-form"
+import { AuthForm } from "./AuthForm";
 
 
 export default function RegisterForm({ setShow, setAlertText }) {
@@ -19,7 +20,7 @@ export default function RegisterForm({ setShow, setAlertText }) {
                 email: "",
                 password: "",
                 channel: "default-channel",
-                redirectUrl: "http://localhost:3002/email_confirm"
+                redirectUrl: "http://localhost:3002/register/email_confirm"
             }
         }
     })
@@ -37,7 +38,7 @@ export default function RegisterForm({ setShow, setAlertText }) {
                 input: {
                     ...formData,
                     channel: "default-channel",
-                    redirectUrl: "http://localhost:3002/email_confirm"
+                    redirectUrl: "http://localhost:3002/register/email_confirm"
                 }
             }
         });
@@ -50,7 +51,7 @@ export default function RegisterForm({ setShow, setAlertText }) {
         }
     }
     return (
-        <form action="#" className="flex flex-col gap-6 self-center text-center py-20 px-40 " onSubmit={handleSubmit(onSubmit)}>
+        <AuthForm onSubmit={handleSubmit(onSubmit)}>
             <div className="text-3xl tracking-wide">
                 Konto erstellen
             </div>
@@ -63,6 +64,6 @@ export default function RegisterForm({ setShow, setAlertText }) {
             <div className="flex flex-col grow-0 justify-center gap-4">
                 <SubmitButton>Erstellen</SubmitButton>
             </div>
-        </form>
+        </AuthForm>
     )
 }

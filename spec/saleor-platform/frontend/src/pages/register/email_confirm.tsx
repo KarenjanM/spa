@@ -1,9 +1,9 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useEffect, useMemo } from "react";
-import { useAccountConfirmMutation } from "../../generated/graphql"
-import ErrorBlock from "../components/blocks/ErrorBlock";
-import Spinner from "../components/Spinner";
+import { useAccountConfirmMutation } from "../../../generated/graphql"
+import ErrorBlock from "../../components/blocks/ErrorBlock";
+import Spinner from "../../components/Spinner";
 
 export default function EmailConfirm() {
     const router = useRouter();
