@@ -16,9 +16,9 @@ export default function ResetPassword(){
         requestPasswordReset({
             variables: {
                 email: email, 
-                redirectUrl: "http://localhost:3002/login/reset_password"     
+                redirectUrl: "http://localhost:3002/login/reset_password",     
             }
-        });
+        }).then((data)=>console.log(data))
         if(!error)
             router.push("/login/request_success")
     }

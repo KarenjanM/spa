@@ -26995,10 +26995,13 @@ export type GetProductByIdQueryVariables = Exact<{
 
 export type GetProductByIdQuery = { __typename?: 'Query', product?: { __typename?: 'Product', id: string, name: string, description?: any | null, thumbnail?: { __typename?: 'Image', url: string } | null, pricing?: { __typename?: 'ProductPricingInfo', priceRange?: { __typename?: 'TaxedMoneyRange', stop?: { __typename?: 'TaxedMoney', gross: { __typename?: 'Money', amount: number, currency: string } } | null } | null } | null, defaultVariant?: { __typename?: 'ProductVariant', id: string } | null } | null };
 
-export type LatestProductQueryVariables = Exact<{ [key: string]: never; }>;
+export type LatestProductQueryVariables = Exact<{
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+}>;
 
 
-export type LatestProductQuery = { __typename?: 'Query', products?: { __typename?: 'ProductCountableConnection', edges: Array<{ __typename?: 'ProductCountableEdge', node: { __typename?: 'Product', id: string, name: string, description?: any | null, thumbnail?: { __typename?: 'Image', url: string } | null, pricing?: { __typename?: 'ProductPricingInfo', priceRange?: { __typename?: 'TaxedMoneyRange', stop?: { __typename?: 'TaxedMoney', gross: { __typename?: 'Money', amount: number, currency: string } } | null } | null } | null, defaultVariant?: { __typename?: 'ProductVariant', id: string } | null } }> } | null };
+export type LatestProductQuery = { __typename?: 'Query', products?: { __typename?: 'ProductCountableConnection', edges: Array<{ __typename?: 'ProductCountableEdge', node: { __typename?: 'Product', id: string, name: string, description?: any | null, thumbnail?: { __typename?: 'Image', url: string } | null, pricing?: { __typename?: 'ProductPricingInfo', priceRange?: { __typename?: 'TaxedMoneyRange', stop?: { __typename?: 'TaxedMoney', gross: { __typename?: 'Money', amount: number, currency: string } } | null } | null } | null, defaultVariant?: { __typename?: 'ProductVariant', id: string } | null } }>, pageInfo: { __typename?: 'PageInfo', hasNextPage: boolean, hasPreviousPage: boolean, startCursor: string, endCursor: string } } | null };
 
 export const AddressFragmentFragmentDoc = gql`
     fragment AddressFragment on Address {
@@ -27350,7 +27353,11 @@ export type AccountConfirmMutationResult = Apollo.MutationResult<AccountConfirmM
 export type AccountConfirmMutationOptions = Apollo.BaseMutationOptions<AccountConfirmMutation, AccountConfirmMutationVariables>;
 export const RequestResetPasswordDocument = gql`
     mutation RequestResetPassword($email: String!, $redirectUrl: String!) {
-  requestPasswordReset(email: $email, redirectUrl: $redirectUrl) {
+  requestPasswordReset(
+    email: $email
+    redirectUrl: $redirectUrl
+    channel: "default-channel"
+  ) {
     errors {
       message
       field
@@ -28481,8 +28488,8 @@ export type GetProductByIdQueryHookResult = ReturnType<typeof useGetProductByIdQ
 export type GetProductByIdLazyQueryHookResult = ReturnType<typeof useGetProductByIdLazyQuery>;
 export type GetProductByIdQueryResult = Apollo.QueryResult<GetProductByIdQuery, GetProductByIdQueryVariables>;
 export const LatestProductDocument = gql`
-    query latestProduct {
-  products(first: 10, channel: "default-channel") {
+    query latestProduct($after: String, $before: String) {
+  products(first: 12, after: $after, before: $before, channel: "default-channel") {
     edges {
       node {
         id
@@ -28506,6 +28513,12 @@ export const LatestProductDocument = gql`
         }
       }
     }
+    pageInfo {
+      hasNextPage
+      hasPreviousPage
+      startCursor
+      endCursor
+    }
   }
 }
     `;
@@ -28522,6 +28535,8 @@ export const LatestProductDocument = gql`
  * @example
  * const { data, loading, error } = useLatestProductQuery({
  *   variables: {
+ *      after: // value for 'after'
+ *      before: // value for 'before'
  *   },
  * });
  */
