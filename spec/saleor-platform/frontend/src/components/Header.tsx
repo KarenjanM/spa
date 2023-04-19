@@ -1,4 +1,4 @@
-import { Fragment, useContext, useState } from 'react';
+import { Fragment, useContext, useMemo, useState } from 'react';
 import { Popover, Transition } from '@headlessui/react';
 import {
   Bars3Icon,
@@ -55,6 +55,9 @@ export default function Header() {
   const { checkoutId } = useContext(CheckoutContext);
   const { data, loading, error } = useGetCheckout({ checkoutId: checkoutId });
   const [showSearch, setShowSearch] = useState(false);
+  const [hideOverflow, setHideOverflow] = useState(false);
+
+  useMemo(()=>hideOverflow ? document.body.classList.add("overflow-hidden") : document.body.remove("overflow-hidden"), [hideOverflow])
 
   function getTotalQuantity() {
     let total = 0;
@@ -67,6 +70,10 @@ export default function Header() {
 
   return (
     <Popover id='header' className="relative bg-stone-600">
+      {({open})=>{
+        open !== hideOverflow && setHideOverflow(open);
+        return (
+      <>
       <div className="mx-auto max-w-7xl px-6">
         <div className={`flex flex-row items-center border-gray-100 py-6 ${showSearch ? "justify-center" : "justify-between"} `}>
           {showSearch ? (
@@ -78,8 +85,8 @@ export default function Header() {
             <>
               <div className="-my-2 -mr-2 md:hidden">
                 <Popover.Button className="items-center justify-center rounded-md p-2 text-gray-400 hover:bg-stone-700 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
-                  <span className="sr-only">Open menu</span>
-                  <Bars3Icon className="h-6 w-6" aria-hidden="true" />
+                  <span className="sr-only">{open ? "Close menu" : "Open menu"}</span>
+                  {open ? <XMarkIcon className="h-6 w-6" aria-hidden="true"/> : <Bars3Icon className="h-6 w-6" aria-hidden="true" />}
                 </Popover.Button>
               </div>
               <div className='flex flex-row gap-10 place-items-center'>
@@ -121,6 +128,7 @@ export default function Header() {
         </div>
       </div>
       <SideNavbar />
+      </>)}}
     </Popover>
   )
 }
@@ -200,11 +208,8 @@ export function SideNavbar() {
       leaveFrom="opacity-100 translate-y-0"
       leaveTo="opacity-0 translate-y-1"
     >
-      <Popover.Panel className="absolute top-0 left-0 bg-stone-600 w-5/6 h-screen">
-        <Popover.Button className="absolute top-5 left-6 rounded-md text-gray-400 py-2 px-2 hover:bg-stone-700 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
-          <span className="sr-only">Close menu</span>
-          <XMarkIcon className="h-6 w-6" aria-hidden="true" />
-        </Popover.Button>
+      <Popover.Panel className="fixed z-10 overflow-hidden bg-stone-600 w-5/6 h-screen">
+
         <div className='flex flex-col gap-5 py-40 px-10'>
           <Link href="/" className="text-gray-300 text-2xl hover:text-white hover:underline">
             Startseite
@@ -238,12 +243,7 @@ export function SideNavbar() {
                   leaveTo="opacity-0 translate-y-1"
                 >
                   <Popover.Panel className="absolute top-0 left-0 w-5/6">
-
                     <div className="overflow-hidden">
-                    <Popover.Button className="absolute top-5 left-6 rounded-md text-gray-400 py-2 px-2 hover:bg-stone-700 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
-                      <span className="sr-only">Close menu</span>
-                      <XMarkIcon className="h-6 w-6" aria-hidden="true" />
-                    </Popover.Button>
                       <div className="relative grid gap-6 bg-stone-600 px-5 py-6 sm:gap-8 sm:p-8">
                         {solutions.map((item) => (
                           <Link

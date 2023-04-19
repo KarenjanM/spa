@@ -5,6 +5,7 @@ import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
 import { FilterPopover } from "./FilterPopover";
 import { RangeMenu } from "./RangeMenu";
 import { Configure } from "react-instantsearch-hooks-web";
+import { Popover } from "@headlessui/react";
 
 export function Ranking() {
 
@@ -42,20 +43,18 @@ export function Sorting() {
 
 
 export function Pricing() {
-    const [show, setShow] = useState(false);
-
     return (
-        <div>
-            <div onClick={() => setShow(!show)} className="cursor-pointer group flex flex-row gap-2">
+        <Popover>
+            <Popover.Button className="cursor-pointer group flex flex-row gap-2">
                 <div className="group-hover:underline">
                     Pricing
                 </div>
                 <FontAwesomeIcon icon={faChevronDown} className="self-center w-3 h-3" />
-            </div>
-            <FilterPopover show={show}>
+            </Popover.Button>
+            <FilterPopover>
                 <RangeMenu />
             </FilterPopover>
-        </div>
+        </Popover>
     )
 }
 
@@ -83,19 +82,17 @@ export function AvailabilityMenu() {
 }
 
 export function Availability() {
-    const [show, setShow] = useState(false);
-
     return (
-        <div>
-            <div onClick={() => setShow(!show)} className="cursor-pointer group flex flex-row gap-2">
+        <Popover>
+            <Popover.Button className="cursor-pointer group flex flex-row gap-2">
                 <div className="group-hover:underline">
                     Verfügbarkeit
                 </div>
                 <FontAwesomeIcon icon={faChevronDown} className="self-center w-3 h-3" />
-            </div>
-            <FilterPopover show={show}>
+            </Popover.Button>
+            <FilterPopover>
                 <AvailabilityMenu />
             </FilterPopover>
-        </div>
+        </Popover>
     )
 }
