@@ -5,13 +5,8 @@ export function RangeMenu() {
     const {
         start,
         range,
-        canRefine,
         refine,
-        sendEvent,
     } = useRange({ attribute: "grossPrice" });
-    console.log(start);
-    console.log(start[0]);
-    console.log(start[1]);
     
     function handleClick() {
         refine(undefined);
