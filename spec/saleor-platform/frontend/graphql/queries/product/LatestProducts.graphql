@@ -1,6 +1,7 @@
-query latestProduct($after: String, $before: String){
+query latestProduct($first: Int, $last: Int, $after: String, $before: String){
     products(
-      first: 12,
+      first: $first,
+      last: $last,
       after: $after,
       before: $before,
       channel: "default-channel")
