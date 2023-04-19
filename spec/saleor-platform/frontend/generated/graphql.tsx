@@ -26996,6 +26996,8 @@ export type GetProductByIdQueryVariables = Exact<{
 export type GetProductByIdQuery = { __typename?: 'Query', product?: { __typename?: 'Product', id: string, name: string, description?: any | null, thumbnail?: { __typename?: 'Image', url: string } | null, pricing?: { __typename?: 'ProductPricingInfo', priceRange?: { __typename?: 'TaxedMoneyRange', stop?: { __typename?: 'TaxedMoney', gross: { __typename?: 'Money', amount: number, currency: string } } | null } | null } | null, defaultVariant?: { __typename?: 'ProductVariant', id: string } | null } | null };
 
 export type LatestProductQueryVariables = Exact<{
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
   after?: InputMaybe<Scalars['String']>;
   before?: InputMaybe<Scalars['String']>;
 }>;
@@ -28488,8 +28490,14 @@ export type GetProductByIdQueryHookResult = ReturnType<typeof useGetProductByIdQ
 export type GetProductByIdLazyQueryHookResult = ReturnType<typeof useGetProductByIdLazyQuery>;
 export type GetProductByIdQueryResult = Apollo.QueryResult<GetProductByIdQuery, GetProductByIdQueryVariables>;
 export const LatestProductDocument = gql`
-    query latestProduct($after: String, $before: String) {
-  products(first: 12, after: $after, before: $before, channel: "default-channel") {
+    query latestProduct($first: Int, $last: Int, $after: String, $before: String) {
+  products(
+    first: $first
+    last: $last
+    after: $after
+    before: $before
+    channel: "default-channel"
+  ) {
     edges {
       node {
         id
@@ -28535,6 +28543,8 @@ export const LatestProductDocument = gql`
  * @example
  * const { data, loading, error } = useLatestProductQuery({
  *   variables: {
+ *      first: // value for 'first'
+ *      last: // value for 'last'
  *      after: // value for 'after'
  *      before: // value for 'before'
  *   },
