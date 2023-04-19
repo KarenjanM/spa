@@ -47,7 +47,7 @@ export default function LoginForm() {
             <div className="flex flex-col gap-4">
                 <AuthInput minLength={3} placeholder="E-Mail" {...register("email")} type={"email"} />
                 <AuthInput minLength={8} placeholder="Passwort" {...register("password")} type={"password"} />
-                <Link href="/login/reset_password" className="underline text-sm self-start hover:underline">
+                <Link href="/login/request_reset" className="underline text-sm self-start hover:underline">
                     Hast du dein Passwort vergessen?
                 </Link>
             </div>
