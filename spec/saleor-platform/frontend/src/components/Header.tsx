@@ -1,5 +1,5 @@
 import { Fragment, useContext, useMemo, useState } from 'react';
-import { Popover, Transition } from '@headlessui/react';
+import { Transition, Popover } from '@headlessui/react';
 import {
   Bars3Icon,
   ChartBarIcon,
@@ -12,7 +12,8 @@ import {
   MagnifyingGlassIcon,
   UserIcon,
   ShoppingBagIcon,
-  ArrowRightIcon
+  ArrowRightIcon,
+  ArrowLeftIcon
 } from '@heroicons/react/24/outline'
 import { ChevronDownIcon } from '@heroicons/react/20/solid'
 import Link from 'next/link';
@@ -57,7 +58,7 @@ export default function Header() {
   const [showSearch, setShowSearch] = useState(false);
   const [hideOverflow, setHideOverflow] = useState(false);
 
-  useMemo(()=>hideOverflow ? document.body.classList.add("overflow-hidden") : document.body.remove("overflow-hidden"), [hideOverflow])
+  useMemo(()=>hideOverflow ? document.body.classList.add("overflow-hidden") : document.body.classList.remove("overflow-hidden"), [hideOverflow])
 
   function getTotalQuantity() {
     let total = 0;
@@ -127,7 +128,7 @@ export default function Header() {
 
         </div>
       </div>
-      <SideNavbar />
+      <SideNavbar openState={open} />
       </>)}}
     </Popover>
   )
@@ -197,31 +198,32 @@ export function NavPopover() {
   )
 }
 
-export function SideNavbar() {
+export function SideNavbar({openState}) {
+  const [open, setOpen] = useState(false);
+  useMemo(()=>!openState && setOpen(openState), [openState])
+  console.log(open);
   return (
+    <>
     <Transition
       as={Fragment}
-      enter="transition ease-out duration-200"
-      enterFrom="opacity-0 translate-y-1"
-      enterTo="opacity-100 translate-y-0"
-      leave="transition ease-in duration-150"
-      leaveFrom="opacity-100 translate-y-0"
-      leaveTo="opacity-0 translate-y-1"
+      enter="transition ease-out duration-50"
+      enterFrom="opacity-0 -translate-x-full"
+      enterTo="opacity-100 translate-x-0"
+      leave="transition ease-in duration-50"
+      leaveFrom="opacity-100 translate-x-0"
+      leaveTo="opacity-0 -translate-x-full"
     >
-      <Popover.Panel className="fixed z-10 overflow-hidden bg-stone-600 w-5/6 h-screen">
+      <Popover.Panel className="fixed z-5 overflow-hidden bg-stone-600 w-5/6 h-screen">
 
         <div className='flex flex-col gap-5 py-40 px-10'>
           <Link href="/" className="text-gray-300 text-2xl hover:text-white hover:underline">
             Startseite
           </Link>
           <Popover>
-            {({ open }) => (
-              <>
+            {({open})=>
+            <>
                 <Popover.Button
-                  className={classNames(
-                    open ? 'text-white' : 'text-gray-300',
-                    'group inline-flex items-center text-base hover:text-white hover:underline focus:outline-none'
-                  )}
+                  className={'text-gray-300 group inline-flex items-center text-base hover:text-white hover:underline focus:outline-none'}
                 >
                   <span className='text-2xl'>KreaTeam</span>
                   <ArrowRightIcon
@@ -232,19 +234,28 @@ export function SideNavbar() {
                     aria-hidden="true"
                   />
                 </Popover.Button>
-
                 <Transition
                   as={Fragment}
-                  enter="transition ease-out duration-200"
-                  enterFrom="opacity-0 translate-y-1"
-                  enterTo="opacity-100 translate-y-0"
-                  leave="transition ease-in duration-150"
-                  leaveFrom="opacity-100 translate-y-0"
-                  leaveTo="opacity-0 translate-y-1"
+                  enter="transition ease-out duration-50"
+                  enterFrom="opacity-0 translate-x-full"
+                  enterTo="opacity-100 translate-x-0"
+                  leave="transition ease-in duration-50"
+                  leaveFrom="opacity-100 translate-x-0"
+                  leaveTo="opacity-0 translate-x-full"
                 >
-                  <Popover.Panel className="absolute top-0 left-0 w-5/6">
-                    <div className="overflow-hidden">
-                      <div className="relative grid gap-6 bg-stone-600 px-5 py-6 sm:gap-8 sm:p-8">
+                  <Popover.Panel className="fixed top-0 left-0 bg-stone-600 w-5/6 h-screen">
+                    
+                      <div className="flex flex-col gap-5 py-20 px-10">
+                      <Popover.Button className={'text-gray-300 group inline-flex gap-2 items-center text-base hover:text-white hover:underline focus:outline-none'}>
+                    <ArrowLeftIcon
+                        className={classNames(
+                          open ? 'text-white' : 'text-gray-300',
+                          'ml-2 h-4 w-4 group-hover:text-white'
+                        )}
+                        aria-hidden="true"
+                      />
+                      <span className='text-base'>KreaTeam</span>
+                      </Popover.Button>
                         {solutions.map((item) => (
                           <Link
                             key={item.name}
@@ -252,16 +263,14 @@ export function SideNavbar() {
                             className="-m-3 flex items-start text-gray-300 p-3 hover:bg-stone-700"
                           >
                             <div className="ml-4">
-                              <p className="text-base font-medium">{item.name}</p>
+                              <p className="text-xl">{item.name}</p>
                             </div>
                           </Link>
                         ))}
                       </div>
-                    </div>
                   </Popover.Panel>
                 </Transition>
-              </>
-            )}
+                </>}
           </Popover>
           <Link href="/products" className='text-gray-300 text-2xl'>
             243 MOON
@@ -269,5 +278,7 @@ export function SideNavbar() {
         </div>
       </Popover.Panel>
     </Transition>
+    
+    </>
   )
 }
