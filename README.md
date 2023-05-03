@@ -52,10 +52,10 @@ When you're ready to make this README your own, just edit this file and use the 
 Every project is different, so consider which of these sections apply to yours. The sections used in the template are suggestions for most open source projects. Also keep in mind that while a README can be too long and detailed, too long is better than too short. If you think your README is too long, consider utilizing another form of documentation rather than cutting out information.
 
 ## Name
-Choose a self-explaining name for your project.
+SPEC - Saleor Powered E-Commerce
 
 ## Description
-Let people know what your project can do specifically. Provide context and add a link to any reference visitors might be unfamiliar with. A list of Features or a Background subsection can also be added here. If there are alternatives to your project, this is a good place to list differentiating factors.
+This is an ECommerce based on Saleor API.
 
 ## Badges
 On some READMEs, you may see small images that convey metadata, such as whether or not all the tests are passing for the project. You can use Shields to add some to your README. Many services also have instructions for adding a badge.
@@ -63,8 +63,103 @@ On some READMEs, you may see small images that convey metadata, such as whether 
 ## Visuals
 Depending on what you are making, it can be a good idea to include screenshots or even a video (you'll frequently see GIFs rather than actual videos). Tools like ttygif can help, but check out Asciinema for a more sophisticated method.
 
-## Installation
-Within a particular ecosystem, there may be a common way of installing things, such as using Yarn, NuGet, or Homebrew. However, consider the possibility that whoever is reading your README is a novice and would like more guidance. Listing specific steps helps remove ambiguity and gets people to using your project as quickly as possible. If it only runs in a specific context like a particular programming language version or operating system or has dependencies that have to be installed manually, also add a Requirements subsection.
+## Setup
+# Dev Setup
+
+Your first step is to setup Saleor itself.
+
+## Saleor
+
+To run **Saleor** on your local machine you need to follow these instructions: 
+
+- You need to have installed [**Docker**](https://www.docker.com) and Docker Compose and then build an image of the Saleor project:
+
+```bash
+**cd saleor-platform
+docker-compose build**
+```
+
+> You need also to make sure, that <path_to_working_directory>/saleor-platform is in the list of shared directories in Docker(*Settings* -> *Shared Drives* or *Preferences* -> *Resources* -> *File sharing*) and you have dedicated at least 5 GB of memory(*Settings* -> *Advanced* or *Preferences* -> *Resources* -> *Advanced)*
+> 
+- Apply all migrations
+
+```bash
+docker-compose run --rm api python3 [manage.py](http://manage.py/) migrate
+```
+
+- Collect static files
+
+```bash
+docker-compose run --rm api python3 manage.py collectstatic --noinput
+```
+
+- Populate the database with example data and create the admin user:
+
+```bash
+docker-compose run --rm api python3 manage.py populatedb --createsuperuser  
+```
+
+> Note💡:  **populatedb** is optional and is advised if you need some test data when developing
+> 
+- Run the app:
+
+```bash
+docker-compose up
+```
+
+- Alternative( if you need only api and dashboard):
+
+```bash
+docker-compose up api worker
+```
+
+After you had your **Saleor** set up you can start testing if you did all correct by going on http://localhost:8000. 
+Here you can find all three components of **Saleor** service:
+
+- Dashboard
+- Storefront( basically just a a front-end template )
+
+> You will have later an opportunity to bind your own front-end
+> 
+- GraphQL Playground(DEBUG=True)
+
+> 💡 In my opinion can be a very good of a tool when testing your requests onto the back-end and even just writing your requests
+> 
+
+## Frontend
+
+All you need to do when launching frontend is following:
+
+- Install all dependencies(if you are in **spec** folder):
+
+```bash
+cd saleor-platform/frontend
+npm install
+```
+
+- Run the application:
+
+```bash
+npm run dev
+```
+
+Then you can easily access the frontend application and develop fast. 
+
+# Production Setup
+
+There is a shell script **start_up.sh** **in spec folder which will do all the launching for you. Thus you need just to launch this script:
+
+```bash
+sudo sh start_up.sh
+```
+
+If you want to shut down the application there is another shell script:
+
+```bash
+sudo sh down.sh
+```
+
+That's it. You now can launch the application in all ways you may need 😁
 
 ## Usage
 Use examples liberally, and show the expected output if you can. It's helpful to have inline the smallest example of usage that you can demonstrate, while providing links to more sophisticated examples if they are too long to reasonably include in the README.
