@@ -33,7 +33,8 @@ export default function CheckoutForm({user, checkoutId, checkout} : {user: User,
 
     const updateAddress = useUpdateAddress();
     const [updateCheckoutEmail] = useUpdateCheckoutEmailMutation();
-    const [email, setEmail] = useState(checkout || user ? checkout?.email || user?.email : "");
+    const [email, setEmail] = useState( user?.email || checkout?.email || "");
+    
     const [currAddrId, setCurrAddrId] = useState("");
     let addresses;
     if (user)
@@ -47,11 +48,8 @@ export default function CheckoutForm({user, checkoutId, checkout} : {user: User,
         postalCode: (user?.defaultShippingAddress?.postalCode || checkout?.shippingAddress?.postalCode)?? "",
         phone: (user?.defaultShippingAddress?.phone || checkout?.shippingAddress?.phone) ?? "",
     }})
-    console.log(watch());
     
     function onAddressSelect(selectedValue){
-        console.log(selectedValue);
-        
         const currAddr = user?.addresses?.find((value)=>value.id === selectedValue.value);
         console.log(currAddr);
         currAddr ? setCurrAddrId(currAddr?.id) : "";

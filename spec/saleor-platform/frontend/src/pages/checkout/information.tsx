@@ -7,13 +7,13 @@ import { CheckoutContext } from "../../contexts/checkoutContext"
 import { useGetCheckout } from "../../hooks/checkout"
 import useGetUser from "../../hooks/user"
 import { Checkout, User } from "../../../generated/graphql"
-import CheckoutSecure from "../../components/CheckoutSecure"
 import ErrorBlock from "../../components/blocks/ErrorBlock"
 import Spinner from "../../components/Spinner"
+import NoCheckout from "../../components/NoCheckout"
 
 
 export default function CheckoutInfo(){
-    const {checkoutId} = useContext(CheckoutContext)
+    const {checkoutId} = useContext(CheckoutContext);
     const {data, loading, error} = useGetCheckout({checkoutId})
     const {user, userLoading, userError} = useGetUser();
     useEffect(()=>{
@@ -29,18 +29,19 @@ export default function CheckoutInfo(){
     if(error || userError) return <ErrorBlock />
     if(loading || userLoading) return <Spinner />
     if (data)
-    return (
-        <CheckoutSecure>
-        <CheckoutLayout>
-            <div className="flex flex-col gap-3 py-20 bg-white px-5 sm:px-10 md:pl-20 lg:pl-40">
-                <CheckoutHeader checkout={data?.checkout as Checkout} />
-                <CheckoutExpress />
-                <CheckoutForm checkout={data.checkout as Checkout} checkoutId={checkoutId} user={user as User}/>
-            </div>
-            <CheckoutSidebar className="hidden lg:block" checkout={data.checkout as Checkout}/>
-        </CheckoutLayout>
-        </CheckoutSecure>
-    )
+        if(data?.checkout?.lines?.length>=1)
+            return (
+            <CheckoutLayout>
+                <div className="flex flex-col gap-3 py-20 bg-white px-5 sm:px-10 md:pl-20 lg:pl-40">
+                    <CheckoutHeader checkout={data?.checkout as Checkout} />
+                    <CheckoutExpress />
+                    <CheckoutForm checkout={data.checkout as Checkout} checkoutId={checkoutId} user={user as User}/>
+                </div>
+                <CheckoutSidebar className="hidden lg:block" checkout={data.checkout as Checkout}/>
+            </CheckoutLayout>
+        )
+        if(!checkoutId || data?.checkout?.lines?.length < 1)
+        return <NoCheckout />
 }
 
 export function CheckoutLayout({children}){

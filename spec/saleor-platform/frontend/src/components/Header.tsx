@@ -128,7 +128,7 @@ export default function Header() {
 
         </div>
       </div>
-      <SideNavbar openState={open} />
+      <SideNavbar />
       </>)}}
     </Popover>
   )
@@ -198,10 +198,7 @@ export function NavPopover() {
   )
 }
 
-export function SideNavbar({openState}) {
-  const [open, setOpen] = useState(false);
-  useMemo(()=>!openState && setOpen(openState), [openState])
-  console.log(open);
+export function SideNavbar() {
   return (
     <>
     <Transition

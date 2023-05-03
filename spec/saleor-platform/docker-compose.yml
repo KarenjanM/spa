@@ -29,7 +29,7 @@ services:
       - common.env
       - backend.env
     environment:
-      - DEBUG=False
+      - DEBUG=True
       - ALLOWED_CLIENT_HOSTS=localhost,api,.ngrok.io,127.0.0.1
       - JAEGER_AGENT_HOST=jaeger
       - STOREFRONT_URL=http://localhost:3010/

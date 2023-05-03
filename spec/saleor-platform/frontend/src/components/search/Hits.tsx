@@ -30,7 +30,6 @@ export function Hits({ className, isFullPage, setIsHits }: { className?: string,
   }
 
   function Hit({ hit, className }: { hit: any, className?: string }) {
-    console.log(hit);
   
     return (
       <Link href={`/products/${hit.productId}`}>

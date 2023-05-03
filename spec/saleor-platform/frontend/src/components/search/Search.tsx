@@ -1,6 +1,6 @@
 import algoliasearch from 'algoliasearch/lite';
 import Link from 'next/link';
-import { InstantSearch } from 'react-instantsearch-hooks-web';
+import { InstantSearch, useRange, useSortBy } from 'react-instantsearch-hooks-web';
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useState } from 'react';
@@ -23,28 +23,48 @@ export function SearchBlock({ query }: { query?: string }) {
 
   return (
     <InstantSearch searchClient={searchClient} indexName="test.default-channel.USD.products">
-      <div className='flex flex-col text-black gap-5'>
+      <SearchShell query={query}/>
+    </InstantSearch>
+  )
+}
+
+export function SearchShell({query}){
+  const rangeProps = useRange({ attribute: "grossPrice" });
+  const sortProps = useSortBy({
+    items: [
+      {
+        label: 'Relevanz', value: 'test.default-channel.USD.products'
+      },
+      {
+        label: 'Pres (aufsteigend)', value: 'products_price_asc'
+      },
+      {
+        label: 'Preis (absteigend)', value: 'products_price_desc'
+      }
+    ]
+  });
+  return(
+    <div className='flex flex-col text-black gap-5'>
         <div className='text-3xl text-center'>
           {query ? "Suchergebnisse" : "Suchen"}
         </div>
         <div className='flex justify-center md:mx-40 md:block'>
           <SearchBox value={query} iconColor="black" className='text-black' />
         </div>
-        <div className='flex flex-col place-items-center sm:place-content-center gap-5 sm:flex-row'>
-          <Ranking />
+        <div className='flex place-items-center justify-between sm:place-content-center gap-5 flex-row'>
+          <Ranking rangeProps={rangeProps} sortProps={sortProps}/>
           <div className='flex flex-col sm:flex-row sm:place-items-center gap-2 sm:gap-5'>
-            <Sorting />
+            <div className='hidden sm:block'>
+            <Sorting {...sortProps}/>
+            </div>
             <Stats />
           </div>
         </div>
         <Hits isFullPage={true} className='text-black' />
         <Pagination />
       </div>
-    </InstantSearch>
   )
 }
-
-
 export function SearchPopover({ setShowSearch }: { setShowSearch: (value: boolean) => void }) {
   const [value, setValue] = useState("");
   const [isHits, setIsHits] = useState(true);

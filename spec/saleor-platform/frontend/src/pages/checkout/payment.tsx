@@ -8,10 +8,10 @@ import { useGetCheckout } from "../../hooks/checkout"
 import { CheckoutInfoCheck } from "./shipping"
 import DropIn from "braintree-web-drop-in-react";
 import { useRouter } from "next/router"
-import CheckoutSecure from "../../components/CheckoutSecure"
 import { ClipLoader } from "react-spinners"
 import Spinner from "../../components/Spinner"
 import { CheckoutLayout } from "./information"
+import NoCheckout from "../../components/NoCheckout"
 
 
 export default function CheckoutPayment() {
@@ -31,24 +31,26 @@ export default function CheckoutPayment() {
     if (error) return <div>Error</div>
     if (loading) return <ClipLoader loading={loading} />;
     if (data)
-        return (
-            <CheckoutSecure>
-                <CheckoutLayout>
-                    <div className="flex flex-col gap-3 py-20 bg-white px-5 sm:px-10 md:pl-20 lg:pl-40">
-                        <div className="flex flex-col gap-3 mr-20">
-                            <CheckoutHeader checkout={data?.checkout as Checkout} />
-                            <CheckoutInfoCheck email={data?.checkout?.email} checkoutAddress={data?.checkout?.shippingAddress as Address}
-                                shippingMethod={data?.checkout?.shippingMethod as ShippingMethod} />
-                            <CheckoutPaymentBlock checkout={data?.checkout as Checkout} />
+        if(data?.checkout?.lines?.length>=1)
+            return (
+                    <CheckoutLayout>
+                        <div className="flex flex-col gap-3 py-20 bg-white px-5 sm:px-10 md:pl-20 lg:pl-40">
+                            <div className="flex flex-col gap-3 mr-20">
+                                <CheckoutHeader checkout={data?.checkout as Checkout} />
+                                <CheckoutInfoCheck email={data?.checkout?.email} checkoutAddress={data?.checkout?.shippingAddress as Address}
+                                    shippingMethod={data?.checkout?.shippingMethod as ShippingMethod} />
+                                <CheckoutPaymentBlock checkout={data?.checkout as Checkout} />
+                            </div>
                         </div>
-                    </div>
-                    <CheckoutSidebar checkout={data.checkout as Checkout} />
-                </CheckoutLayout>
-            </CheckoutSecure>
-        )
+                        <CheckoutSidebar checkout={data.checkout as Checkout} />
+                    </CheckoutLayout>
+            )
+    if(!checkoutId || data?.checkout?.lines?.length < 1)
+        return <NoCheckout />
 }
 
 export function CheckoutPaymentBlock({ checkout }: { checkout: Checkout }) {
+    
     const availableGateways = checkout?.availablePaymentGateways;
     const [requestable, setRequestable] = useState(false);
     const [createCheckoutPayment] = useCreateCheckoutPaymentMutation();

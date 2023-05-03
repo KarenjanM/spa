@@ -1,23 +1,6 @@
-import { useSortBy } from "react-instantsearch-hooks-web";
 import Select from 'react-select';
 
-export function SortBy(){
-    const {
-      options,
-      refine,
-    } = useSortBy({
-      items: [
-        {
-          label: 'Relevanz', value: 'test.default-channel.USD.products'
-        },
-        {
-          label: 'Pres (aufsteigend)', value: 'products_price_asc'
-        },
-        {
-          label: 'Preis (absteigend)', value: 'products_price_desc'
-        }
-      ]
-    });
+export function SortBy({options, refine}){
     return (
         <Select 
         options={options}

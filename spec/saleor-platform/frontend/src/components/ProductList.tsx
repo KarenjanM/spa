@@ -3,7 +3,6 @@ import getCurrencySymbol from "../lib/getCurrencySymbol";
 
 export default function ProductList({ products }) {
   const latestProducts = products?.edges ?? products  ?? [];
-  console.log(latestProducts);
   
   return (
     <div className="grid md:grid-cols-2 lg:grid-cols-4 place-items-center gap-4 py-6">
@@ -17,8 +16,6 @@ export default function ProductList({ products }) {
 }
 
 function Product({ product }: { product: any }) {
-  console.log(product);
-  
   const productNode = product?.node;
   const productPrice = productNode?.pricing?.priceRange?.stop?.gross?.amount ?? product?.grossPrice;
   const productCurrency = getCurrencySymbol(productNode?.pricing?.priceRange?.stop?.gross?.currency);
