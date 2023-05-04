@@ -24,7 +24,7 @@ export default function EmailConfirm() {
     return (
         <div className="flex flex-col gap-4 place-items-center my-auto">
             <div className="text-3xl">Ihr Email wurde erfolgreich bestätigt!</div>
-            <Link href={"/login"} className="text-sky-700 hover:underline underline-offset-2 py-2 px-5">Weiter zum Login</Link>
+            <Link href={"/login"} replace className="text-sky-700 hover:underline underline-offset-2 py-2 px-5">Weiter zum Login</Link>
         </div>
     )
 }

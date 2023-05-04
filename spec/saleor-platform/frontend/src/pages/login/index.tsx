@@ -26,8 +26,8 @@ export default function Login() {
   useEffect(() => {
     if (loggedIn) {
       client.resetStore();
-      if (window.history.state.url.includes("email_confirm") || window.history.state.url.includes("login"))
-        router.push("/profile")
+      if (window.history.state.url.includes("login"))
+        router.push("/profile");
       else
         router.back();
       if (user)

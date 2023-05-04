@@ -20,7 +20,7 @@ export default function RegisterForm({ setShow, setAlertText }) {
                 email: "",
                 password: "",
                 channel: "default-channel",
-                redirectUrl: "http://localhost:3002/register/email_confirm"
+                redirectUrl: `${window.location.href}/email_confirm`
             }
         }
     })
@@ -38,11 +38,10 @@ export default function RegisterForm({ setShow, setAlertText }) {
                 input: {
                     ...formData,
                     channel: "default-channel",
-                    redirectUrl: "http://localhost:3002/register/email_confirm"
+                    redirectUrl: `${window.location.href}/email_confirm`
                 }
             }
         });
-        console.log(data);
         setSuccess(true);
         if (data.data.accountRegister.errors.length > 0) {
             setSuccess(false)

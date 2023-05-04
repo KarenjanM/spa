@@ -9,6 +9,7 @@ export default function Register(){
     const auth = useAppSelector((state)=> state.auth);
     const [showAlert, setShowAlert] = useState(false); 
     const [alertText, setAlertText] = useState(""); 
+
     useEffect(()=>{
       if(auth.loggedIn)
         router.push("/profile")
