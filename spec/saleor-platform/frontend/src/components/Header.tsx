@@ -72,7 +72,7 @@ export default function Header() {
 
   return (
     <Popover id='header' className="relative bg-stone-600">
-      {({open})=>{
+      {({open,close})=>{
         open !== hideOverflow && setHideOverflow(open);
         return (
       <>
@@ -129,7 +129,7 @@ export default function Header() {
 
         </div>
       </div>
-      <SideNavbar />
+      <SideNavbar close={close} />
       </>)}}
     </Popover>
   )
@@ -143,7 +143,7 @@ export function NavPopover() {
         Startseite
       </Link>
       <Popover className="relative">
-        {({ open }) => (
+        {({ open, close }) => (
           <>
             <Popover.Button
               className={classNames(
@@ -177,6 +177,7 @@ export function NavPopover() {
                       <Link
                         key={item.name}
                         href={item.href}
+                        onClick={close}
                         className="-m-3 flex items-start text-gray-300 p-3 hover:bg-stone-700"
                       >
                         <div className="ml-4">
@@ -191,15 +192,14 @@ export function NavPopover() {
           </>
         )}
       </Popover>
-
-      <Link href="/collections/juices" className="text-base text-gray-300 hover:text-white hover:underline">
-        243 MOON
-      </Link>
+        <Link href="/collections/juices" className="text-base text-gray-300 hover:text-white hover:underline">
+          243 MOON
+        </Link>
     </Popover.Group>
   )
 }
 
-export function SideNavbar() {
+export function SideNavbar(props) {
   const auth = useAppSelector((state)=>state.auth);
 
   return (
@@ -216,7 +216,7 @@ export function SideNavbar() {
       <Popover.Panel className="fixed z-5 overflow-hidden grid grid-rows-5 bg-stone-600 w-5/6 h-screen">
 
         <div className='flex flex-col gap-5 py-40 px-10 row-span-4'>
-          <Link href="/" className="text-gray-300 text-2xl hover:text-white hover:underline">
+          <Link onClick={props.close} href="/" className="text-gray-300 text-2xl hover:text-white hover:underline">
             Startseite
           </Link>
           <Popover>
@@ -272,11 +272,11 @@ export function SideNavbar() {
                 </Transition>
                 </>}
           </Popover>
-          <Link href="/products" className='text-gray-300 text-2xl'>
+          <Link href="/products" onClick={props.close} className='text-gray-300 text-2xl'>
             243 MOON
           </Link>
         </div>
-        <Link href={"/profile"} className="flex flex-row gap-2 place-items-center pb-20 bg-stone-500 grow text-gray-100">
+        <Link href={"/profile"} onClick={props.close} className="flex flex-row gap-2 place-items-center pb-20 bg-stone-500 grow text-gray-100">
           <UserIcon className='ml-4 h-5 w-5' />
           {!auth.loggedIn ? <div>Einloggen</div> : <div>Konto</div>}
         </Link>
