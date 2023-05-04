@@ -213,9 +213,9 @@ export function SideNavbar() {
       leaveFrom="opacity-100 translate-x-0"
       leaveTo="opacity-0 -translate-x-full"
     >
-      <Popover.Panel className="fixed z-5 overflow-hidden flex flex-col bg-stone-600 w-5/6 h-screen">
+      <Popover.Panel className="fixed z-5 overflow-hidden grid grid-rows-5 bg-stone-600 w-5/6 h-screen">
 
-        <div className='flex flex-col gap-5 py-40 px-10'>
+        <div className='flex flex-col gap-5 py-40 px-10 row-span-4'>
           <Link href="/" className="text-gray-300 text-2xl hover:text-white hover:underline">
             Startseite
           </Link>
@@ -277,7 +277,7 @@ export function SideNavbar() {
           </Link>
         </div>
         <Link href={"/profile"} className="flex flex-row gap-2 place-items-center pb-20 bg-stone-500 grow text-gray-100">
-        <UserIcon className='ml-4 h-5 w-5' />
+          <UserIcon className='ml-4 h-5 w-5' />
           {!auth.loggedIn ? <div>Einloggen</div> : <div>Konto</div>}
         </Link>
       </Popover.Panel>

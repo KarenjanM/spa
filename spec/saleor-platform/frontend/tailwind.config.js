@@ -6,7 +6,11 @@ module.exports = {
     "src/components/**/*.tsx"
   ],
   theme: {
-    extend: {},
+    extend: {
+      animation: {
+        "fade" : "transition-opacity duration-200 ease-in-out"
+      },
+    },
   },
   plugins: [],
 }

@@ -35,6 +35,7 @@ export default function Login() {
     }
     if (auth.invalid)
       setAlert(true);
+    return ()=>{dispatch(setInvalid(false))}
   }, [loggedIn, auth.invalid, user?.user?.checkout?.id])
 
   // simple function to hide the alert
