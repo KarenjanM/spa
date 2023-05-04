@@ -20,6 +20,11 @@ import Link from 'next/link';
 import { CheckoutContext } from '../contexts/checkoutContext';
 import { useGetCheckout } from '../hooks/checkout';
 import { SearchPopover } from './search/Search';
+import { useVerify } from '../hooks/verify';
+import { useAppSelector } from '../redux/hooks';
+import { divide } from 'cypress/types/lodash';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPerson } from '@fortawesome/free-solid-svg-icons';
 
 // examples for menus
 const solutions = [
@@ -42,10 +47,6 @@ const solutions = [
     href: '/calendar',
     icon: Squares2X2Icon,
   },
-]
-const callsToAction = [
-  { name: 'Watch Demo', href: '#', icon: PlayIcon },
-  { name: 'Contact Sales', href: '#', icon: PhoneIcon },
 ]
 
 function classNames(...classes) {
@@ -199,6 +200,8 @@ export function NavPopover() {
 }
 
 export function SideNavbar() {
+  const auth = useAppSelector((state)=>state.auth);
+
   return (
     <>
     <Transition
@@ -210,7 +213,7 @@ export function SideNavbar() {
       leaveFrom="opacity-100 translate-x-0"
       leaveTo="opacity-0 -translate-x-full"
     >
-      <Popover.Panel className="fixed z-5 overflow-hidden bg-stone-600 w-5/6 h-screen">
+      <Popover.Panel className="fixed z-5 overflow-hidden flex flex-col bg-stone-600 w-5/6 h-screen">
 
         <div className='flex flex-col gap-5 py-40 px-10'>
           <Link href="/" className="text-gray-300 text-2xl hover:text-white hover:underline">
@@ -273,6 +276,10 @@ export function SideNavbar() {
             243 MOON
           </Link>
         </div>
+        <Link href={"/profile"} className="flex flex-row gap-2 place-items-center pb-20 bg-stone-500 grow text-gray-100">
+        <UserIcon className='ml-4 h-5 w-5' />
+          {!auth.loggedIn ? <div>Einloggen</div> : <div>Konto</div>}
+        </Link>
       </Popover.Panel>
     </Transition>
     
