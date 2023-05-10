@@ -6,7 +6,8 @@ import {
     useDeleteLinesMutation,
     useGetCheckoutQuery, 
     useAddLineMutation,
-    GetCheckoutQueryResult,} from "../../generated/graphql";
+    GetCheckoutQueryResult,
+    useCreateCheckoutMutation,} from "../../generated/graphql";
 
 export function useUpdateQuantity({checkoutId}){
     const [lineUpdateMutation, {loading}] = useLineUpdateMutation({
@@ -47,4 +48,16 @@ export function useRemoveProduct({checkoutId}){
         }
     })
     return {removeProduct, removeLoading: loading}
+}
+
+export function useCreateCheckout(){
+    const [createCheckoutMutation, {loading}] = useCreateCheckoutMutation({
+        variables: {
+            input: {
+                channel: "default-channel",
+                lines: []
+            }
+        }
+    });
+    return {createCheckoutMutation, createCheckoutLoading: loading}
 }

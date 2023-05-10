@@ -9,10 +9,12 @@ import { CheckoutProvider } from '../contexts/checkoutContext';
 import { MainLayout } from '../components/layouts/MainLayout';
 import { PersistGate } from 'redux-persist/integration/react';
 import { createApolloClient } from '../apollo/client';
+import ErrorBoundary from '../components/ErrorBoundary';
 
 export default function App({ Component, pageProps }) {
   const getLayout = Component.getLayout || ((page)=> page)
   return (
+    <ErrorBoundary fallback={"Es ist ein Fehler eingetroffen worden. Wir wurden schon darüber informiert und werden in Kürze das Problem lösen. Wir bitten um Entschuldingung wegen diesen Unahnemlichkeiten."}>
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
         <ApolloProvider client={createApolloClient()}>
@@ -24,5 +26,6 @@ export default function App({ Component, pageProps }) {
         </ApolloProvider>
       </PersistGate>
     </Provider>
+    </ErrorBoundary>
   );
 }

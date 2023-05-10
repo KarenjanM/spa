@@ -10,9 +10,9 @@ export default function Footer() {
                             <div className="flex flex-col gap-1 sm:gap-5 sm:flex-row items-start">
                                 <Link href="/policies/impressum" className="hover:underline">Impressum</Link>
                                 <Link href="/policies/privacy" className="hover:underline">Datenschutzerklärung</Link>
-                                <Link href="#" className="hover:underline">Widerrufsrecht & Widerrufsformular</Link>
+                                <Link href="/policies/refund-policy" className="hover:underline">Widerrufsrecht & Widerrufsformular</Link>
                             </div>
-                            <Link href="#" className="self-start sm:self-center sm:mt-2 hover:underline">Algemeine Geschäftsbedigungen</Link>
+                            <Link href="/polices/terms-of-service" className="self-start sm:self-center sm:mt-2 hover:underline">Algemeine Geschäftsbedigungen</Link>
                         </div>
                     </div>
                     <div className="flex justify-center sm:justify-start px-5 py-2 sm:px-20">

@@ -12,6 +12,7 @@ import { faCheck, faChevronDown, faChevronUp } from "@fortawesome/free-solid-svg
 import getFormattedDate from "../lib/getFormattedDate";
 import { ApolloError } from "apollo-client";
 import { AdressBlock } from "../components/adress/AdressBlock";
+import Carousel from "../components/Carousel";
 
 
 export default function Profile() {
@@ -86,16 +87,7 @@ export function Orders({ data, loading, error }: { data: GetUserQuery, loading: 
 
     let component = data?.me?.orders?.edges?.length > 0 ? (
       <div className="flex flex-col gap-4">
-        <div className="flex flex-col">
-          {!show && <div>Letzte Bestellung: </div>}
-          <Order node={data?.me?.orders?.edges[0].node} />
-        </div>
-        {show && data?.me?.orders?.edges?.slice(1).map(({ node }) => (
-          <Order node={node} />
-        ))}
-        <div className="text-sky-700" onClick={() => setShow(!show)}>
-          {show ? "Bestellungen ausblenden" : "Alle Bestellung ansehen"}
-        </div>
+        <Carousel nodes={data?.me?.orders?.edges}/>
       </div>
     ) : (
       <div className="text-gray-700">
@@ -110,11 +102,11 @@ export function Order({ node }) {
   const [show, setShow] = useState(false);
 
   return (
-    <div className="flex flex-col gap-2 px-2 shadow-lg py-4 rounded-lg">
+    <div className="flex flex-col gap-2 px-2 py-4 rounded-lg">
       <div className="hover:underline hover:underline-offset-2 cursor-pointer" onClick={() => setShow(!show)}>
         Gekaufte Produkte ansehen <FontAwesomeIcon icon={show ? faChevronUp : faChevronDown} />
       </div>
-      {show && <ul className="pl-5 list-disc">
+      {show && <ul>
         {node?.lines?.map((value) => (
           <li>
             <span>{value.productName}</span> x{value.quantity}

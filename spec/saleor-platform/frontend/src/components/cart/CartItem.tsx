@@ -19,13 +19,13 @@ export function CartItem(props: CartItemProps & {setLoading: (value: boolean)=>v
 
   async function increaseQuantity() {
     setQuantity(stateQuantity + 1)
-    await props.lineUpdateMutation({ variables: { lines: { lineId: props.lineId, quantity: stateQuantity + 1 } } })
+    await props.lineUpdateMutation({ variables: { lines: [{ lineId: props.lineId, quantity: stateQuantity + 1 }] } })
   }
   async function decreaseQuantity() {
     console.log("decreasing");
 
     setQuantity(stateQuantity - 1)
-    await props.lineUpdateMutation({ variables: { lines: { lineId: props.lineId, quantity: stateQuantity - 1 } } })
+    await props.lineUpdateMutation({ variables: { lines: [{ lineId: props.lineId, quantity: stateQuantity - 1 }] } })
   }
   function remove() {
     console.log("removing");

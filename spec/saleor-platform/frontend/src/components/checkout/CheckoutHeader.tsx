@@ -3,7 +3,7 @@ import { ChevronRightIcon } from "@heroicons/react/24/outline";
 import { useRouter } from "next/router";
 import { Popover } from "@headlessui/react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCartShopping, faChevronDown, faChevronLeft } from "@fortawesome/free-solid-svg-icons";
+import { faCartShopping, faChevronDown } from "@fortawesome/free-solid-svg-icons";
 import CheckoutSidebar from "./CheckoutSidebar";
 import { Checkout } from "../../../generated/graphql";
 
@@ -15,7 +15,7 @@ export default function CheckoutHeader({ checkout}: {checkout: Checkout}) {
     const shipping = checkout.shippingAddress ? (<Link href={"/checkout/shipping"} className="text-sky-700">Versand</Link>)
         : (<div className="text-stone-500">Versand</div>)
     const payment = checkout.shippingAddress && checkout.shippingMethod ? (<Link href={"/checkout/payment"} className="text-sky-700">Zahlung</Link>)
-        : (<div className="text-stone-500">Information</div>)
+        : (<div className="text-stone-500">Zahlung</div>)
 
     return (
         <div className="flex flex-col gap-2">

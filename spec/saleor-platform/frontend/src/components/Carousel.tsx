@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { ArrowRightIcon, ArrowLeftIcon } from "@heroicons/react/24/outline";
+import { Order } from "../pages/profile";
+import { Transition } from "@headlessui/react";
 /**
  * Carousel component for nextJS and Tailwind.
  * Using external library react-easy-swipe for swipe gestures on mobile devices (optional)
@@ -7,59 +9,49 @@ import { ArrowRightIcon, ArrowLeftIcon } from "@heroicons/react/24/outline";
  * @param images - Array of images with src and alt attributes
  * @returns React component
  */
-export default function Carousel({ images }) {
+export default function Carousel({ nodes }) {
   const [currentSlide, setCurrentSlide] = useState(0);
-
+  
   const handleNextSlide = () => {
-    let newSlide = currentSlide === images.length - 1 ? 0 : currentSlide + 1;
+    let newSlide = (currentSlide + 1)%2;
+    console.log(currentSlide);
+    
+    console.log(newSlide);
+    
     setCurrentSlide(newSlide);
   };
 
   const handlePrevSlide = () => {
-    let newSlide = currentSlide === 0 ? images.length - 1 : currentSlide - 1;
+    let newSlide = currentSlide === 0 ? nodes.length - 1 : currentSlide - 1;
     setCurrentSlide(newSlide);
   };
 
   return (
-    <div className="relative">
-      <ArrowLeftIcon
+    <div className="flex flex-row gap-2 place-items-center relative w-full">
+      {nodes.length > 1 && <ArrowLeftIcon
         onClick={handlePrevSlide}
-        className="absolute left-0 m-auto text-5xl inset-y-1/2 cursor-pointer text-gray-400 z-20"
-      />
-      <div className="w-full h-[50vh] flex overflow-hidden relative m-auto">
-          {images.map((image, index) => {
-            if (index === currentSlide) {
-              return (
-                <img
-                  src={image}
-                  className="animate-fadeIn"
-                />
-              );
-            }
-          })}
-      </div>
-      <ArrowRightIcon
-        onClick={handleNextSlide}
-        className="absolute right-0 m-auto text-5xl inset-y-1/2 cursor-pointer text-gray-400 z-20"
-      />
-
-      <div className="relative flex justify-center p-2">
-        {images.map((_, index) => {
+        className="w-6 h-6 md:w-8 md:h-8 cursor-pointer text-gray-400"
+      />}
+      <div className="flex overflow-hidden w-60 whitespace-normal sm:whitespace-nowrap">
+        {nodes.map(({ node }, index) => {
           return (
-            <div
-              className={
-                index === currentSlide
-                  ? "h-4 w-4 bg-gray-700 rounded-full mx-2 mb-2 cursor-pointer"
-                  : "h-4 w-4 bg-gray-300 rounded-full mx-2 mb-2 cursor-pointer"
-              }
-              key={index}
-              onClick={() => {
-                setCurrentSlide(index);
-              }}
-            />
+            <Transition
+              enter="transition-all ease-in-out duration-500 delay-1000"
+              enterFrom="opacity-0 translate-x-full"
+              enterTo="opacity-100 translate-x-0"
+              leave="transition-all ease-in-out duration-700"
+              leaveFrom="opacity-100 translate-x-0"
+              leaveTo="opacity-0 -translate-x-full"
+              show={index === currentSlide}>
+                <Order node={node} />
+            </Transition>
           );
         })}
       </div>
+      {nodes.length > 1 && <ArrowRightIcon
+        onClick={handleNextSlide}
+        className="w-6 h-6 md:w-8 md:h-8 cursor-pointer text-gray-400"
+      />}
     </div>
   );
 }

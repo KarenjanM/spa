@@ -2,12 +2,6 @@ import { Fragment, useContext, useMemo, useState } from 'react';
 import { Transition, Popover } from '@headlessui/react';
 import {
   Bars3Icon,
-  ChartBarIcon,
-  CursorArrowRaysIcon,
-  PhoneIcon,
-  PlayIcon,
-  ShieldCheckIcon,
-  Squares2X2Icon,
   XMarkIcon,
   MagnifyingGlassIcon,
   UserIcon,
@@ -20,11 +14,7 @@ import Link from 'next/link';
 import { CheckoutContext } from '../contexts/checkoutContext';
 import { useGetCheckout } from '../hooks/checkout';
 import { SearchPopover } from './search/Search';
-import { useVerify } from '../hooks/verify';
 import { useAppSelector } from '../redux/hooks';
-import { divide } from 'cypress/types/lodash';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPerson } from '@fortawesome/free-solid-svg-icons';
 
 // examples for menus
 const solutions = [
@@ -32,20 +22,17 @@ const solutions = [
     name: 'Alle Produkte',
     description: 'Get a better understanding of where your traffic is coming from.',
     href: '/products',
-    icon: ChartBarIcon,
   },
   {
     name: 'Daily Planner',
     description: 'Speak directly to your customers in a more meaningful way.',
-    href: '/products',
-    icon: CursorArrowRaysIcon,
+    href: '/products/categories/planner',
   },
-  { name: 'Kalender 2023', description: "Your customers' data will be safe and secure.", href: '/calendar', icon: ShieldCheckIcon },
+  { name: 'Kalender 2023', description: "Your customers' data will be safe and secure.", href: '/products/categories/calendar' },
   {
     name: 'Familienkalender 2023',
     description: "Connect with third-party tools that you're already using.",
-    href: '/calendar',
-    icon: Squares2X2Icon,
+    href: '/products/categories/familiencalendar',
   },
 ]
 
