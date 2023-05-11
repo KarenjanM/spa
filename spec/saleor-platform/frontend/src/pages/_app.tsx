@@ -10,6 +10,8 @@ import { MainLayout } from '../components/layouts/MainLayout';
 import { PersistGate } from 'redux-persist/integration/react';
 import { createApolloClient } from '../apollo/client';
 import ErrorBoundary from '../components/ErrorBoundary';
+import Head from 'next/head';
+
 
 export default function App({ Component, pageProps }) {
   const getLayout = Component.getLayout || ((page)=> page)

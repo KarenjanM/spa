@@ -13,7 +13,6 @@ import Spinner from "../../components/Spinner"
 import { CheckoutLayout } from "./information"
 import NoCheckout from "../../components/NoCheckout"
 
-
 export default function CheckoutPayment() {
     const { checkoutId } = useContext(CheckoutContext)
     const { data, loading, error } = useGetCheckout({ checkoutId });

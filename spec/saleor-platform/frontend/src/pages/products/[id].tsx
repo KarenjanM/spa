@@ -5,7 +5,7 @@ import { CheckoutContext } from "../../contexts/checkoutContext";
 import { useAddToCheckout, useCreateCheckout } from "../../hooks/checkout";
 import AddButton from "../../components/buttons/AddButton";
 import { PlusIcon, MinusIcon } from '@heroicons/react/24/outline';
-import { useCreateCheckoutMutation, useGetProductByIdQuery } from "../../../generated/graphql";
+import { useGetProductByIdQuery } from "../../../generated/graphql";
 import Spinner from "../../components/Spinner";
 import ErrorBlock from "../../components/blocks/ErrorBlock";
 
@@ -88,7 +88,7 @@ export default function Product() {
 
 export function ProductDescription({ children }) {
   return (
-    <div className="block text-sm font-medium text-gray-700 text-base">
+    <div className="block font-medium text-gray-700 text-base">
       {children}
     </div>
   )

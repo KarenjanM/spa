@@ -31,14 +31,16 @@ export default function CheckoutInfo(){
     if (data)
         if(data?.checkout?.lines?.length>=1)
             return (
+                <>
             <CheckoutLayout>
                 <div className="flex flex-col gap-3 py-20 bg-white px-5 sm:px-10 md:pl-20 lg:pl-40">
                     <CheckoutHeader checkout={data?.checkout as Checkout} />
-                    <CheckoutExpress />
+                    <CheckoutExpress checkout={data?.checkout as Checkout}/>
                     <CheckoutForm checkout={data.checkout as Checkout} checkoutId={checkoutId} user={user as User}/>
                 </div>
                 <CheckoutSidebar className="hidden lg:block" checkout={data.checkout as Checkout}/>
             </CheckoutLayout>
+            </>
         )
         if(!checkoutId || data?.checkout?.lines?.length < 1)
         return <NoCheckout />

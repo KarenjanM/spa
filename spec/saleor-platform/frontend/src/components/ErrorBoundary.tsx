@@ -24,8 +24,8 @@ class ErrorBoundary extends React.Component<ErrorProps, ErrorState> {
     render(): React.ReactNode {
         if (this.state.hasError){
             return (
-                <div className="flex place-content-center text-2xl my-auto">
-                    {this.props.fallback}
+                <div className="text-2xl flex place-items-center my-auto">
+                    <div>{this.props.fallback}</div>
                 </div>
             )
         }
