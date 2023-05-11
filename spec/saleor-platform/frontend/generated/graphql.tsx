@@ -26950,7 +26950,7 @@ export type GetOrderByIdQueryVariables = Exact<{
 }>;
 
 
-export type GetOrderByIdQuery = { __typename?: 'Query', order?: { __typename?: 'Order', id: string, isPaid: boolean, created: any, shippingAddress?: { __typename?: 'Address', id: string, firstName: string, lastName: string, city: string, companyName: string, streetAddress1: string, streetAddress2: string, phone?: string | null, postalCode: string, country: { __typename?: 'CountryDisplay', country: string, code: string } } | null, total: { __typename?: 'TaxedMoney', currency: string, gross: { __typename?: 'Money', currency: string, amount: number } }, lines: Array<{ __typename?: 'OrderLine', productVariantId?: string | null, quantity: number, productName: string, thumbnail?: { __typename?: 'Image', url: string } | null, totalPrice: { __typename?: 'TaxedMoney', currency: string, gross: { __typename?: 'Money', currency: string, amount: number } } }> } | null };
+export type GetOrderByIdQuery = { __typename?: 'Query', order?: { __typename?: 'Order', id: string, isPaid: boolean, created: any, shippingAddress?: { __typename?: 'Address', id: string, firstName: string, lastName: string, city: string, companyName: string, streetAddress1: string, streetAddress2: string, phone?: string | null, postalCode: string, country: { __typename?: 'CountryDisplay', country: string, code: string } } | null, total: { __typename?: 'TaxedMoney', currency: string, gross: { __typename?: 'Money', currency: string, amount: number } }, lines: Array<{ __typename?: 'OrderLine', id: string, productVariantId?: string | null, quantity: number, productName: string, thumbnail?: { __typename?: 'Image', url: string } | null, totalPrice: { __typename?: 'TaxedMoney', currency: string, gross: { __typename?: 'Money', currency: string, amount: number } } }> } | null };
 
 export type GetUserQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -27956,12 +27956,24 @@ export const UpdateCheckoutShippingAddressDocument = gql`
     checkout {
       id
       shippingAddress {
-        ...AddressFragment
+        id
+        firstName
+        lastName
+        city
+        companyName
+        country {
+          country
+          code
+        }
+        streetAddress1
+        streetAddress2
+        phone
+        postalCode
       }
     }
   }
 }
-    ${AddressFragmentFragmentDoc}`;
+    `;
 export type UpdateCheckoutShippingAddressMutationFn = Apollo.MutationFunction<UpdateCheckoutShippingAddressMutation, UpdateCheckoutShippingAddressMutationVariables>;
 
 /**
@@ -28099,6 +28111,7 @@ export const GetOrderByIdDocument = gql`
     }
     isPaid
     lines {
+      id
       productVariantId
       quantity
       productName

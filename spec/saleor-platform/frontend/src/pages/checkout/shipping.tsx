@@ -11,23 +11,15 @@ import Spinner from "../../components/Spinner"
 import ErrorBlock from "../../components/blocks/ErrorBlock"
 import { CheckoutLayout } from "./information"
 import NoCheckout from "../../components/NoCheckout"
+import useHideLayout from "../../hooks/hideLayout"
 
 export default function CheckoutShipping() {
     const { checkoutId } = useContext(CheckoutContext)
     const { data, loading, error } = useGetCheckout({ checkoutId })
-    useEffect(() => {
-        const footer = document.getElementById('footer')
-        footer.classList.add("hidden")
-        const header = document.getElementById('header')
-        header.classList.add("hidden")
-        return () => {
-            footer.classList.remove('hidden');
-            header.classList.remove('hidden');
-        }
-    }, [])
+    useHideLayout();
     if (error) return <ErrorBlock />
     if (loading) return <Spinner />;
-    if (data)
+    if (data){
         if (data?.checkout?.lines?.length >= 1)
             return (
                 <CheckoutLayout>
@@ -44,6 +36,7 @@ export default function CheckoutShipping() {
                     <CheckoutSidebar checkout={data.checkout as Checkout} />
                 </CheckoutLayout>
             )
+    }
     if (!checkoutId || data?.checkout?.lines?.length < 1)
         return <NoCheckout />
 }

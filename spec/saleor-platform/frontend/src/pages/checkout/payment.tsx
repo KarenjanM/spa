@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react"
+import { useContext, useState } from "react"
 import CheckoutFooter from "../../components/checkout/CheckoutFooter"
 import CheckoutHeader from "../../components/checkout/CheckoutHeader"
 import CheckoutSidebar from "../../components/checkout/CheckoutSidebar"
@@ -12,21 +12,12 @@ import { ClipLoader } from "react-spinners"
 import Spinner from "../../components/Spinner"
 import { CheckoutLayout } from "./information"
 import NoCheckout from "../../components/NoCheckout"
+import useHideLayout from "../../hooks/hideLayout"
 
 export default function CheckoutPayment() {
     const { checkoutId } = useContext(CheckoutContext)
     const { data, loading, error } = useGetCheckout({ checkoutId });
-
-    useEffect(() => {
-        const footer = document.getElementById('footer')
-        footer.classList.add("hidden")
-        const header = document.getElementById('header')
-        header.classList.add("hidden")
-        return () => {
-            footer.classList.remove('hidden');
-            header.classList.remove('hidden');
-        }
-    }, [])
+    useHideLayout();
     if (error) return <div>Error</div>
     if (loading) return <ClipLoader loading={loading} />;
     if (data)

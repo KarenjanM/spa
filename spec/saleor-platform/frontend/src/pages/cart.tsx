@@ -42,7 +42,7 @@ export default function Cart() {
                 <ColHeaders />
                 <div>
                   {operationLoading ? <Spinner/> : cart?.lines?.map(({ variant, quantity, id }) => (
-                    <CartItem lineUpdateMutation={lineUpdateMutation} removeProduct={removeProduct} setLoading={setOperationLoading} checkoutId={checkoutId} variant={variant as ProductVariant} quantity={quantity} lineId={id} />
+                    <CartItem key={id} lineUpdateMutation={lineUpdateMutation} removeProduct={removeProduct} setLoading={setOperationLoading} checkoutId={checkoutId} variant={variant as ProductVariant} quantity={quantity} lineId={id} />
                   ))}
                 </div>
                 <div className='flex text-center md:text-end flex-col gap-3'>

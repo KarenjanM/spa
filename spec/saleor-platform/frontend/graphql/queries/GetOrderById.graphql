@@ -12,6 +12,7 @@ query GetOrderById($id: ID!){
         }
         isPaid
         lines {
+          id
           productVariantId
           quantity
           productName

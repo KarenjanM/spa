@@ -28,7 +28,6 @@ export default function CheckoutSidebar({ checkout, className="" } : {checkout: 
         promoCode: promoCode
       }
     }).then((data)=>{
-      console.log(data);
       if(data.data.checkoutAddPromoCode.errors.length > 0)
         setShowError(true)
     })

@@ -1,6 +1,4 @@
 export default function CheckoutProductList({lines}){
-  console.log(lines);
-  
     return (
         <ul className="flex-auto overflow-y-auto divide-y divide-gray-200 px-4 md:pr-4 md:pl-0">
           {lines?.map((line) => {
@@ -10,7 +8,7 @@ export default function CheckoutProductList({lines}){
             console.log(line);
             
             return (
-              <li className="flex flex-row py-4 space-x-4 justify-between">
+              <li key={line?.id} className="flex flex-row py-4 space-x-4 justify-between">
                 <div className="flex flex-row gap-2">
                 <div className="border bg-white w-24 h-24 object-center object-cover rounded-md relative">
                   {line.variant.product?.thumbnail && (

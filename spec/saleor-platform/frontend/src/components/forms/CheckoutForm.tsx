@@ -27,8 +27,8 @@ export interface CheckoutAddressData {
         asDefault: boolean
 }
 
-export default function CheckoutForm({user, checkoutId, checkout} : {user: User, checkoutId, checkout?: Checkout}) {
-    const countries = [{ label: "Germany", value: CountryCode.De }]
+export default function CheckoutForm({user, checkoutId, checkout, refetch} : {user: User, checkoutId, checkout?: Checkout, refetch?}) {
+    const countries = [{ label: "Germany", value: CountryCode.De }] 
     const router = useRouter();
 
     const updateAddress = useUpdateAddress();
@@ -51,7 +51,7 @@ export default function CheckoutForm({user, checkoutId, checkout} : {user: User,
     
     function onAddressSelect(selectedValue){
         const currAddr = user?.addresses?.find((value)=>value.id === selectedValue.value);
-        console.log(currAddr);
+        
         currAddr ? setCurrAddrId(currAddr?.id) : "";
         setValue("firstName", currAddr?.firstName)
         setValue("lastName", currAddr?.lastName)
@@ -62,17 +62,19 @@ export default function CheckoutForm({user, checkoutId, checkout} : {user: User,
         setValue("phone", currAddr?.phone)
     }
 
-    function onSubmit(formData : CheckoutAddressData){
-        updateCheckoutEmail({
+    async function onSubmit(formData : CheckoutAddressData){
+        const emailData = await updateCheckoutEmail({
             variables: {
                 id: checkoutId,
                 email: email
             }
-        }).then((data)=>{
-            console.log(data)
-        }).catch((e)=>console.log(e))
-        updateAddress({formData: formData, checkoutId: checkoutId}).catch((e)=>console.log(e))
-        router.push("/checkout/shipping")
+        })
+        const addressData = await updateAddress({formData: formData, checkoutId: checkoutId})
+        .then(()=>{
+            refetch({id: checkout?.id})
+            .then(()=>router.push("/checkout/shipping"))
+        })
+        
     }
 
     return (

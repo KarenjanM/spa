@@ -1,7 +1,5 @@
-import { useContext, useEffect, useState } from "react";
 import { useApolloClient } from "@apollo/client";
 import { 
-    CheckoutLineInput,
     useLineUpdateMutation,
     useDeleteLinesMutation,
     useGetCheckoutQuery, 
@@ -20,13 +18,13 @@ export function useUpdateQuantity({checkoutId}){
 }
 
 export function useGetCheckout({checkoutId=""}): GetCheckoutQueryResult{
-    const {data, loading, error} = useGetCheckoutQuery({
+    const {data, loading, error, refetch} = useGetCheckoutQuery({
       variables: {
           id: checkoutId
       },
       skip: !checkoutId
   })
-  return {data, loading, error} as GetCheckoutQueryResult;
+  return {data, loading, error, refetch} as GetCheckoutQueryResult;
 }
 
 export function useAddToCheckout({client=useApolloClient(), checkoutId=""}){

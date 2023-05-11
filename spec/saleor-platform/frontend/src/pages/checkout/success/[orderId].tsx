@@ -8,6 +8,7 @@ import { AdressBlock } from "../../../components/adress/AdressBlock";
 import ErrorBlock from "../../../components/blocks/ErrorBlock";
 import Spinner from "../../../components/Spinner";
 import getFormattedDate from "../../../lib/getFormattedDate";
+import useHideLayout from "../../../hooks/hideLayout";
 
 export default function CheckoutSuccess() {
     const router = useRouter();
@@ -17,18 +18,8 @@ export default function CheckoutSuccess() {
             id: orderId as string
         }
     });
-    console.log(error);
-    
-    useEffect(() => {
-        const footer = document.getElementById('footer')
-        footer.classList.add("hidden")
-        const header = document.getElementById('header')
-        header.classList.add("hidden")
-        return () => {
-            footer.classList.remove('hidden');
-            header.classList.remove('hidden');
-        }
-    }, [])
+    useHideLayout();
+
     let order;
     if (loading) order = <Spinner />
     if (error) order = <ErrorBlock />
@@ -39,7 +30,7 @@ export default function CheckoutSuccess() {
             </div>
             <ul className="pl-5 list-disc">
                 {data?.order?.lines?.map((value) => (
-                    <li className="flex flex-row place-items-center">
+                    <li key={value.id} className="flex flex-row place-items-center">
                         <div>
                             <img src={value.thumbnail.url} alt={value.productName} className="w-24 h-24"/>
                         </div>

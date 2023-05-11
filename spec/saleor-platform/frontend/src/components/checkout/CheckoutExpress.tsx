@@ -1,18 +1,21 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPaypal } from '@fortawesome/free-brands-svg-icons'
-import { Checkout, useUpdateCheckoutEmailMutation, useUpdateCheckoutShippingAddressMutation, useUpdateCheckoutShippingMethodMutation } from '../../../generated/graphql';
+import { Checkout, useCompleteCheckoutMutation, useCreateCheckoutPaymentMutation, useUpdateCheckoutEmailMutation, useUpdateCheckoutShippingMethodMutation } from '../../../generated/graphql';
 import DropIn from 'braintree-web-drop-in-react';
 import { useEffect, useState } from 'react';
 import useUpdateAddress from '../../hooks/updateAddress';
+import { useRouter } from 'next/router';
+import { useContext } from 'preact/hooks';
+import { CheckoutContext } from '../../contexts/checkoutContext';
 
-export default function CheckoutExpress({checkout}: {checkout: Checkout}) {
+export default function CheckoutExpress({checkout, refetch, resetCheckoutId}: {checkout: Checkout, refetch?, resetCheckoutId}) {
     return (
         <div className="flex flex-col gap-3">
             <div className="inline-flex items-center place-content-center relative">
                 <hr className="w-full my-8 bg-gray-500 "/>
                 <span className="absolute px-3 font-medium text-gray-900 bg-white">Express Checkout</span>
             </div>
-            <ExpressCheckout checkout={checkout}/>
+            <ExpressCheckout resetCheckoutId={resetCheckoutId} refetch={refetch} checkout={checkout}/>
             <div className="inline-flex items-center place-content-center relative">
                 <hr className="w-full my-8 bg-gray-500 "/>
                 <span className="absolute px-3 font-medium text-gray-900 bg-white">ODER</span>
@@ -30,29 +33,75 @@ export function PaymentButton({ icon }) {
     )
 }
 
-export function ExpressCheckout({checkout}: {checkout: Checkout}){
+export function ExpressCheckout({checkout, refetch, resetCheckoutId}: {checkout: Checkout, refetch?, resetCheckoutId}){
+    const [loading, setLoading] = useState(false);
     const [instance, setInstance] = useState<any>();
     const [requestable, setRequestable] = useState(false);
     const updateAddress = useUpdateAddress();
+    const router = useRouter();
     const [updateShippingMethod] = useUpdateCheckoutShippingMethodMutation();
     const [updateCheckoutEmail] = useUpdateCheckoutEmailMutation();
+    const [checkoutComplete] = useCompleteCheckoutMutation();
+    const [createCheckoutPayment] = useCreateCheckoutPaymentMutation();
+
+    async function completeExpressCheckout(nonce: string){
+        const paymentData = await createCheckoutPayment({
+            variables: {
+                id: checkout.id,
+                input: {
+                    gateway: checkout?.availablePaymentGateways[0]?.id,
+                    token: nonce
+                }
+            }
+        })
+        .catch((e)=>console.log(e))
+        console.log(paymentData)
+        const completeData: any = await checkoutComplete({
+            variables: {
+                id: checkout.id
+            }
+        })
+        .catch((e)=>console.log(e))
+        console.log(completeData)
+        resetCheckoutId();
+        router.push(`/checkout/success/${completeData?.data?.checkoutComplete?.order?.id}`);
+    }
+
     useEffect(() => {
         if(instance && requestable)
             instance.requestPaymentMethod()
             .then((payload) => {
+                setLoading(true);
+
                 updateCheckoutEmail({
                     variables: {
                         id: checkout.id,
                         email: payload.details.email
                     }
                 })
+                .catch((error)=>console.log(error))
                 updateAddress({formData: {
-                    firstName: payload.details.firstName,
-                    lastName: payload.details.lastName,
-                    country: payload.details.country
+                    firstName: payload?.details?.shippingAddress?.recipientName?.split(' ')[0],
+                    lastName: payload?.details?.shippingAddress?.recipientName?.split(' ')[1],
+                    country: {value: payload?.details?.shippingAddress?.countryCode},
+                    streetAddress: payload?.details?.shippingAddress?.line1,
+                    asDefault: false,
+                    city: payload?.details?.shippingAddress?.city,
+                    postalCode: payload?.details?.shippingAddress?.postalCode,
+                    phone: payload?.details?.shippingAddress?.phone,
+                    companyName: payload?.details?.businessName,
                 }, checkoutId: checkout.id})
+                .catch((error)=>console.log(error))
+                .then(()=>{
+                    refetch({id: checkout?.id}).then((data)=>{
+                    updateShippingMethod({variables: {
+                        id: checkout?.id,
+                        shippingMethodId: data?.data?.checkout?.shippingMethods[0]?.id
+                    }}).then(()=>completeExpressCheckout(payload.nonce))
+                })
+                })
             })
-    })
+    }, [instance, requestable])
     return (
         <DropIn options={{ authorization: checkout?.availablePaymentGateways[0]?.config[1]?.value, locale: "de_DE", paypal: { 
             flow: "checkout",
