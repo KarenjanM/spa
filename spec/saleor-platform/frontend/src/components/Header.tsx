@@ -179,7 +179,7 @@ export function NavPopover() {
           </>
         )}
       </Popover>
-        <Link href="/collections/juices" className="text-base text-gray-300 hover:text-white hover:underline">
+        <Link href="/products/categories/243Moon" className="text-base text-gray-300 hover:text-white hover:underline">
           243 MOON
         </Link>
     </Popover.Group>
