@@ -14,7 +14,6 @@ interface CartItemProps {
 }
 
 export function CartItem(props: CartItemProps & {setLoading: (value: boolean)=>void}) {
-  console.log(props.quantity);
   const [stateQuantity, setQuantity] = useState(props.quantity);
 
   async function increaseQuantity() {

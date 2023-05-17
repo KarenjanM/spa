@@ -2,11 +2,10 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPaypal } from '@fortawesome/free-brands-svg-icons'
 import { Checkout, useCompleteCheckoutMutation, useCreateCheckoutPaymentMutation, useUpdateCheckoutEmailMutation, useUpdateCheckoutShippingMethodMutation } from '../../../generated/graphql';
 import DropIn from 'braintree-web-drop-in-react';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import useUpdateAddress from '../../hooks/updateAddress';
 import { useRouter } from 'next/router';
-import { useContext } from 'preact/hooks';
-import { CheckoutContext } from '../../contexts/checkoutContext';
+import { LoadingContext } from '../../contexts/loadingContext';
 
 export default function CheckoutExpress({checkout, refetch, resetCheckoutId}: {checkout: Checkout, refetch?, resetCheckoutId}) {
     return (
@@ -34,7 +33,7 @@ export function PaymentButton({ icon }) {
 }
 
 export function ExpressCheckout({checkout, refetch, resetCheckoutId}: {checkout: Checkout, refetch?, resetCheckoutId}){
-    const [loading, setLoading] = useState(false);
+    const {setLoading} = useContext(LoadingContext);
     const [instance, setInstance] = useState<any>();
     const [requestable, setRequestable] = useState(false);
     const updateAddress = useUpdateAddress();
@@ -58,21 +57,20 @@ export function ExpressCheckout({checkout, refetch, resetCheckoutId}: {checkout:
         console.log(paymentData)
         const completeData: any = await checkoutComplete({
             variables: {
-                id: checkout.id
+                id: checkout.id,
             }
         })
         .catch((e)=>console.log(e))
+        setLoading(false)
         console.log(completeData)
         resetCheckoutId();
         router.push(`/checkout/success/${completeData?.data?.checkoutComplete?.order?.id}`);
     }
-
     useEffect(() => {
         if(instance && requestable)
             instance.requestPaymentMethod()
             .then((payload) => {
-                setLoading(true);
-
+                setLoading(true)
                 updateCheckoutEmail({
                     variables: {
                         id: checkout.id,
@@ -104,7 +102,7 @@ export function ExpressCheckout({checkout, refetch, resetCheckoutId}: {checkout:
     }, [instance, requestable])
     return (
         <DropIn options={{ authorization: checkout?.availablePaymentGateways[0]?.config[1]?.value, locale: "de_DE", paypal: { 
-            flow: "checkout",
+            flow: "vault",
             amount: checkout?.totalPrice?.gross?.amount,
             currency: checkout?.totalPrice?.gross?.currency,
             enableShippingAddress: true,

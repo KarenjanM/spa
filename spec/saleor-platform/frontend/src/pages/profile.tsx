@@ -79,11 +79,9 @@ export function ProfileHeader({ size, children, onClick }: { size: "2xl" | "3xl"
 }
 
 export function Orders({ data, loading, error }: { data: GetUserQuery, loading: boolean, error: ApolloError }) {
-  const [show, setShow] = useState(false);
   if (error) return <ErrorBlock />
   if (loading) return <Spinner />
   if (data) {
-    console.log(data?.me?.orders?.edges[0]);
 
     let component = data?.me?.orders?.edges?.length > 0 ? (
       <div className="flex flex-col gap-4">

@@ -11,9 +11,8 @@ import { Transition } from "@headlessui/react";
  */
 export default function Carousel({ nodes }) {
   const [currentSlide, setCurrentSlide] = useState(0);
-  
   const handleNextSlide = () => {
-    let newSlide = (currentSlide + 1)%2;
+    let newSlide = (currentSlide + 1)%nodes.length;
     console.log(currentSlide);
     
     console.log(newSlide);

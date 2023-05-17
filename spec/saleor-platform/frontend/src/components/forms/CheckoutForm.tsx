@@ -70,10 +70,8 @@ export default function CheckoutForm({user, checkoutId, checkout, refetch} : {us
             }
         })
         const addressData = await updateAddress({formData: formData, checkoutId: checkoutId})
-        .then(()=>{
-            refetch({id: checkout?.id})
-            .then(()=>router.push("/checkout/shipping"))
-        })
+        refetch({id: checkout?.id})
+        .then(()=>router.push("/checkout/shipping"))
         
     }
 
