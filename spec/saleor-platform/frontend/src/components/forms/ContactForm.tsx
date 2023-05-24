@@ -8,9 +8,9 @@ export default function ContactForm({ user, setEmail, email }: {user: User, setE
     const auth = useAppSelector((state) => state.auth);
     return (
         <div className="flex flex-col gap-3">
-            <div className="flex flex-row justify-between">
+            <div className="flex flex-col sm:flex-row justify-between">
                 <div className="text-xl self-start">Kontaktinformation</div>
-                {!auth.loggedIn && <div className="text-sm self-center">Hast du bereits ein Konto? <Link href={'/login'} className="text-sky-700">Anmelden</Link></div>}
+                {!auth.loggedIn && <div className="text-sm self-start sm:self-center">Hast du bereits ein Konto? <Link href={'/login'} className="text-sky-700">Anmelden</Link></div>}
             </div>
             {auth.loggedIn ? (
                 <div className="text-sm">

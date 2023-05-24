@@ -12,7 +12,7 @@ export default function Footer() {
                                 <Link href="/policies/privacy" className="hover:underline">Datenschutzerklärung</Link>
                                 <Link href="/policies/refund-policy" className="hover:underline">Widerrufsrecht & Widerrufsformular</Link>
                             </div>
-                            <Link href="/polices/terms-of-service" className="self-start sm:self-center sm:mt-2 hover:underline">Algemeine Geschäftsbedigungen</Link>
+                            <Link href="/policies/terms-of-service" className="self-start sm:self-center sm:mt-2 hover:underline">Algemeine Geschäftsbedigungen</Link>
                         </div>
                     </div>
                     <div className="flex justify-center sm:justify-start px-5 py-2 sm:px-20">

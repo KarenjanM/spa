@@ -70,9 +70,8 @@ export default function CheckoutForm({user, checkoutId, checkout, refetch} : {us
             }
         })
         const addressData = await updateAddress({formData: formData, checkoutId: checkoutId})
-        refetch({id: checkout?.id})
-        .then(()=>router.push("/checkout/shipping"))
-        
+        await refetch({id: checkout?.id})
+        router.push("/checkout/shipping")
     }
 
     return (
@@ -85,15 +84,15 @@ export default function CheckoutForm({user, checkoutId, checkout, refetch} : {us
                         name="country"
                         control={control as any}
                         render={({field})=><CheckoutSelect {...field} options={countries} />} />
-                    <div className="flex flex-row gap-2">
+                    <PairBox>
                         <CheckoutInput {...register("firstName")} type="text" placeholder="Vorname" />
                         <CheckoutInput {...register("lastName")} type="text" placeholder="Nachname" />
-                    </div>
+                    </PairBox>
                     <CheckoutInput {...register("streetAddress")} type="text" placeholder="Adresse" />
-                    <div className="flex flex-row gap-2">
+                    <PairBox>
                         <CheckoutInput {...register("postalCode")} type="text" placeholder="Postleitzahl" />
                         <CheckoutInput {...register("city")}  type="text" placeholder="Stadt" />
-                    </div>
+                    </PairBox>
                     <CheckoutInput  {...register("phone")} type="tel" placeholder="Telefon (optional)" />
                     <CheckoutFooter link={"/cart"} back={"zum Warenkorb"} forward={"zum Versand"}/>
             </div>
@@ -101,6 +100,13 @@ export default function CheckoutForm({user, checkoutId, checkout, refetch} : {us
     )
 }
 
+export function PairBox({children}){
+    return(
+        <div className="flex flex-col sm:flex-row gap-2">
+            {children}
+        </div>
+    )
+}
 
 export const CheckoutSelect: FC<StateManagerProps> = React.forwardRef<any, StateManagerProps>(({...props}, ref)=>{
     return (

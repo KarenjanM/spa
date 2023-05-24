@@ -21,7 +21,7 @@ export default function Products(){
   if(error) return <ErrorBlock />;
   if(loading) return <Spinner />;
   if(data) return (
-        <div className="max-w-7xl mx-auto flex flex-col place-items-center">
+          <div className="flex flex-col place-items-center my-auto">
           <ProductList products={data?.products}/>
           <Pagination {...pageInfo} setAfterBefore={setAfterBefore}/>
         </div>

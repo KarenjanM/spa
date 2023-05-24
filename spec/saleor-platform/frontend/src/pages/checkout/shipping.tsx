@@ -33,7 +33,7 @@ export default function CheckoutShipping() {
                                 shippingMethods={data?.checkout?.shippingMethods as Array<ShippingMethod>} />
                         </div>
                     </div>
-                    <CheckoutSidebar checkout={data.checkout as Checkout} />
+                    <CheckoutSidebar className="hidden lg:block" checkout={data.checkout as Checkout} />
                 </CheckoutLayout>
             )
     }
@@ -59,10 +59,10 @@ export function CheckoutInfoCheck({ email, checkoutAddress, shippingMethod }: { 
 
 export function CheckoutInfoBlock({ blockName, info, href = "" }) {
     return (
-        <div className="grid grid-cols-6 justify-between py-3 break-inside-avoid">
+        <div className="grid grid-rows-4 sm:grid-cols-6 justify-between py-3 break-inside-avoid">
             <div>{blockName}</div>
-            <div className="col-span-4">{info}</div>
-            <div className="justify-self-end"><Link href={`/checkout/${href}`} className="text-sm text-sky-700">Ändern</Link></div>
+            <div className="row-span-2 sm:col-span-4">{info}</div>
+            <div className="sm:justify-self-end"><Link href={`/checkout/${href}`} className="text-sm text-sky-700">Ändern</Link></div>
         </div>
     )
 }

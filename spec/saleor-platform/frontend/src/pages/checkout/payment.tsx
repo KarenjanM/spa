@@ -32,7 +32,7 @@ export default function CheckoutPayment() {
                                 <CheckoutPaymentBlock checkout={data?.checkout as Checkout} />
                             </div>
                         </div>
-                        <CheckoutSidebar checkout={data.checkout as Checkout} />
+                        <CheckoutSidebar className="hidden lg:block" checkout={data.checkout as Checkout} />
                     </CheckoutLayout>
             )
     if(!checkoutId || data?.checkout?.lines?.length < 1)
