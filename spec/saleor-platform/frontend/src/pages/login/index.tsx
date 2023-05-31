@@ -24,13 +24,14 @@ export default function Login() {
   const [showAlert, setAlert] = useState(false);
 
   useEffect(() => {
+    console.log(window.history.state.url)
     if (loggedIn) {
       client.resetStore();
-      if (window.history.state.url.includes("login"))
+      if (window.history.state.url.includes("login") && !router.query.save_checkout)
         router.push("/profile");
       else
         router.back();
-      if (user)
+      if (user && !router.query.save_checkout)
         setCheckoutId(user?.user?.checkout?.id);
     }
     if (auth.invalid)

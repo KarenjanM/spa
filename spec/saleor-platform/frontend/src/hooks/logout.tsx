@@ -5,7 +5,7 @@ import { useRouter } from "next/router";
 import { useContext, useEffect, useState } from "react";
 import { CheckoutContext } from "../contexts/checkoutContext";
 
-export default function useLogOut(){
+export default function useLogOut({save_checkout}: {save_checkout: boolean}){
     const [endData, setData] = useState(false);
     const auth = useAppSelector((state)=>state.auth);
     const dispatch = useAppDispatch();
@@ -17,7 +17,8 @@ export default function useLogOut(){
         setData(true);
         console.log("LOGGED OUT");
         router.back();
-        resetCheckoutId();
+        if(!save_checkout)
+            resetCheckoutId();
     }
     useEffect(()=>{
         if(auth.loggedIn)
