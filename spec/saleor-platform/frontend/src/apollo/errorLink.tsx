@@ -48,36 +48,25 @@ export function createErrorLink() {
     const errorLink = onError(({ graphQLErrors, networkError, operation, forward }) => {
         if (graphQLErrors)
             graphQLErrors.forEach(({ message, locations, path }) => {
-                console.log(
-                    `[GraphQL error]: Message: ${message}, Location: ${locations}, Path: ${path}`,
-                );
                 if (message.includes("expired")) {
-                    console.log("expired");
-                    console.log(isRefreshing);
-
                     if (!isRefreshing) {
                         setIsRefreshing(true);
                         const observable =  fromPromise(getNewToken(refreshMut))
                         .map((data)=> {console.log("result from observable map method " + data); return data})    
                         .flatMap((data) => {
                             setIsRefreshing(false);
-                            console.log("accessToken in flatMap method " + data);
                             operation.setContext(({ headers={} }) => ({
                                 headers: {
                                     ...headers,
                                     authorization: "Bearer " + data
                                 }
                             }));
-                            console.log(operation.getContext());
                             resolvePendingRequests();
                             return forward(operation);
                         })
                         observable.subscribe({
-                            next: (value)=> console.log(value),
-                            error: (error)=> console.error(error),
                             complete: ()=> {
                                 operation.operationName !== "tokensDeactivateAll" && renewTokenApiClient.resetStore();
-                                console.log('Completed')
                             }
                         });
                         return observable;
@@ -85,14 +74,11 @@ export function createErrorLink() {
                         return fromPromise(new Promise((resolve => {
                             addPendingRequest(() => resolve(null))
                         }))).flatMap(() => {
-                            console.log("isRefreshing equals true");
-
                             return forward(operation)
                         })
                     }
                 }
             })
-        if (networkError) console.log(`[Network error]: ${networkError}`);
     });
     return { errorLink };
 }
