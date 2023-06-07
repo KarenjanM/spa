@@ -51,6 +51,8 @@ services:
     build:
       context: ./saleor-dashboard
       dockerfile: ./Dockerfile
+      args:
+        API_URI: "http://34.140.245.88:8000/graphql/"
     ports:
       - 9000:80
     restart: unless-stopped
