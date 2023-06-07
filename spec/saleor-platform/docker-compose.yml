@@ -30,41 +30,22 @@ services:
       - backend.env
     environment:
       - DEBUG=False
-      - ALLOWED_CLIENT_HOSTS=localhost,api,.ngrok.io,127.0.0.1
+      - ALLOWED_CLIENT_HOSTS=localhost,api,127.0.0.1
       - JAEGER_AGENT_HOST=jaeger
       - STOREFRONT_URL=http://localhost:3010/
       - DASHBOARD_URL=http://localhost:9000/
-      - ALLOWED_HOSTS=localhost,api,.ngrok.io,127.0.0.1
+      - ALLOWED_HOSTS=localhost,api,127.0.0.1
       - RSA_PRIVATE_KEY=saleor/private.pem
       - GOOGLE_APPLICATION_CREDENTIALS=credentials.json
       - GS_MEDIA_BUCKET_NAME=spec_images
-  storefront:
-    extends:
-      file: ./react-storefront/docker-compose.yml
-      service: storefront
-    networks:
-      - saleor-backend-tier
-    depends_on:
-      - api
-      - saleor-app-checkout
   frontend:
       build: ./frontend
       ports:
-        - "443:3000"
+        - "3002:3000"
       networks:
         - saleor-backend-tier
       depends_on:
         - api
-        - saleor-app-checkout
-
-  saleor-app-checkout:
-    extends:
-      file: ./react-storefront/docker-compose.yml
-      service: saleor-app-checkout
-    networks:
-      - saleor-backend-tier
-    depends_on:
-      - api
 
   dashboard:
     build:
