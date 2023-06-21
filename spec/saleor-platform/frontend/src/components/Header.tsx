@@ -103,6 +103,7 @@ export default function Header() {
                 </Link>
                 <Link
                   href="/cart"
+                  data-testid={"checkout-icon"}
                   className='whitespace-nowrap text-base font-medium text-gray-300 hover:text-white relative'
                 >
                   <ShoppingBagIcon className="ml-4 h-7 w-7" />

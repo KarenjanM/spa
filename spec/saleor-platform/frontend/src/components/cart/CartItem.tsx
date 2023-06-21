@@ -55,15 +55,15 @@ function QuantityBlock({className="", decreaseQuantity, stateQuantity, increaseQ
     <div className={`${className} text-center col-span-0 md:col-span-1`}>
         <div className='flex flex-row gap-4 py-2'>
           <div className="flex flex-row gap-4 px-2 border border-black">
-            <button onClick={decreaseQuantity}>
+            <button data-testid={"decrease-q-cart"} onClick={decreaseQuantity}>
               <MinusIcon className='h-4 w-4' />
             </button>
-            <p>{stateQuantity}</p>
-            <button onClick={increaseQuantity}>
+            <p data-testid="quantity">{stateQuantity}</p>
+            <button data-testid={"increase-q-cart"} onClick={increaseQuantity}>
               <PlusIcon className='h-4 w-4' />
             </button>
           </div>
-          <button onClick={remove}>
+          <button data-testid="remove" onClick={remove}>
             <TrashIcon className='h-4 w-4' />
           </button>
         </div>
