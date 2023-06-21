@@ -5,7 +5,6 @@ export default function CheckoutProductList({lines}){
             if (!line) {
               return null;
             }
-            console.log(line);
             
             return (
               <li key={line?.id} className="flex flex-row py-4 space-x-4 justify-between">

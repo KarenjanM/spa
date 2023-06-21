@@ -27,6 +27,7 @@
     "apollo-client": "^2.6.10",
     "apollo3-cache-persist": "^0.14.1",
     "braintree-web-drop-in-react": "^1.2.1",
+    "cypress-plugin-tab": "^1.0.5",
     "deepmerge": "^4.3.0",
     "graphql": "^15.8.0",
     "html-react-parser": "^3.0.8",

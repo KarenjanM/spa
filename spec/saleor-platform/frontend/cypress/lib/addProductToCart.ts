@@ -18,7 +18,7 @@ export const addProductToCart = (start_total_q: string, start_q: string)=>{
   }
 
 export const increaseQuantity = (numberOfClicks: number, testid: string)=>{
-  let increase_q = cy.get(`[data-testid="${testid}"]`)
+  let increase_q = cy.get(`[data-testid="${testid}"]`);
   for(let i = 0; i < numberOfClicks; i++){
     increase_q.each((element)=>{
       element.trigger("click");
@@ -27,11 +27,10 @@ export const increaseQuantity = (numberOfClicks: number, testid: string)=>{
 }
 
 export const decreaseQuantity = (numberOfClicks: number, testid: string)=>{
-  let decrease_q = cy.get(`[data-testid="${testid}"]`)
+  let decrease_q = cy.get(`[data-testid="${testid}"]`);
   for(let i = 0; i < numberOfClicks; i++){
     decrease_q.each((element)=>{
       element.trigger("click");
-    })
-    console.log("triggered")  
+    });
   }
 }

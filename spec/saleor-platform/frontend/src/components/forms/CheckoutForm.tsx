@@ -75,7 +75,7 @@ export default function CheckoutForm({user, checkoutId, checkout, refetch} : {us
     }
 
     return (
-        <form className="flex flex-col gap-5" onSubmit={handleSubmit(onSubmit)} >
+        <form data-testid="checkout-form" className="flex flex-col gap-5" onSubmit={handleSubmit(onSubmit)} >
             <ContactForm email={email} setEmail={setEmail} user={user as User}/>
             <div className="text-xl self-start pb-2">Lieferadresse</div>
             <div key={currAddrId} className="flex flex-col gap-4 ">
@@ -83,17 +83,17 @@ export default function CheckoutForm({user, checkoutId, checkout, refetch} : {us
                     <Controller
                         name="country"
                         control={control as any}
-                        render={({field})=><CheckoutSelect {...field} options={countries} />} />
+                        render={({field})=><CheckoutSelect id='country-select' {...field} options={countries} />} />
                     <PairBox>
-                        <CheckoutInput {...register("firstName")} type="text" placeholder="Vorname" />
-                        <CheckoutInput {...register("lastName")} type="text" placeholder="Nachname" />
+                        <CheckoutInput data-testid="input-firstName" {...register("firstName")} type="text" placeholder="Vorname" />
+                        <CheckoutInput data-testid="input-lastName" {...register("lastName")} type="text" placeholder="Nachname" />
                     </PairBox>
-                    <CheckoutInput {...register("streetAddress")} type="text" placeholder="Adresse" />
+                    <CheckoutInput data-testid="input-address" {...register("streetAddress")} type="text" placeholder="Adresse" />
                     <PairBox>
-                        <CheckoutInput {...register("postalCode")} type="text" placeholder="Postleitzahl" />
-                        <CheckoutInput {...register("city")}  type="text" placeholder="Stadt" />
+                        <CheckoutInput data-testid="input-postalCode" {...register("postalCode")} type="text" placeholder="Postleitzahl" />
+                        <CheckoutInput data-testid="input-city" {...register("city")}  type="text" placeholder="Stadt" />
                     </PairBox>
-                    <CheckoutInput  {...register("phone")} type="tel" placeholder="Telefon (optional)" />
+                    <CheckoutInput data-testid="input-tel" {...register("phone")} type="tel" placeholder="Telefon (optional)" />
                     <CheckoutFooter link={"/cart"} back={"zum Warenkorb"} forward={"zum Versand"}/>
             </div>
         </form>

@@ -20,7 +20,7 @@ export default function ContactForm({ user, setEmail, email }: {user: User, setE
                     <Link href={{pathname: '/logout', query: {save_checkout: true}}} className="text-sky-700">Ausloggen</Link>
                 </div>
             ) : (
-                <CheckoutInput type="email" value={email} onChange={(e)=>setEmail(e.target.value)} className="grow" placeholder="E-Mail" />
+                <CheckoutInput data-testid="input-email" type="email" value={email} onChange={(e)=>setEmail(e.target.value)} className="grow" placeholder="E-Mail" />
             )}
             <div className="flex flex-row gap-3">
                 <CheckoutCheckbox />
