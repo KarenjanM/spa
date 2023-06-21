@@ -37,7 +37,7 @@ export default function Cart() {
             <div className='text-center text-2xl font-extrabold'>Your cart is empty</div>
           ) : (
             <div className='px-5'>
-              <div className='text-3xl font-semibold'>Dein Warenkorb</div>
+              <div className='text-center sm:text-start text-3xl font-semibold'>Dein Warenkorb</div>
               <div className="divide-y">
                 <ColHeaders />
                 <div>

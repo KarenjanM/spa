@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { ProductVariant } from '../../../generated/graphql';
 import getCurrencySymbol from '../../lib/getCurrencySymbol';
 import getPrettyPrice from '../../lib/getPrettyPrice';
+import Image from 'next/image';
 
 interface CartItemProps {
   checkoutId: string
@@ -32,9 +33,9 @@ export function CartItem(props: CartItemProps & {setLoading: (value: boolean)=>v
   }
   return (
     <div className='flex flex-row justify-between md:grid md:grid-cols-5 px-12'>
-      <div className='flex flex-row col-span-3'>
+      <div className='flex flex-col sm:flex-row col-span-3'>
         <div>
-          <img alt={props.variant.product.name} src={props.variant.product.thumbnail.url} className="h-32 w-32" />
+          <img alt={props.variant.product.name} src={props.variant.product.thumbnail.url} className="h-24 w-24 md:h-32 md:w-32" />
         </div>
         <div className="flex flex-col">
           <p className='text-base'>{props.variant.product.name}</p>
@@ -44,7 +45,7 @@ export function CartItem(props: CartItemProps & {setLoading: (value: boolean)=>v
         </div>
       </div>
       <QuantityBlock className="hidden md:block" decreaseQuantity={decreaseQuantity} stateQuantity={stateQuantity} increaseQuantity={increaseQuantity} remove={remove}/>
-      <div className='md:col-span-1'>$ {getPrettyPrice(props.quantity * props.variant.pricing.price.gross.amount)}</div>
+      <div className='md:col-span-1 py-2 px-2 lg:px-0 self-center md:self-start'>${getPrettyPrice(props.quantity * props.variant.pricing.price.gross.amount)}</div>
     </div>
   )
 }

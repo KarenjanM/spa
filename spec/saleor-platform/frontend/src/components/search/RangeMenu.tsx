@@ -1,4 +1,3 @@
-import { useRange } from "react-instantsearch-hooks-web";
 import { useEffect, useState } from "react";
 
 export function RangeMenu({start, range, refine}) {
@@ -34,8 +33,6 @@ export function RangeInput({ placeholder, refine, value }: { placeholder: string
         refine(e.target.value)
         setValue(e.target.value)
         }
-        console.log(e.target.value);
-        
     }
     return (
         <div className="flex flex-row gap-1 place-items-center">

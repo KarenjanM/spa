@@ -3,6 +3,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "cypress": "npx cypress open",
     "start": "next start",
     "generate": "graphql-codegen --config codegen.yml"
   },

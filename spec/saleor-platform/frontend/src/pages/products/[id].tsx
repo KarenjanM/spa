@@ -101,7 +101,7 @@ export function ProductSidebar({ quantity, setQuantity, product, addToCheckout, 
       <div className="text-3xl mb-2 group-hover:underline">{product.name}</div>
       <div className="text-start text-xl self-start">${product.pricing.priceRange.stop.gross.amount} {product.pricing.priceRange.stop.gross.currency}</div>
       <ProductQuantity quantity={quantity} setQuantity={setQuantity} />
-      {isLoading ? <AddButton className="self-start" text={"Loading"} onClick={addToCheckout} disabled={true} /> : <AddButton className="self-start" text={"In den Warenkorb liegen"} onClick={addToCheckout} disabled={false} />}
+      <AddButton className="self-start" text={isLoading ? "Loading": "In den Warenkorb liegen"} onClick={addToCheckout} disabled={isLoading ? true : false} />
       <div className="self-start">
         {product.description ? (
           <ProductDescription>
@@ -122,14 +122,13 @@ export function ProductQuantity({ quantity, setQuantity }) {
   }
   return (
     <div>
-      <div></div>
       <div className='flex flex-row gap-4'>
         <div className="flex flex-row gap-4 px-2 border border-black">
-          <button onClick={decreaseQ}>
+          <button data-testid={`decrease-q`} onClick={decreaseQ}>
             <MinusIcon className='h-4 w-4' />
           </button>
-          <p>{quantity}</p>
-          <button onClick={() => setQuantity(quantity + 1)}>
+          <p data-testid={`quantity`}>{quantity}</p>
+          <button data-testid={`increase-q`} onClick={() => setQuantity(quantity + 1)}>
             <PlusIcon className='h-4 w-4' />
           </button>
         </div>

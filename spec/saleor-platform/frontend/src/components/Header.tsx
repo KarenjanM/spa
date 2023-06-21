@@ -106,7 +106,7 @@ export default function Header() {
                   className='whitespace-nowrap text-base font-medium text-gray-300 hover:text-white relative'
                 >
                   <ShoppingBagIcon className="ml-4 h-7 w-7" />
-                  <span className="absolute right-0 bottom-0 rounded-full bg-white w-4 h-4 text-black font-mono text-sm leading-4 text-center">{getTotalQuantity()}
+                  <span data-testid={`total-quantity`} className="absolute right-0 bottom-0 rounded-full bg-white w-4 h-4 text-black font-mono text-sm leading-4 text-center">{getTotalQuantity()}
                   </span>
                 </Link>
 

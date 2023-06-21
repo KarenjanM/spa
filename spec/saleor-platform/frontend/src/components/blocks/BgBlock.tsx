@@ -7,7 +7,7 @@ export default function BgBlock(){
           Schön, dass du da bist
         </div>
         <div className="pb-20 mb-20">
-          <Link href="/products" className='text-white border py-3 px-9 hover:border-2'>zu unseren Produkten</Link>
+          <Link data-testid={"products-link"} href="/products" className='text-white border py-3 px-9 hover:border-2'>zu unseren Produkten</Link>
         </div>
       </div>
     )

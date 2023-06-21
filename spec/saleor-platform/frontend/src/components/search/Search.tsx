@@ -28,8 +28,8 @@ export function SearchBlock({ query }: { query?: string }) {
   )
 }
 
-export function SearchShell({query}){
-  const rangeProps = useRange({ attribute: "grossPrice" });
+export function SearchShell({query}: {query?: string}){
+const rangeProps = useRange({ attribute: "grossPrice" });
   const sortProps = useSortBy({
     items: [
       {

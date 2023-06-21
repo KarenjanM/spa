@@ -6,7 +6,7 @@ export default function ProductList({ products }) {
   return (
     <div className="grid md:grid-cols-2 lg:grid-cols-4 place-items-center gap-4 py-5 ">
       {latestProducts.map((product) =>
-        <div key={product?.node?.id ? product?.node?.id : product?.productId} className="bg-white flex place-items-stretch">
+        <div key={product?.node?.id ? product?.node?.id : product?.productId} data-testid={`product`} className="bg-white flex place-items-stretch">
           <Product product={product} />
         </div>
       )}
