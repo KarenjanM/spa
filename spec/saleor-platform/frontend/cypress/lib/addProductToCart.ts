@@ -19,7 +19,7 @@ export const addProductToCart = (start_total_q: string, start_q: string)=>{
 
 export const increaseQuantity = (numberOfClicks: number, testid: string)=>{
   let increase_q = cy.get(`[data-testid="${testid}"]`);
-  for(let i = 0; i < numberOfClicks; i++){
+  for(let i = 0; i < numberOfClicks; i++){ 
     increase_q.each((element)=>{
       element.trigger("click");
     })
